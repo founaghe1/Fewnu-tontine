@@ -7,7 +7,7 @@ import { FiSettings } from "react-icons/fi";
 
 const Footer = () => {
   return (
-    <div>
+    <div className="fixed-bottom">
       <footer className="py-4 d-flex justify-content-around footer ">
         <p>
           <FaSackDollar className="text-dark fs-1" />
