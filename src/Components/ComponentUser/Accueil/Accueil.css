@@ -1,0 +1,21 @@
+#Accueil{
+    background-color: #093545;
+}
+.title{
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 49px;
+    letter-spacing: 0px;
+    text-align: center;
+}
+.loginButton{
+    width: 192px;
+    height: 44px;
+    background-color: #20DF7F;
+    color: #093545;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 22px;
+    letter-spacing: 0px;
+
+}
