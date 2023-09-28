@@ -1,0 +1,50 @@
+.titreDetailCo{
+    font-family: Montserrat;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24.38px;
+    color: rgba(0, 0, 0, 1);
+    margin-top: -25px !important;
+}
+.arrow{
+    color: rgba(32, 223, 127, 1);
+    font-size: 35px !important;
+}
+.mois,
+.heures,
+.montants,
+.statuts{
+    line-height: 10px !important;
+}
+.moi,
+.heure,
+.montant,
+.statut{
+    font-family: Montserrat;
+    font-weight: 500;
+    font-size: 18px;
+    color: rgba(0, 0, 0, 0.5);
+}
+.moisCotis,
+.heureCotis,
+.montantCotis,
+.statutCotis{
+    font-family: Montserrat;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18.29px;
+    color: rgba(0, 0, 0, 1);
+}
+
+.btnModif {
+    background-color: rgba(9, 53, 69, 1); 
+    font-size: 18px; 
+    border-radius: 10px; 
+    color: rgba(255, 255, 255, 1);
+    font-family: Montserrat;
+    font-weight: 700;
+    font-size: 15.31px;
+    line-height: 18.66px;
+    width: 99.24px;
+    height: 44.01px;
+  }

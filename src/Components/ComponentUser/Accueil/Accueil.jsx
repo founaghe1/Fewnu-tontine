@@ -1,6 +1,7 @@
 import React from 'react'
 import './Accueil.css'
-import Image from '../../../Assets/home-img.png'
+import Image from '../../../Assets/home-img.png';
+import { Link } from 'react-router-dom'
 
 const Accueil = () => {
   return (
@@ -10,7 +11,9 @@ const Accueil = () => {
         <div className='mb-5'>
             <img src={Image} alt="" className='img-fluid'/>
         </div>
-        <button className='btn default loginButton px-2 py-1'>Connectez-vous</button>
+        <Link to="/cotisation">
+          <button className='loginButton px-2 py-1'>Connectez-vous</button>
+        </Link>
       </div>
     </div>
   )

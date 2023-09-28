@@ -1,7 +1,8 @@
 import React from 'react'
 import './Cotisation.css'
 import Progression from './Progression'
-import Carte from './Carte'
+import Carte from './Carte';
+import Layout from '../Layout/Layout';
 
 const Cotisation = () => {
     const cardsData = [
@@ -95,6 +96,7 @@ const Cotisation = () => {
       
     
   return (
+    <Layout>
     <div id='Cotisation'>
       <div className="container-fluid pt-3">
         <Progression/>
@@ -103,6 +105,7 @@ const Cotisation = () => {
             ))}
       </div>
     </div>
+    </Layout>
   )
 }
 
