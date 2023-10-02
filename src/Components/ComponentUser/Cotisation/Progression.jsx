@@ -3,7 +3,7 @@ import { TbMoneybag } from "react-icons/tb";
 
 const Progression = () => {
   return (
-    <div className="card progression p-3 mb-4">
+    <div className="card progression p-3 mb-5">
       <div className="icon-containt  d-flex  justify-content-center align-items-center">
         <TbMoneybag className="icon" />
       </div>

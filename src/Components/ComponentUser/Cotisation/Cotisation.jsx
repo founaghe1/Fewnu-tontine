@@ -3,6 +3,7 @@ import './Cotisation.css'
 import Progression from './Progression'
 import Carte from './Carte';
 import Layout from '../Layout/Layout';
+import { Link } from 'react-router-dom';
 
 const Cotisation = () => {
     const cardsData = [
@@ -100,9 +101,11 @@ const Cotisation = () => {
     <div id='Cotisation'>
       <div className="container-fluid pt-3">
         <Progression/>
-        {cardsData.map((card) => (
+        <Link to='/tontine' className='link'>
+            {cardsData.map((card) => (
               <Carte mois={card.tontine} montant={card.montant} date={card.date} heure={card.heure} statut={card.statut}/>
             ))}
+        </Link>
       </div>
     </div>
     </Layout>

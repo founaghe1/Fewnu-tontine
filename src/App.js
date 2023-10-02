@@ -10,7 +10,8 @@ import Identification from './Components/ComponentUser/Inscription/Identificatio
 import InfoPersonnelle from './Components/ComponentUser/Inscription/InfoPersonnelle/InfoPersonnelle';
 import Connection from './Components/ComponentUser/Inscription/Connection/Connection';
 import Confime from './Components/ComponentUser/ConfimeNumero/Confime';
-import Creercode from './Components/ComponentUser/creercode/Creercode'
+import Creercode from './Components/ComponentUser/creercode/Creercode';
+import Tontine from './Components/ComponentUser/Tontine/Tontine'
 
 function App() {  
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/infoPersonnelle"  element={<InfoPersonnelle />} />
         <Route path="/creatCode"  element={<Creercode />} />
         <Route path="/mesCotisations"  element={<Cotisation />} />
+        <Route path="/tontine"  element={<Tontine />} />
       </Routes>
     </Router>
     </div>

@@ -4,6 +4,7 @@ import AjoutCotisation from './AjoutCotisation'
 import CarteTontine from './CarteTontine';
 import wave from '../../../Assets/wave.png'
 import orange from '../../../Assets/orange-money.png'
+import Layout from '../Layout/Layout';
 
 const Tontine = () => {
     const cardsData = [
@@ -106,12 +107,14 @@ const Tontine = () => {
       ];
       
   return (
+    <Layout>
     <div className='container-fluid pt-3 page-totine'>
       <AjoutCotisation/>
       {cardsData.map((card) => (
               <CarteTontine mois={card.mois} via={card.via} montant={card.montant} date={card.date} heure={card.heure} statut={card.statut}/>
             ))}
     </div>
+    </Layout>
   )
 }
 
