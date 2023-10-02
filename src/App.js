@@ -7,11 +7,12 @@ import Detailcotisation from "./Components/ComponentUser/Detailscotisations/Deta
 import Accueil from "./Components/ComponentUser/Accueil/Accueil";
 import Cotisation from "./Components/ComponentUser/Cotisation/Cotisation";
 import Tontine from "./Components/ComponentUser/Tontine/Tontine";
+import Ajouter from "./Components/ComponentUser/AjouterCotisation/Ajouter";
 
 function App() {
   return (
     <div className="">
-      <Tontine/>
+      <Ajouter/>
       {/* <Router>
         <Routes>
           <Route path="/" exact element={<Accueil />} />
