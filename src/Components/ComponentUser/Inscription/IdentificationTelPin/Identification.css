@@ -6,9 +6,11 @@
     font-weight: 700;
     font-size: 31.77px;
     line-height: 38.72px;
+    color: rgba(9, 53, 69, 1);
 }
 .wallet{
     font-size: 44px;
+    color: rgba(9, 53, 69, 1);
 }
 .paragIdentif{
     margin-top: 50px;
@@ -16,6 +18,7 @@
     font-weight: 400;
     font-size: 40px;
     line-height: 50px;
+    color: rgba(9, 53, 69, 1);
 }
 .paragText{
     margin-top: 50px;
@@ -23,6 +26,7 @@
     font-size: 16.5px;
     line-height: 20.63px;
     font-weight: 400;
+    color: rgba(9, 53, 69, 1);
 }
 .input{
     background-color: rgba(34, 73, 87, 1);

@@ -8,13 +8,14 @@ import Accueil from './Components/ComponentUser/Accueil/Accueil';
 import Cotisation from './Components/ComponentUser/Cotisation/Cotisation'
 import Identification from './Components/ComponentUser/Inscription/IdentificationTelPin/Identification';
 import InfoPersonnelle from './Components/ComponentUser/Inscription/InfoPersonnelle/InfoPersonnelle';
+import Connection from './Components/ComponentUser/Inscription/Connection/Connection';
 
 function App() {  
   return (
     <div className="">
       <Router>
       <Routes>
-        <Route path="/" exact element={<InfoPersonnelle />} />
+        <Route path="/" exact element={<Connection />} />
         <Route path="/cotisation"  element={<Cotisation />} />
       </Routes>
     </Router>

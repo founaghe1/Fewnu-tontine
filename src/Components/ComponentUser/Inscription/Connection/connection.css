@@ -1,0 +1,20 @@
+.paragConect{
+    font-family: Lexend Deca;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 50px;
+    margin-top: 50px;
+    color: rgba(34, 73, 87, 1);
+}
+.textConect{
+    margin-top: 50px;
+    text-align: center;
+    font-family: Lexend Deca;
+    font-weight: 400;
+    font-size: 16.5px;
+    line-height: 20.63px;
+    color: rgba(34, 73, 87, 1);
+}
+.input{
+    margin-top: 50px;
+}
