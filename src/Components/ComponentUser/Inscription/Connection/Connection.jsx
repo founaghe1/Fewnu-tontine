@@ -15,7 +15,7 @@ const Connection = () => {
             <Input placeholder='N° téléphone' className='input px-3' />
             <Input placeholder='Code PIN' className='input px-3' />
             <Button libelet='S’identifier' className='btnConfirm' />
-        </div>
+        </div> 
 
         <FooterImg />
     </div>
