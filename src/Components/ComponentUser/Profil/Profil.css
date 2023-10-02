@@ -20,30 +20,21 @@
     letter-spacing: 0em;
     color: #083A50;
 }
-.Inputs .form-select, .form-control{
+.bande-verte{
+    background-color: #20DF7F;
     width: 100%;
-    height: 45px;
-    border-radius: 10px;
-    border: 2px solid #093545;
-    color: #093545;
-    outline: none;
+    height: 31px;
+    padding-top: 5px;
+    padding-left: 15px;
 }
-.form-check-input:checked{
-    background-color: #093545;
-}
-.pay-button{
-    width: 208px;
-    height: 43px;
-    top: 633px;
-    left: 84px;
-    padding: 11px, 17px, 11px, 17px;
-    border-radius: 8.85px;
-    gap: 10px;
+.bande-verte h1{
     font-family: Montserrat;
-    font-size: 16.07px;
+    font-size: 18px;
     font-weight: 700;
-    color: #ffffff;
-    background-color: #093545;
-    border: none;
-    box-shadow: 0px 3px 5px grey;
+}
+.contenue p{
+    font-family: Montserrat;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 6px;
 }

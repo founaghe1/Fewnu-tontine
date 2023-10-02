@@ -1,22 +1,21 @@
-import React from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.min.js";
-import "./App.css";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Detailcotisation from "./Components/ComponentUser/Detailscotisations/Detailcotisation/Detailcotisation";
-import Accueil from "./Components/ComponentUser/Accueil/Accueil";
-import Cotisation from "./Components/ComponentUser/Cotisation/Cotisation";
-import Tontine from "./Components/ComponentUser/Tontine/Tontine";
-import Ajouter from "./Components/ComponentUser/AjouterCotisation/Ajouter";
+import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.min.js'
+import './App.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Detailcotisation from './Components/ComponentUser/Detailscotisations/Detailcotisation/Detailcotisation';
+import Accueil from './Components/ComponentUser/Accueil/Accueil';
+import Cotisation from './Components/ComponentUser/Cotisation/Cotisation'
+import Ajouter from './Components/ComponentUser/AjouterCotisation/Ajouter';
 
-function App() {
+function App() {  
   return (
     <div className="">
       <Ajouter/>
       {/* <Router>
         <Routes>
           <Route path="/" exact element={<Accueil />} />
-          <Route path="/cotisation" element={<Cotisation />} />
+          <Route path="/cotisation"  element={<Cotisation />} />
         </Routes>
       </Router> */}
     </div>
