@@ -8,7 +8,7 @@ const Accueil = () => {
   return (
     <div id='Accueil' className=''>
       <div className="container py-5 text-center">
-        <h1 className='text-light title mb-4'>Bienvenue sur Bakéli-totine</h1>
+        <h1 className='text-light title mb-4'>Bienvenue sur Fewnu tontine</h1>
         <div className='mb-5'>
             <img src={Image} alt="" className='img-fluid'/>
         </div>
