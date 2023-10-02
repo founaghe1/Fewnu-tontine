@@ -15,7 +15,7 @@ function App() {
     <div className="">
       <Router>
       <Routes>
-        <Route path="/" exact element={<Connection />} />
+        <Route path="/" exact element={<Accueil />} />
         <Route path="/cotisation"  element={<Cotisation />} />
       </Routes>
     </Router>
