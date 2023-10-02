@@ -6,13 +6,15 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Detailcotisation from './Components/ComponentUser/Detailscotisations/Detailcotisation/Detailcotisation';
 import Accueil from './Components/ComponentUser/Accueil/Accueil';
 import Cotisation from './Components/ComponentUser/Cotisation/Cotisation'
+import Identification from './Components/ComponentUser/Inscription/IdentificationTelPin/Identification';
+import InfoPersonnelle from './Components/ComponentUser/Inscription/InfoPersonnelle/InfoPersonnelle';
 
-function App() {
+function App() {  
   return (
     <div className="">
       <Router>
       <Routes>
-        <Route path="/" exact element={<Accueil />} />
+        <Route path="/" exact element={<InfoPersonnelle />} />
         <Route path="/cotisation"  element={<Cotisation />} />
       </Routes>
     </Router>

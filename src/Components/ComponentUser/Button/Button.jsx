@@ -1,11 +1,11 @@
 import React from 'react';
 import './button.css';
 
-const Button = ({ libelet }) => {
+const Button = ({ libelet, className }) => {
     
   
     return (
-      <button className='btnModif'>
+      <button className={className}>
         {libelet}
       </button>
     );
