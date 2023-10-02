@@ -21,3 +21,16 @@
     padding: 10px, 20px, 10px, 20px;
     border: none !important;
 }
+.downloadButton{
+    width: 45px;
+    height: 45px;
+    padding: 5px;
+    background-color: #20DF7F;
+    color: #000000;
+    font-weight: 700;
+    line-height: 22px;
+    letter-spacing: 0px;
+    border-radius: 10px;
+    padding: 10px, 20px, 10px, 20px;
+    border: none !important;
+}
