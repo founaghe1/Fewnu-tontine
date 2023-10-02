@@ -11,7 +11,7 @@ const Accueil = () => {
         <div className='mb-5'>
             <img src={Image} alt="" className='img-fluid'/>
         </div>
-        <Link to="/cotisation">
+        <Link to="/idParCall">
           <button className='loginButton px-2 py-1'>Connectez-vous</button>
         </Link>
       </div>

@@ -2,10 +2,10 @@ import React from 'react'
 import Layout from '../Layout/Layout'
 import Button from '../Button/Button'
 import './code.css'
+import { Link } from 'react-router-dom'
 
 const Creercode = () => {
   return (
-    <Layout>
         <div className="pt-5 h-100">
         <div className="container py-5">
             <h1>Créer votre code PIN</h1>
@@ -16,11 +16,14 @@ const Creercode = () => {
                     <input type="text" className='input-conf' placeholder='-'/>
                     <input type="text" className='input-conf' placeholder='-'/>
                 </div>
-                <Button className="btn-conf" libelet="Confirmer"/>
+                <div className='text-center '>
+                  <Link to='/mesCotisations'>
+                    <Button className="btn-conf w-100" libelet="Confirmer"/>
+                  </Link>
+                </div>
             </form>
         </div>
         </div>
-    </Layout>
   )
 }
 

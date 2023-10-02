@@ -9,6 +9,8 @@ import Cotisation from './Components/ComponentUser/Cotisation/Cotisation'
 import Identification from './Components/ComponentUser/Inscription/IdentificationTelPin/Identification';
 import InfoPersonnelle from './Components/ComponentUser/Inscription/InfoPersonnelle/InfoPersonnelle';
 import Connection from './Components/ComponentUser/Inscription/Connection/Connection';
+import Confime from './Components/ComponentUser/ConfimeNumero/Confime';
+import Creercode from './Components/ComponentUser/creercode/Creercode'
 
 function App() {  
   return (
@@ -16,7 +18,11 @@ function App() {
       <Router>
       <Routes>
         <Route path="/" exact element={<Accueil />} />
-        <Route path="/cotisation"  element={<Cotisation />} />
+        <Route path="/idParCall"  element={<Identification />} />
+        <Route path="/confirmNumber"  element={<Confime />} />
+        <Route path="/infoPersonnelle"  element={<InfoPersonnelle />} />
+        <Route path="/creatCode"  element={<Creercode />} />
+        <Route path="/mesCotisations"  element={<Cotisation />} />
       </Routes>
     </Router>
     </div>

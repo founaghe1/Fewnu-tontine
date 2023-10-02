@@ -18,7 +18,7 @@
     text-align: center;
 }
 
-.input{
+.inputInfo{
     background-color: rgba(34, 73, 87, 1);
     border-radius: 10px !important ;
     height: 45px;
@@ -27,7 +27,7 @@
     color: rgba(255, 255, 255, 1);
     font-family: Montserrat;
 }
-.input::placeholder{
+.inputInfo::placeholder{
     color: rgba(255, 255, 255, 0.8);
     font-family: Montserrat;
     font-size: 14px;

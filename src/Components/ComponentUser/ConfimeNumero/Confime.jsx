@@ -2,10 +2,11 @@ import React from 'react'
 import Button from '../Button/Button'
 import './confirme.css'
 import Layout from '../Layout/Layout'
+import { Link } from 'react-router-dom'
 
 const Confime = () => {
   return (
-    <Layout>
+    
     <div className='h-100 pt-5'>
       <div className="container text-center">
         <h1 className='mt-5 mb-4'>Confirmer votre numero</h1>
@@ -18,11 +19,14 @@ const Confime = () => {
                 <input type="text" className='input-conf' placeholder='-'/>
                 <input type="text" className='input-conf' placeholder='-'/>
             </div>
-            <Button className="btn-conf" libelet="Confirmer"/>
+            <div>
+              <Link to='/infoPersonnelle' >
+                <Button className="btn-conf w-100" libelet="Confirmer"/>
+              </Link>
+            </div>
         </form>
       </div>
     </div>
-    </Layout>
   )
 }
 
