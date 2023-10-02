@@ -1,7 +1,7 @@
 import React from 'react'
 import Layout from '../Layout/Layout'
 import Button from '../Button/Button'
-import './confirme.css'
+import './code.css'
 
 const Creercode = () => {
   return (
