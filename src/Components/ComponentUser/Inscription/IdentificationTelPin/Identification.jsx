@@ -4,6 +4,7 @@ import { GiWallet } from 'react-icons/gi'
 import Input from '../../Input/Input';
 import Button from '../../Button/Button';
 import FooterImg from '../../FooterImg/FooterImg';
+import { Link } from 'react-router-dom';
 
 const Indentification = () => {
   return (
@@ -15,7 +16,9 @@ const Indentification = () => {
             <Input placeholder="N° téléphone" className='input px-3' />
         </div>
         <div className='text-center'>
+          <Link to='/confirmNumber'>
             <Button libelet='S’identifier' className='btnIdenti' />
+          </Link>
         </div>
 
         

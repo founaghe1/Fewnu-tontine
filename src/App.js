@@ -6,18 +6,27 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Detailcotisation from './Components/ComponentUser/Detailscotisations/Detailcotisation/Detailcotisation';
 import Accueil from './Components/ComponentUser/Accueil/Accueil';
 import Cotisation from './Components/ComponentUser/Cotisation/Cotisation'
-import Ajouter from './Components/ComponentUser/AjouterCotisation/Ajouter';
+import Identification from './Components/ComponentUser/Inscription/IdentificationTelPin/Identification';
+import InfoPersonnelle from './Components/ComponentUser/Inscription/InfoPersonnelle/InfoPersonnelle';
+import Connection from './Components/ComponentUser/Inscription/Connection/Connection';
+import Confime from './Components/ComponentUser/ConfimeNumero/Confime';
+import Creercode from './Components/ComponentUser/creercode/Creercode';
+import Tontine from './Components/ComponentUser/Tontine/Tontine'
 
 function App() {  
   return (
     <div className="">
-      <Ajouter/>
-      {/* <Router>
-        <Routes>
-          <Route path="/" exact element={<Accueil />} />
-          <Route path="/cotisation"  element={<Cotisation />} />
-        </Routes>
-      </Router> */}
+      <Router>
+      <Routes>
+        <Route path="/" exact element={<Accueil />} />
+        <Route path="/idParCall"  element={<Identification />} />
+        <Route path="/confirmNumber"  element={<Confime />} />
+        <Route path="/infoPersonnelle"  element={<InfoPersonnelle />} />
+        <Route path="/creatCode"  element={<Creercode />} />
+        <Route path="/mesCotisations"  element={<Cotisation />} />
+        <Route path="/tontine"  element={<Tontine />} />
+      </Routes>
+    </Router>
     </div>
   );
 }

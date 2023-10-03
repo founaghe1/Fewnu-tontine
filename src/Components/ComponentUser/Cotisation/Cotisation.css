@@ -63,3 +63,8 @@
     font-weight: 500;
     color: #20DF7F;
 }
+
+.link{
+    text-decoration : none !important;
+    color: black;
+}
