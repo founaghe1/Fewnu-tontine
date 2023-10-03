@@ -3,7 +3,7 @@ import './Accueil.css'
 import Image from '../../../Assets/home-img.png';
 import { Link } from 'react-router-dom'
 import {BiSolidDownload} from 'react-icons/bi'
-
+ 
 const Accueil = () => {
   return (
     <div id='Accueil' className=''>
