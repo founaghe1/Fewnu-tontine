@@ -1,5 +1,4 @@
 import React from 'react'
-import Layout from '../Layout/Layout'
 import Button from '../Button/Button'
 import './code.css'
 import { Link } from 'react-router-dom'

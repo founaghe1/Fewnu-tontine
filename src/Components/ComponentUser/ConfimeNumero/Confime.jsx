@@ -1,7 +1,6 @@
 import React from 'react'
 import Button from '../Button/Button'
 import './confirme.css'
-import Layout from '../Layout/Layout'
 import { Link } from 'react-router-dom'
 
 const Confime = () => {
