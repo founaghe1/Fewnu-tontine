@@ -1,0 +1,52 @@
+.carte{
+    /* width: 360px; */
+    height: 88px;
+    box-shadow:  0px 0px  5px black ;
+}
+.carte .left-side{
+    width: 3%;
+    background-color: #20DF7F;
+}
+.carte .right-side{
+    width: 100%;
+}
+.titreC{
+    font-family: Montserrat ;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: 0px;
+    text-align: left;
+    color: #000000 !important;
+    
+}
+.des{
+    font-family: Montserrat;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 15px;
+    letter-spacing: 0px;
+    text-align: left;
+
+}
+.carte .right-side .top {
+    font-size: 15px;
+    font-weight: 500;
+}
+.carte .right-side .bottom .date{
+    font-size: 16px;
+    font-weight: 500;
+}
+.carte .right-side .bottom .statut{
+    font-size: 16px;
+    font-weight: 500;
+    color: #20DF7F;
+}
+
+.img .tof{
+    width: 53px;
+    height: 53px;
+    top: 117px;
+    left: 307px;
+
+}
