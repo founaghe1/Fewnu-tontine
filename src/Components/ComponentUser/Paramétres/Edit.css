@@ -1,0 +1,116 @@
+/* edit profil */
+#edit-profil #header-profil .profil-img-containt{
+    width: 106px;
+    height: 106px;
+    border-radius: 50%;
+    border: 4.17px solid #20DF7F;
+}
+#edit-profil #header-profil .profil-img-containt h1{
+    font-family: Montserrat;
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 30px;
+    letter-spacing: 0em;
+    color: #083A50;
+}
+#edit-profil #header-profil .profil-img-containt p{
+    font-family: Montserrat;
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 14px;
+    letter-spacing: 0em;
+    color: #083A50;
+}
+#edit-profil h1{
+    font-family: Montserrat;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 22px;
+    letter-spacing: 0em;
+    text-align: center;
+}
+#edit-profil input{
+    background-color: #E5E5E5;
+    height: 35px;
+    border: 1.37px;
+    border-radius: 4.78px;
+}
+#edit-profil label{
+    font-family: Montserrat;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+#edit-profil #Edit-button{
+    height: 30px;
+    border-radius: 4.78px;
+    background-color: #093545;
+    color: white;
+    border: none;
+    font-family: Montserrat;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+/* edit code */
+#edit-code #header-profil .profil-img-containt{
+    width: 106px;
+    height: 106px;
+    border-radius: 50%;
+    border: 4.17px solid #20DF7F;
+}
+#edit-code #header-profil .profil-img-containt h1{
+    font-family: Montserrat;
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 30px;
+    letter-spacing: 0em;
+    color: #083A50;
+}
+#edit-code #header-profil .profil-img-containt p{
+    font-family: Montserrat;
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 14px;
+    letter-spacing: 0em;
+    color: #083A50;
+}
+#edit-code h1{
+    font-family: Montserrat;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 22px;
+    letter-spacing: 0em;
+    text-align: center;
+}
+#edit-code input{
+    background-color: #E5E5E5;
+    height: 35px;
+    border: 1.37px;
+    border-radius: 4.78px;
+}
+#edit-code label{
+    font-family: Montserrat;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+#edit-code #Edit-button{
+    height: 30px;
+    border-radius: 4.78px;
+    background-color: #093545;
+    color: white;
+    border: none;
+    font-family: Montserrat;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+    letter-spacing: 0em;
+    text-align: left;
+}
