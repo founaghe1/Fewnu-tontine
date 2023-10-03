@@ -3,7 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js'
 import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Creercode from './Components/ComponentUser/creercode/Creercode';
+// import Creercode from './Components/ComponentUser/creercode/Creercode';
+import Confime from './Components/ComponentUser/ConfimeNumero/Confime';
 // import Detailcotisation from './Components/ComponentUser/Detailscotisations/Detailcotisation/Detailcotisation';
 // import Accueil from './Components/ComponentUser/Accueil/Accueil';
 // import Cotisation from './Components/ComponentUser/Cotisation/Cotisation'
@@ -15,7 +16,7 @@ function App() {
     <div className="">
       <Router>
       <Routes>
-        <Route path="/" exact element={<Creercode />} />
+        <Route path="/" exact element={<Confime />} />
         {/* <Route path="/" exact element={<InfoPersonnelle />} /> */}
         {/* <Route path="/cotisation"  element={<Cotisation />} /> */}
       </Routes>

@@ -5,8 +5,7 @@ import Layout from '../Layout/Layout'
 
 const Confime = () => {
   return (
-    <Layout>
-    <div className='h-100 pt-5'>
+    <div className='h-100 pt-5 mt-5'>
       <div className="container text-center">
         <h1 className='mt-5 mb-4'>Confirmer votre numero</h1>
         <p>Nous avons envoyé un code de confirmation à  chiffres à +221*******00.</p>
@@ -22,7 +21,6 @@ const Confime = () => {
         </form>
       </div>
     </div>
-    </Layout>
   )
 }
 
