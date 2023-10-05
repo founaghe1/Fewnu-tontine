@@ -19,7 +19,8 @@ import EditProfil from './Components/ComponentUser/Paramétres/EditProfil';
 import EditCodePin from './Components/ComponentUser/Paramétres/EditCodePin';
 import Ajouter from './Components/ComponentUser/AjouterCotisation/Ajouter';
 import TypeTontine from './Components/ComponentUser/Typetontine/TypeTontine';
-import Profil from './Components/ComponentUser/Profil/Profil'
+import Profil from './Components/ComponentUser/Profil/Profil';
+import ValiderAjout from './Components/ComponentUser/AjouterCotisation/ValiderAjout'
 
 function App() {  
   return (
@@ -42,6 +43,8 @@ function App() {
           <Route path='/modifInfoGeneral' element={<EditProfil />} />
           <Route path='/modifCodePin' element={<EditCodePin />} />
           <Route path='/connection' element={<Connection />} />
+          <Route path='/validerAjout' element={<ValiderAjout />} />
+
         </Routes>
       </Router> 
     </div>

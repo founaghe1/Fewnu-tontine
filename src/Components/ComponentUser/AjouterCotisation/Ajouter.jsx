@@ -2,6 +2,7 @@ import React from "react";
 import "./Ajouter.css";
 import HeaderProfil from "../Profil/HeaderProfil";
 import Layout from "../Layout/Layout";
+import { Link } from "react-router-dom";
 
 const Ajouter = () => {
   return (
@@ -52,7 +53,9 @@ const Ajouter = () => {
         </div>
       </div>
       <div className="d-flex justify-content-center">
-        <button className="text-capitalize pay-button">passer au payement</button>
+        <Link to='/validerAjout'>
+          <button className="text-capitalize pay-button">passer au payement</button>
+        </Link>
       </div>
     </div>
     </Layout>

@@ -26,6 +26,18 @@ const TypeTontine = () => {
       des:'19-2022 à  22h 30 ',
       img:imgton3,
       some:'5.000 fcfa'
+    },
+    {
+      titre:'Tontine greffage',
+      des:'Chaque Lundi ',
+      img:imgton2,
+      some:'2.000 fcfa'
+    },
+    {
+      titre:'Tontine téléphone',
+      des:'Chaque Samedi ',
+      img:imgton1,
+      some:'5.000 fcfa'
     }
   ];
 
