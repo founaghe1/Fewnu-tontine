@@ -24,7 +24,7 @@ const Creercode = () => {
             </form>
         </div>
         </div>
-  )
+  ) 
 }
 
 export default Creercode
