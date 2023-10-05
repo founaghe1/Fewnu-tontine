@@ -22,16 +22,16 @@ function App() {
   return (
     <div className="">
       <Router>
-      <Routes>
-        <Route path="/" exact element={<Accueil />} />
-        <Route path="/idParCall"  element={<Identification />} />
-        <Route path="/confirmNumber"  element={<Confime />} />
-        <Route path="/infoPersonnelle"  element={<InfoPersonnelle />} />
-        <Route path="/creatCode"  element={<Creercode />} />
-        <Route path="/mesCotisations"  element={<Cotisation />} />
-        <Route path="/tontine"  element={<Tontine />} />
-      </Routes>
-    </Router>
+        <Routes>
+          <Route path="/" exact element={<Accueil />} />
+          <Route path="/idParCall"  element={<Identification />} />
+          <Route path="/confirmNumber"  element={<Confime />} />
+          <Route path="/infoPersonnelle"  element={<InfoPersonnelle />} />
+          <Route path="/creatCode"  element={<Creercode />} />
+          <Route path="/mesCotisations"  element={<Cotisation />} />
+          <Route path="/tontine"  element={<Tontine />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
