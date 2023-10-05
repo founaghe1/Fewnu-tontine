@@ -21,8 +21,7 @@ import EditCodePin from './Components/ComponentUser/Paramétres/EditCodePin';
 function App() {  
   return (
     <div className="">
-      <EditCodePin/>
-      {/* <Router>
+      <Router>
       <Routes>
         <Route path="/" exact element={<Accueil />} />
         <Route path="/idParCall"  element={<Identification />} />
@@ -32,7 +31,7 @@ function App() {
         <Route path="/mesCotisations"  element={<Cotisation />} />
         <Route path="/tontine"  element={<Tontine />} />
       </Routes>
-    </Router> */}
+    </Router>
     </div>
   );
 }
