@@ -9,7 +9,7 @@ import {GiTwoCoins} from 'react-icons/gi'
 const ValiderAjout = () => {
   return (
       <Layout>
-        <div className="h-100 shadow">
+        <div className="h-100">
             <div className="part1 pt-5">
                 <div className="part-img">
                     <img src={img} className='img-fluid mb-2' alt="" />
