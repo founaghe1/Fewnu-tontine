@@ -41,7 +41,7 @@ const EditProfil = () => {
                     <label for="exampleInputPassword1" class="form-label">Proffession</label>
                     <input type="text" class="form-control"/>
                 </div>
-                <div className='d-flex justify-content-center pb-2'>
+                <div className='d-flex justify-content-center pb-2'> 
                     <Link to='/profil'>
                         <button type="submit" id="Edit-button" className='px-2 '>Mettre à jour</button>
                     </Link>    
