@@ -5,6 +5,7 @@ import wave from '../../../Assets/wave.png'
 import orange from '../../../Assets/orange-money.png'
 import './Ajouter.css'
 import {GiTwoCoins} from 'react-icons/gi'
+import Button from '../Button/Button'
 
 const ValiderAjout = () => {
   return (
@@ -14,7 +15,8 @@ const ValiderAjout = () => {
                 <div className="part-img">
                     <img src={img} className='img-fluid mb-2' alt="" />
                 </div>
-                <div className="div-text">
+                <div c
+                 lassName="div-text">
                     <p className='titre'>Faly Seck</p>
                     <p className='des mb-3'>Designer</p>
                     <p className='phrag mb-5'>Ajouter une cotisation</p>
@@ -45,7 +47,7 @@ const ValiderAjout = () => {
                         </div>
                     </div>
                     <div className="text-center mt-3">
-                        <button className='btn btn-form shadow mb-5'>Enregistrer</button>
+                        <Button className="btn btn-form shadow" libelet="Enregistrer"/>
                     </div>
                 </form>
 
