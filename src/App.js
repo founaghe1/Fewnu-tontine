@@ -42,7 +42,7 @@ function App() {
           <Route path='/modifInfoGeneral' element={<EditProfil />} />
           <Route path='/modifCodePin' element={<EditCodePin />} />
           <Route path='/connection' element={<Connection />} />
-        </Routes>
+        </Routes> 
       </Router> 
     </div>
   );
