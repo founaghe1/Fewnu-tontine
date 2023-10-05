@@ -6,7 +6,7 @@ import {BiSolidDownload} from 'react-icons/bi'
  
 const Accueil = () => {
   return (
-    <div id='Accueil' className=''>
+    <div id='Accueil' className='vh-100'>
       <div className="container py-5 text-center">
         <h1 className='text-light title mb-4'>Bienvenue sur Fewnu tontine</h1>
         <div className='mb-5'>

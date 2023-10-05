@@ -28,8 +28,13 @@
     letter-spacing: 0em;
     color: #083A50;
 }
+.Inputs .form-select .select-option{
+    background-color: #083A50;
+    width: 100px;
+    color: white;
+}
 .Inputs .form-select, .form-control{
-    width: 100%;
+    min-width: 350px;
     height: 45px;
     border-radius: 10px;
     border: 2px solid #093545;
@@ -45,7 +50,7 @@
     top: 633px;
     left: 84px;
     padding: 11px, 17px, 11px, 17px;
-    border-radius: 8.85px;
+    border-radius: 100px;
     gap: 10px;
     font-family: Montserrat;
     font-size: 16.07px;

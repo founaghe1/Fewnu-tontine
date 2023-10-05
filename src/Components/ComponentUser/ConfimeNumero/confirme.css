@@ -1,10 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 .input-conf{
-    width: 60px;
-    height: 60px;
+    width: 47px;
+    height: 65px;
     text-align: center;
     border: 1px solid #CDCED1;
+    border-radius: 6px;
     background: linear-gradient(0deg, #CDCED1, #CDCED1),linear-gradient(0deg, #F5F6F7, #F5F6F7);
 
 }
@@ -31,9 +32,8 @@ p{
     background: #20DF7F;
     font-weight: 600;
     font-size: 20px;
+    width: 300px;
     height: 45px;
-    top: 386px;
-    left: 43px;
     border-radius: 10px;
     text-align: center;
     border: none;
