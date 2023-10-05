@@ -17,6 +17,7 @@ import Tontine from './Components/ComponentUser/Tontine/Tontine'
 import Parametre from './Components/ComponentUser/Paramétres/Parametre';
 import EditProfil from './Components/ComponentUser/Paramétres/EditProfil';
 import EditCodePin from './Components/ComponentUser/Paramétres/EditCodePin';
+import Ajouter from './Components/ComponentUser/AjouterCotisation/Ajouter'
 
 function App() {  
   return (

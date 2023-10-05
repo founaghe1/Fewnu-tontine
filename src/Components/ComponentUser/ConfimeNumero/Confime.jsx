@@ -18,9 +18,9 @@ const Confime = () => {
                 <input type="text" className='input-conf' placeholder='-'/>
                 <input type="text" className='input-conf' placeholder='-'/>
             </div>
-            <div>
+            <div className='d-flex justify-content-center'>
               <Link to='/infoPersonnelle' >
-                <Button className="btn-conf w-100" libelet="Confirmer"/>
+                <Button className="btn-conf" libelet="Confirmer"/>
               </Link>
             </div>
         </form>

@@ -15,9 +15,9 @@ const Creercode = () => {
                     <input type="text" className='input-conf' placeholder='-'/>
                     <input type="text" className='input-conf' placeholder='-'/>
                 </div>
-                <div className='text-center '>
+                <div className='text-center d-flex justify-content-center'>
                   <Link to='/mesCotisations'>
-                    <Button className="btn-conf w-100" libelet="Confirmer"/>
+                    <Button className="btn-conf" libelet="Confirmer"/>
                   </Link>
                 </div>
             </form>

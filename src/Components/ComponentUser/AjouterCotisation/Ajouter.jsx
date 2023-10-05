@@ -7,12 +7,14 @@ const Ajouter = () => {
     <div className="container-fluid py-5 px-4">
       <HeaderProfil />
       <h3 className="text-center">Ajouter une cotisation</h3>
-      <div className="Inputs my-5">
+      <form className="d-flex justify-content-center">
+        <div>
+        <div className="Inputs my-5">
         <select class="form-select mb-4" aria-label="Default select example">
-          <option selected>Groupes</option>
-          <option value="1">Tontine téléphone</option>
-          <option value="2">Tontine greffage</option>
-          <option value="3">Tontine ordinateur</option>
+          <option className="select-option"selected>Groupes</option>
+          <option className="select-option"value="1">Tontine téléphone</option>
+          <option className="select-option"value="2">Tontine greffage</option>
+          <option className="select-option"value="3">Tontine ordinateur</option>
         </select>
         <div class="input-group flex-nowrap">
           <input
@@ -52,6 +54,8 @@ const Ajouter = () => {
       <div className="d-flex justify-content-center">
         <button className="text-capitalize pay-button">passer au payement</button>
       </div>
+        </div>
+      </form>
     </div>
   );
 };
