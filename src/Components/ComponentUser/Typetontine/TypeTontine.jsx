@@ -50,7 +50,7 @@ const TypeTontine = () => {
         <div className="img"><img src={imgton1} className='img-fluid tof' alt="" /></div>
         <div className="img"><img src={imgton2} className='img-fluid tof' alt="" /></div>
       </div>
-    <div className='mx-2'>
+    <div className='mx-2 d-flex justify-content-center'>
       <Link to='/tontine' className='text-decoration-none text-dark'>
         {typedata.map((card)=> (
             <Cardtontine titre={card.titre} des={card.des} img={card.img} some={card.some}/>
