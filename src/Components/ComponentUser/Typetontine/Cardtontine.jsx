@@ -7,7 +7,7 @@ const Cardtontine = (props) => {
             <div className='left-side rounded-start-4 '>
             </div>
             <div className='right-side py-2 px-3'>
-                <div className="top d-flex justify-content-between align-items-center">
+                <div className="top d-flex justify-content-between align-items-center mt-2">
                     <p className="titreC">{props.titre}</p>
                     <img src={props.img} className='img-fluid' width={40} alt="" />
                 </div>

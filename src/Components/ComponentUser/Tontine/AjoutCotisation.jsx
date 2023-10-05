@@ -1,6 +1,7 @@
 import React from 'react'
 import { FaSackDollar } from "react-icons/fa6";
 import { GrAddCircle } from "react-icons/gr";
+import { Link } from 'react-router-dom';
 
 const AjoutCotisation = () => {
   return (
@@ -15,9 +16,9 @@ const AjoutCotisation = () => {
         </p>
       </div>
       <div className='add-cotisation d-flex ms-5 align-items-center'>
-        <a href="" className='text-decoration-none'>
+        <Link to='/ajouterCotisation' className='text-decoration-none'>
             <GrAddCircle className='add-icon fs-1 bg-light'/>
-        </a>
+        </Link>
       </div>
     </div>
   )

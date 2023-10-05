@@ -5,7 +5,7 @@ const Button = ({ libelet, className }) => {
     
   
     return (
-      <button className={className}>
+      <button className={className}> 
         {libelet}
       </button>
     );

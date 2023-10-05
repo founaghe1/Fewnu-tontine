@@ -5,6 +5,7 @@ import CarteTontine from './CarteTontine';
 import wave from '../../../Assets/wave.png'
 import orange from '../../../Assets/orange-money.png'
 import Layout from '../Layout/Layout';
+import { Link } from 'react-router-dom';
 
 const Tontine = () => {
     const cardsData = [
@@ -110,9 +111,11 @@ const Tontine = () => {
     <Layout>
     <div className='container-fluid pt-3 page-totine'>
       <AjoutCotisation/>
-      {cardsData.map((card) => (
+      <Link to='/detailCotisation' className='text-decoration-none text-dark'>
+        {cardsData.map((card) => (
               <CarteTontine mois={card.mois} via={card.via} montant={card.montant} date={card.date} heure={card.heure} statut={card.statut}/>
             ))}
+      </Link>
     </div>
     </Layout>
   )

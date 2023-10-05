@@ -17,6 +17,9 @@ import Tontine from './Components/ComponentUser/Tontine/Tontine'
 import Parametre from './Components/ComponentUser/Paramétres/Parametre';
 import EditProfil from './Components/ComponentUser/Paramétres/EditProfil';
 import EditCodePin from './Components/ComponentUser/Paramétres/EditCodePin';
+import Ajouter from './Components/ComponentUser/AjouterCotisation/Ajouter';
+import TypeTontine from './Components/ComponentUser/Typetontine/TypeTontine';
+import Profil from './Components/ComponentUser/Profil/Profil'
 
 function App() {  
   return (
@@ -30,8 +33,17 @@ function App() {
           <Route path="/creatCode"  element={<Creercode />} />
           <Route path="/mesCotisations"  element={<Cotisation />} />
           <Route path="/tontine"  element={<Tontine />} />
+          <Route path="/ajouterCotisation"  element={<Ajouter />} />
+          {/* <Route path="/validerAjout"  element={<ValiderAjouter />} /> */}
+          <Route path="/parametres"  element={<Parametre />} />
+          <Route path="/typeTontine"  element={<TypeTontine />} />
+          <Route path="/detailCotisation"  element={<Detailcotisation />} />
+          <Route path="/profil"  element={<Profil />} />
+          <Route path='/modifInfoGeneral' element={<EditProfil />} />
+          <Route path='/modifCodePin' element={<EditCodePin />} />
+          <Route path='/connection' element={<Connection />} />
         </Routes>
-      </Router>
+      </Router> 
     </div>
   );
 }

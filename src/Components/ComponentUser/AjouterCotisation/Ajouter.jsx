@@ -1,9 +1,11 @@
 import React from "react";
 import "./Ajouter.css";
 import HeaderProfil from "../Profil/HeaderProfil";
+import Layout from "../Layout/Layout";
 
 const Ajouter = () => {
   return (
+    <Layout>
     <div className="container-fluid py-5 px-4">
       <HeaderProfil />
       <h3 className="text-center">Ajouter une cotisation</h3>
@@ -53,7 +55,9 @@ const Ajouter = () => {
         <button className="text-capitalize pay-button">passer au payement</button>
       </div>
     </div>
+    </Layout>
   );
 };
+
 
 export default Ajouter;

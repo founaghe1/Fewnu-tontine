@@ -5,6 +5,7 @@ import Cardtontine from './Cardtontine'
 import imgton1 from '../../../Assets/img-ton1.png'
 import imgton2 from '../../../Assets/img-ton2.png'
 import imgton3 from '../../../Assets/img-ton3.png'
+import { Link } from 'react-router-dom'
 
 const TypeTontine = () => {
   const typedata =[
@@ -38,9 +39,11 @@ const TypeTontine = () => {
         <div className="img"><img src={imgton2} className='img-fluid tof' alt="" /></div>
       </div>
     <div className='mx-2'>
-      {typedata.map((card)=> (
-          <Cardtontine titre={card.titre} des={card.des} img={card.img} some={card.some}/>
-      ))}
+      <Link to='/tontine' className='text-decoration-none text-dark'>
+        {typedata.map((card)=> (
+            <Cardtontine titre={card.titre} des={card.des} img={card.img} some={card.some}/>
+        ))}
+      </Link>
     </div>
    
     </Layout>
