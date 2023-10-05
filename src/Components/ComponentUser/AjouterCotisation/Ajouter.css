@@ -1,0 +1,104 @@
+.part1{
+    text-align: center;
+}
+.titre{
+    font-family: Montserrat;
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 30px;
+    letter-spacing: 0em;
+    text-align: center;
+}
+.des{
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 14px;
+    letter-spacing: 0em;
+
+}
+.phrag{
+    font-family: Lexend Deca;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 25px;
+    letter-spacing: 0px;
+    text-align: center;
+
+}
+.part2{
+    text-align: start;
+    margin-left: 40px;
+    margin-bottom: 30px;
+}
+.para1{
+    font-family: Montserrat;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0px;
+    text-align: left;
+
+}
+.para2{
+    font-family: Montserrat;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: 0px;
+    text-align: left;
+    margin-bottom: 30px;
+
+}
+.para3{
+    font-family: Montserrat;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0px;
+    text-align: left;
+
+}
+.para4{
+    font-family: Montserrat;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: 0px;
+    text-align: left;
+}
+
+.para5{
+    font-family: Montserrat;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0px;
+    text-align: left;
+    margin-bottom: 40px;
+
+}
+.part3{
+    text-align: start;
+    margin-left: 40px;
+    margin-bottom: 40px;
+}
+.btn-form{
+    width: Hug (129px);
+    height: Hug (43px);
+    padding: 11px, 17px, 11px, 17px;
+    border-radius: 100px;
+    gap: 10px;
+    background: #093545;
+    color: #FFF;
+    margin-top: 25px;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: 0px;
+    text-align: center;
+
+
+}

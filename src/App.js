@@ -15,12 +15,13 @@ import Confime from './Components/ComponentUser/ConfimeNumero/Confime';
 import Creercode from './Components/ComponentUser/creercode/Creercode';
 import Tontine from './Components/ComponentUser/Tontine/Tontine'
 import TypeTontine from './Components/ComponentUser/Typetontine/TypeTontine'
+import ValiderAjout from './Components/ComponentUser/AjouterCotisation/ValiderAjout';
 
 function App() {  
   return (
     <div className="">
       <Router>
-        <TypeTontine/>
+        <ValiderAjout/>
       {/* <Routes>
         <Route path="/" exact element={<Accueil />} />
         <Route path="/idParCall"  element={<Identification />} />
