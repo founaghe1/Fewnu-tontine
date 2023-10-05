@@ -14,13 +14,14 @@ import InfoPersonnelle from './Components/ComponentUser/Inscription/InfoPersonne
 import Confime from './Components/ComponentUser/ConfimeNumero/Confime';
 import Creercode from './Components/ComponentUser/creercode/Creercode';
 import Tontine from './Components/ComponentUser/Tontine/Tontine'
+import TypeTontine from './Components/ComponentUser/Typetontine/TypeTontine'
 
 function App() {  
   return (
     <div className="">
       <Router>
         <TypeTontine/>
-      <Routes>
+      {/* <Routes>
         <Route path="/" exact element={<Accueil />} />
         <Route path="/idParCall"  element={<Identification />} />
         <Route path="/confirmNumber"  element={<Confime />} />
@@ -28,7 +29,7 @@ function App() {
         <Route path="/creatCode"  element={<Creercode />} />
         <Route path="/mesCotisations"  element={<Cotisation />} />
         <Route path="/tontine"  element={<Tontine />} />
-      </Routes>
+      </Routes> */}
     </Router>
     </div>
   );
