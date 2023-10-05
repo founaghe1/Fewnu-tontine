@@ -1,0 +1,18 @@
+.title-sec{
+    font-family: Montserrat;
+    font-size: 15px;
+    font-weight: 700;
+    text-align: left;
+}
+.item-sec{
+    width: 330px;
+    height: 42px;
+    background-color: rgba(128, 128, 128, 0.073);
+    border-radius: 10px;
+    padding-top: 12px;
+    padding-left: 20px;
+}
+.item-sec p{
+    text-align: left;
+    font-size: 15px;
+}

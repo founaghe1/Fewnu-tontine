@@ -14,11 +14,15 @@ import Connection from './Components/ComponentUser/Inscription/Connection/Connec
 import Confime from './Components/ComponentUser/ConfimeNumero/Confime';
 import Creercode from './Components/ComponentUser/creercode/Creercode';
 import Tontine from './Components/ComponentUser/Tontine/Tontine'
+import Parametre from './Components/ComponentUser/Paramétres/Parametre';
+import EditProfil from './Components/ComponentUser/Paramétres/EditProfil';
+import EditCodePin from './Components/ComponentUser/Paramétres/EditCodePin';
 
 function App() {  
   return (
     <div className="">
-      <Router>
+      <EditCodePin/>
+      {/* <Router>
       <Routes>
         <Route path="/" exact element={<Accueil />} />
         <Route path="/idParCall"  element={<Identification />} />
@@ -28,7 +32,7 @@ function App() {
         <Route path="/mesCotisations"  element={<Cotisation />} />
         <Route path="/tontine"  element={<Tontine />} />
       </Routes>
-    </Router>
+    </Router> */}
     </div>
   );
 }

@@ -1,0 +1,49 @@
+#header-profil .profil-img-containt{
+    width: 106px;
+    height: 106px;
+    border-radius: 50%;
+    border: 4.17px solid #20DF7F;
+}
+#header-profil .profil-img-containt h1{
+    font-family: Montserrat;
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 30px;
+    letter-spacing: 0em;
+    color: #083A50;
+}
+#header-profil .profil-img-containt p{
+    font-family: Montserrat;
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 14px;
+    letter-spacing: 0em;
+    color: #083A50;
+}
+.Inputs .form-select, .form-control{
+    width: 100%;
+    height: 45px;
+    border-radius: 10px;
+    border: 2px solid #093545;
+    color: #093545;
+    outline: none;
+}
+.form-check-input:checked{
+    background-color: #093545;
+}
+.pay-button{
+    width: 208px;
+    height: 43px;
+    top: 633px;
+    left: 84px;
+    padding: 11px, 17px, 11px, 17px;
+    border-radius: 8.85px;
+    gap: 10px;
+    font-family: Montserrat;
+    font-size: 16.07px;
+    font-weight: 700;
+    color: #ffffff;
+    background-color: #093545;
+    border: none;
+    box-shadow: 0px 3px 5px grey;
+}
