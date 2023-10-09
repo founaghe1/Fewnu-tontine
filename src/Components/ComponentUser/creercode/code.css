@@ -23,11 +23,9 @@ h1{
     font-weight: 600;
     font-size: 20px;
     height: 45px;
-    top: 386px;
-    left: 43px;
-    border-radius: 10px;
+    width: 300px;
+    border-radius: 6px;
     text-align: center;
     border: none;
     box-shadow: 2px 2px 5px grey;
-
 }

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Lato:wght@700&family=Lexend+Deca&family=Montserrat:wght@600;700&family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@300&family=Roboto+Slab:wght@500;600&family=Roboto:wght@500;700&family=Rubik&family=Work+Sans&display=swap');
+
 #Accueil{
     background-color: #093545;
 }
@@ -7,6 +9,7 @@
     line-height: 49px;
     letter-spacing: 0px;
     text-align: center;
+    font-family: Montserrat;
 }
 .loginButton{
     width: 192px;
@@ -17,7 +20,7 @@
     font-weight: 700;
     line-height: 22px;
     letter-spacing: 0px;
-    border-radius: 10px;
+    border-radius: 10px !important;
     padding: 10px, 20px, 10px, 20px;
     border: none !important;
 }

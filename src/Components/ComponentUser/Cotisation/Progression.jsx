@@ -6,7 +6,7 @@ const Progression = () => {
     <div className="card progression p-3 mb-5">
       <div className="icon-containt  d-flex  justify-content-center align-items-center">
         <TbMoneybag className="icon" />
-      </div>
+      </div> 
       <div className="info-containt mt-2">
         <p className="text-capitalize">mes cotiations</p>
         <p className="text-uppercase">

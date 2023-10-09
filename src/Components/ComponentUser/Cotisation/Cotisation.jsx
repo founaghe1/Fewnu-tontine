@@ -97,10 +97,12 @@ const Cotisation = () => {
       
     
   return (
-    <Layout>
+    <Layout> 
     <div id='Cotisation'>
-      <div className="container-fluid pt-3">
-        <Progression/>
+      <div className="container-fluid pt-3 d-flex justify-content-center flex-column">
+        <div className='d-flex justify-content-center '>
+          <Progression/>
+        </div>
         <Link to='/tontine' className='link'>
             {cardsData.map((card) => (
               <Carte mois={card.tontine} montant={card.montant} date={card.date} heure={card.heure} statut={card.statut}/>

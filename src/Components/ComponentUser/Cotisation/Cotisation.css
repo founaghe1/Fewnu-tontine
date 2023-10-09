@@ -4,7 +4,6 @@
     font-family: 'Montserrat';
 }
 .progression{
-    width: 365px;
     height: 110px;
     background-color: #093545;
     display: flex;
@@ -29,7 +28,6 @@
 }
 .progression .info-containt .progress{
     background-color: #DDE0F1;
-    width: 231px;
     height: 5.21px;
 }
 .progression .info-containt .progress-bar{
@@ -39,7 +37,6 @@
 }
 
 .carte{
-    width: 360px;
     height: 88px;
     box-shadow:  0px 0px  5px black ;
 }
@@ -67,4 +64,16 @@
 .link{
     text-decoration : none !important;
     color: black;
+}
+
+@media screen and (max-width: 900px){
+    .progression{
+        width: 95% !important;
+    }
+    .carteWidth{
+        width: 95%;
+    }
+    .carte{
+        width: 100% !important;
+    }
 }

@@ -1,10 +1,20 @@
 import React from "react";
 import "./Profil.css";
 import HeaderProfil from "./HeaderProfil";
+import { MdKeyboardArrowLeft } from 'react-icons/md'
+import Layout from "../Layout/Layout";
+import { Link } from "react-router-dom";
 
 const Profil = () => {
   return (
-    <div id="profil" className="container-fluid pt-5 p-0">
+    <Layout>
+    <div id="profil" className="container-fluid p-0">
+      <span className="ps-3">
+        <Link to='/parametres' >
+          <MdKeyboardArrowLeft className="retour" />
+        </Link>
+      </span>
+      
       <HeaderProfil />
       <div className="mb-5">
         <div className="bande-verte">
@@ -43,6 +53,7 @@ const Profil = () => {
         </div>
       </div>
     </div>
+    </Layout>
   );
 };
 

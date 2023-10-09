@@ -24,6 +24,7 @@
     font-weight: 500;
     font-size: 18px;
     color: rgba(0, 0, 0, 0.5);
+    text-align: start;
 }
 .moisCotis,
 .heureCotis,
@@ -34,9 +35,10 @@
     font-size: 15px;
     line-height: 18.29px;
     color: rgba(0, 0, 0, 1);
+    text-align: start;
 }
 
-.btnModif {
+.btnModif{
     background-color: rgba(9, 53, 69, 1); 
     font-size: 18px; 
     border-radius: 10px; 

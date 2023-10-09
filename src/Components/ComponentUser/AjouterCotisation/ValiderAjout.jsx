@@ -6,21 +6,21 @@ import orange from '../../../Assets/orange-money.png'
 import './Ajouter.css'
 import {GiTwoCoins} from 'react-icons/gi'
 import Button from '../Button/Button'
-// import '../../../Components/config.css'
+import { Link } from 'react-router-dom'
 
 const ValiderAjout = () => {
   return (
       <Layout>
         <div className="h-100">
-            <div className="part1 pt-5">
+            <div className="part1">
                 <div className="part-img">
                     <img src={img} className='img-fluid mb-2' alt="" />
                 </div>
                 <div c
                  lassName="div-text">
                     <p className='titre'>Faly Seck</p>
-                    <p className='des paragraph mb-3'>Designer</p>
-                    <p className='phrag paragraph mb-5'>Ajouter une cotisation</p>
+                    <p className='des mb-3 text-center'>Designer</p>
+                    <p className='phrag mb-5'>Ajouter une cotisation</p>
                 </div>
             </div>
 
@@ -35,23 +35,24 @@ const ValiderAjout = () => {
                 <form>
                     <div className="d-flex gap-5">
                         <div className="form-check">
-                                <input type="checkbox" className='form-check-input me-2' />
-                                <img src={wave} className='' alt="" />
+                                <input type="checkbox" className='form-check-input me-2 checkbox' />
+                                <img src={wave} width={30} className='' alt="" />
                         </div>
                         <div className="form-check">
-                                <input type="checkbox" className='form-check-input me-2' />
-                                <img src={orange} alt="" />
+                                <input type="checkbox" className='form-check-input me-2 checkbox' />
+                                <img src={orange} width={35} alt="" />
                         </div>
                         <div className="form-check">
-                                <input type="checkbox" className='form-check-input me-2' />
+                                <input type="checkbox" className='form-check-input me-2 checkbox' />
                                 <GiTwoCoins size={35}/>
                         </div>
                     </div>
-                    <div className="text-center mt-3">
-                        <Button className="btn btn-form shadow" libelet="Enregistrer"/>
-                    </div>
                 </form>
-
+            </div>
+            <div className="text-center mt-3">
+                <Link to='/tontine'>
+                    <Button className="btn-form shadow" libelet="Enregistrer"/>
+                </Link>
             </div>
         </div>
     </Layout>

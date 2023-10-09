@@ -38,3 +38,10 @@
     font-weight: 500;
     line-height: 6px;
 }
+
+.retour{
+    /* border: 1px solid grey; */
+    font-size: 30px !important;
+    border-radius: 50%;
+    box-shadow: 0px 2px 3px;
+}

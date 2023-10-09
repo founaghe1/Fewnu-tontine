@@ -1,4 +1,15 @@
+<<<<<<< HEAD
  .part1{
+=======
+#header-profil .profil-img-containt{
+    width: 106px;
+    height: 106px;
+    border-radius: 50%;
+    border: 4.17px solid #20DF7F;
+}
+#header-profil .profil-img-containt h1{}
+.part1{
+>>>>>>> b04296216fe30f515720f78471c2cf42f3e16ef7
     text-align: center;
 }
 .titre{
@@ -7,6 +18,9 @@
     font-weight: 700;
     line-height: 30px;
     letter-spacing: 0em;
+    color: #083A50;
+}
+#header-profil .profil-img-containt p{
     text-align: center;
 }
 .des{
@@ -16,6 +30,43 @@
     font-weight: 500;
     line-height: 14px;
     letter-spacing: 0em;
+    color: #083A50;
+}
+.Inputs .form-select .select-option{
+    background-color: #083A50;
+    width: 100px;
+    color: white;
+}
+.Inputs .form-select, .form-control{
+    min-width: 350px;
+    height: 45px;
+    border-radius: 100px;
+    border: 2px solid #093545;
+    color: #093545;
+    outline: none;
+}
+.form-check-input{
+    font-size: 15px;
+    border: 1px solid rgb(7, 6, 6);
+}
+.form-check-input:checked{
+    background-color: #093545;
+}
+.pay-button{
+    width: 208px;
+    height: 43px;
+    top: 633px;
+    left: 84px;
+    padding: 11px, 17px, 11px, 17px;
+    border-radius: 100px;
+    gap: 10px;
+    font-family: Montserrat;
+    font-size: 16.07px;
+    font-weight: 700;
+    color: #ffffff;
+    background-color: #093545;
+    border: none;
+    box-shadow: 0px 3px 5px grey;
 
 }
 .phrag{
@@ -85,8 +136,8 @@
     margin-bottom: 40px;
 }
 .btn-form{
-    width: Hug (129px);
-    height: Hug (43px);
+    width: 129px;
+    height: 43px;
     padding: 11px, 17px, 11px, 17px;
     border-radius: 100px;
     gap: 10px;
@@ -99,5 +150,37 @@
     line-height: 20px;
     letter-spacing: 0px;
     text-align: center;
+}
+.checkbox{
+    border: 1px solid #093545;
+    font-size: 20px;
+}
 
+<<<<<<< HEAD
+=======
+
+@media screen and (max-width: 500px) {
+    .forme{
+        width: 98% !important;
+    }
+    .Inputs{
+        width: 100% !important;
+    }
+    .Inputs .form-select, .form-control{
+        min-width: 100%;
+    }
+}
+
+
+@media screen and (min-width: 500px) and (max-width: 900px) {
+    .forme{
+        width: 80% !important;
+    }
+    .Inputs{
+        width: 80% !important;
+    }
+    .Inputs .form-select, .form-control{
+        min-width: 80% !important;
+    }
+>>>>>>> b04296216fe30f515720f78471c2cf42f3e16ef7
 }
