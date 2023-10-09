@@ -4,11 +4,11 @@ import Image from '../../../Assets/home-img.png';
 import { Link } from 'react-router-dom'
 import {BiSolidDownload} from 'react-icons/bi'
  
-const Accueil = () => {
+const Accueil = () => { 
   return (
     <div id='Accueil' className='vh-100'>
-      <div className="container py-5 text-center">
-        <h1 className='text-light title mb-4'>Bienvenue sur Fewnu tontine</h1>
+      <div className="container pt-2  text-center">
+        <h1 className='text-light title mb-4 px-2'>Bienvenue sur Fewnu tontine</h1>
         <div className='mb-5'>
             <img src={Image} alt="" className='img-fluid'/>
         </div>

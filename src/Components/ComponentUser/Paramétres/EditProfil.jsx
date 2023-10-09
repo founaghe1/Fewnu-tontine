@@ -20,8 +20,8 @@ const EditProfil = () => {
         </div>
             <h1>Informations Générales</h1>
         <div className='container'>
-            <form className=''>
-                <div class="mb-3">
+            <form className='px-2'>
+                <div class="mb-3"> 
                     <label for="exampleInputEmail1" class="form-label">Nom</label>
                     <input type="text" class="form-control"/>
                 </div>
@@ -43,7 +43,7 @@ const EditProfil = () => {
                 </div>
                 <div className='d-flex justify-content-center pb-2'> 
                     <Link to='/profil'>
-                        <button type="submit" id="Edit-button" className='px-2 '>Mettre à jour</button>
+                        <button type="submit" id="Edit-button" className='px-3 '>Mettre à jour</button>
                     </Link>    
                 </div>
             </form>

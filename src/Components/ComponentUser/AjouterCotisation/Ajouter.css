@@ -36,10 +36,14 @@
 .Inputs .form-select, .form-control{
     min-width: 350px;
     height: 45px;
-    border-radius: 10px;
+    border-radius: 100px;
     border: 2px solid #093545;
     color: #093545;
     outline: none;
+}
+.form-check-input{
+    font-size: 15px;
+    border: 1px solid rgb(7, 6, 6);
 }
 .form-check-input:checked{
     background-color: #093545;

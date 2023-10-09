@@ -8,7 +8,7 @@ const Parametre = () => {
   return (
     <Layout>
     <div className='container mx-auto'>
-      <div className='py-5 px-4'>
+      <div className=' px-4'>
         <p className='text-capitalize title-sec '>profil</p>
         <div className="justify-content-center">
             <div className='mb-3'>
@@ -56,7 +56,7 @@ const Parametre = () => {
                 </div>
                 </Link>
             </div>    
-            <div className='mb-3'>
+            <div className='mb-3'> 
                 <Link className='text-decoration-none text-dark'>
                 <div className='item-sec'>
                     <Link to='/connection' className='text-dark text-decoration-none'>
