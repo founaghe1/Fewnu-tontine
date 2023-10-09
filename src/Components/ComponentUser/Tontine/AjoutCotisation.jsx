@@ -5,13 +5,14 @@ import { Link } from 'react-router-dom';
 
 const AjoutCotisation = () => {
   return (
-    <div className="card progression p-3 mb-5">
+    <div className='d-flex justify-content-center'>
+      <div className="card progress p-3 mb-5">
       <div className="icon-containt  d-flex  justify-content-center align-items-center">
-        <FaSackDollar className="icon" />
+        <FaSackDollar className="icon" /> 
       </div>
       <div className="info-containt mt-2">
         <p className="text-capitalize fw-bold fs-4">cotiations</p>
-        <p className="text-capitalize tontine">
+        <p className="text-capitalize text-start">
           <span>tontine téléphone</span>
         </p>
       </div>
@@ -20,6 +21,7 @@ const AjoutCotisation = () => {
             <GrAddCircle className='add-icon fs-1 bg-light'/>
         </Link>
       </div>
+    </div>
     </div>
   )
 }

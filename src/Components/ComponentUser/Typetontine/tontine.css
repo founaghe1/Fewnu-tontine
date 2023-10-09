@@ -1,5 +1,5 @@
 .carte{
-    /* width: 360px; */
+    width: 360px;
     height: 88px;
     box-shadow:  0px 0px  5px black ;
 }
@@ -48,5 +48,10 @@
     height: 53px;
     top: 117px;
     left: 307px;
+}
 
+@media screen and (max-width: 375px){
+    .cart{
+        width: 95% !important;
+    }
 }

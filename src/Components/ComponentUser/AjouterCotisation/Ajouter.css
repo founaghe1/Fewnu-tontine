@@ -151,3 +151,16 @@
     border: 1px solid #093545;
     font-size: 20px;
 }
+
+
+@media screen and (max-width: 375px) {
+    .forme{
+        width: 98% !important;
+    }
+    .Inputs{
+        width: 100% !important;
+    }
+    .Inputs .form-select, .form-control{
+        min-width: 100%;
+    }
+}

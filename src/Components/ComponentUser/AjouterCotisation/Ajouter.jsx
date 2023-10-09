@@ -7,12 +7,12 @@ import { Link } from "react-router-dom";
 const Ajouter = () => {
   return (
     <Layout>
-    <div className="container-fluid px-4">
+    <div className="container-fluid d-flex justify-content-center flex-column align-items-center">
       <HeaderProfil />
       <h3 className="text-center">Ajouter une cotisation</h3>
-      <form className="d-flex justify-content-center">
-        <div>
-        <div className="Inputs my-5"> 
+      <form className="d-flex justify-content-center forme "> 
+        <div className="Inputs">
+        <div className=" my-5"> 
         <select class="form-select mb-4" aria-label="Default select example">
           <option className="select-option"selected>Groupes</option>
           <option className="select-option"value="1">Tontine téléphone</option>

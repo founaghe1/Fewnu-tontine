@@ -16,3 +16,9 @@
     text-align: left;
     font-size: 15px;
 }
+
+@media screen and (max-width: 500px) {
+    .item-sec{
+        width: 100%;
+    }
+}

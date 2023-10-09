@@ -8,9 +8,9 @@ const Parametre = () => {
   return (
     <Layout>
     <div className='container mx-auto'>
-      <div className=' px-4'>
-        <p className='text-capitalize title-sec '>profil</p>
-        <div className="justify-content-center">
+      <div className=''>
+        <p className='text-capitalize title-sec'>profil</p>
+        <div className="  justify-content-center">
             <div className='mb-3'>
                 <Link to='/profil' className='text-decoration-none text-dark'>
                 <div className='item-sec'>
@@ -34,7 +34,7 @@ const Parametre = () => {
             </div>    
         </div>
         <p className='text-capitalize title-sec '>support</p>
-        <div className="justify-content-center">
+        <div className=" justify-content-center">
             <div className='mb-3'>
                 <Link className='text-decoration-none text-dark'>
                 <div className='item-sec'>
@@ -69,7 +69,7 @@ const Parametre = () => {
         
       </div>
     </div>
-    </Layout>
+    </Layout> 
   )
 }
 

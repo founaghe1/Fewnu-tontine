@@ -13,7 +13,7 @@ const Cardtontine = (props) => {
                 </div>
                 <div className="bottom d-flex justify-content-between">
                     <p className="des"><span>{props.des}</span></p>
-                    <p className="statut text-capitalize">{props.some}</p>
+                    <p className="statut text-capitalize">{props.some}</p> 
                 </div>
             </div>
         </div>
