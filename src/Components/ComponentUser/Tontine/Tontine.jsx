@@ -109,8 +109,8 @@ const Tontine = () => {
       
   return (
     <Layout>
-    <div className='container-fluid pt-3 page-totine d-flex justify-content-center'>
-      <div className='d-flex flex-column justify-content-center '>
+    <div className='container-fluid pt-3 page-totine d-flex justify-content-center '>
+      <div className='d-flex flex-column justify-content-center cart'>
       <AjoutCotisation/>
       <Link to='/detailCotisation' className='text-decoration-none text-dark'>
         {cardsData.map((card) => (

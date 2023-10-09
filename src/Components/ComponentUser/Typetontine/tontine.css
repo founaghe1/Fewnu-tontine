@@ -50,7 +50,7 @@
     left: 307px;
 }
 
-@media screen and (max-width: 375px){
+@media screen and (max-width: 900px){
     .cart{
         width: 95% !important;
     }

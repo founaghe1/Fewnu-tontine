@@ -164,3 +164,16 @@
         min-width: 100%;
     }
 }
+
+
+@media screen and (min-width: 500px) and (max-width: 900px) {
+    .forme{
+        width: 80% !important;
+    }
+    .Inputs{
+        width: 80% !important;
+    }
+    .Inputs .form-select, .form-control{
+        min-width: 50% !important;
+    }
+}

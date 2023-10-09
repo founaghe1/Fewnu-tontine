@@ -2,7 +2,6 @@
     font-family: Montserrat;
 }
 .progress{
-    width: 365px;
     height: 110px;
     background-color: #093545;
     display: flex;
@@ -36,7 +35,6 @@
     border-radius: 50%;
 }
 .carte{
-    width: 360px;
     height: 88px;
     box-shadow:  0px 0px  5px black ;
 }
@@ -70,7 +68,7 @@
     color: #20DF7F;
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 900px) {
     .progress{
         width: 95% !important;
     }

@@ -19,8 +19,8 @@ const EditCodePin = () => {
             <HeaderProfil/>
         </div>
         <h1>Modifier votre code PIN</h1>
-        <div className='container'>
-            <form className='px-3'>
+        <div className='container d-flex justify-content-center'>
+            <form className='px-3 form'>
                 <div className="mb-3">
                     <label for="exampleInputEmail1" className="form-label">Actuel code PIN</label>
                     <input type="number" className="form-control"/>

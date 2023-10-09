@@ -34,9 +34,8 @@
 #edit-profil input{
     background-color: #e5e5e500;
     height: 45px;
-    border: 1.37px solid grey;
+    border: 2px solid rgb(0, 0, 0);
     border-radius: 100px;
-
 }
 #edit-profil label{
     font-family: Montserrat;
@@ -96,7 +95,7 @@
 #edit-code input{
     background-color: #e5e5e500;
     height: 35px;
-    border: 1.37px solid grey;
+    border: 2px solid rgb(0, 0, 0);
     border-radius: 100px;
 }
 #edit-code label{
@@ -127,3 +126,28 @@
     font-size: 14px !important;
     line-height: 15.85px !important;
 }
+
+
+    @media screen and (max-width: 500px) {
+        .form{
+            width: 98% !important;
+        }
+        .Inputs{
+            width: 100% !important;
+        }
+        .Inputs .form-select, .form-control{
+            min-width: 100% !important;
+        }
+    }
+
+    @media screen and (min-width: 500px) and (max-width: 900px) {
+        .form{
+            width: 80% !important;
+        }
+        .Inputs{
+            width: 50% !important;
+        }
+        .Inputs .form-select, .form-control{
+            min-width: 50% !important;
+        }
+    }

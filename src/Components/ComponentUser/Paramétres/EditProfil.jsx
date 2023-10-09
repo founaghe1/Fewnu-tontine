@@ -19,8 +19,8 @@ const EditProfil = () => {
             <HeaderProfil/>
         </div>
             <h1>Informations Générales</h1>
-        <div className='container'>
-            <form className='px-2'>
+        <div className='container d-flex justify-content-center'>
+            <form className='px-2 form'>
                 <div class="mb-3"> 
                     <label for="exampleInputEmail1" class="form-label">Nom</label>
                     <input type="text" class="form-control"/>
