@@ -6,6 +6,7 @@ import orange from '../../../Assets/orange-money.png'
 import './Ajouter.css'
 import {GiTwoCoins} from 'react-icons/gi'
 import Button from '../Button/Button'
+// import '../../../Components/config.css'
 
 const ValiderAjout = () => {
   return (
@@ -18,8 +19,8 @@ const ValiderAjout = () => {
                 <div c
                  lassName="div-text">
                     <p className='titre'>Faly Seck</p>
-                    <p className='des mb-3'>Designer</p>
-                    <p className='phrag mb-5'>Ajouter une cotisation</p>
+                    <p className='des paragraph mb-3'>Designer</p>
+                    <p className='phrag paragraph mb-5'>Ajouter une cotisation</p>
                 </div>
             </div>
 

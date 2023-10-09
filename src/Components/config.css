@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+
+:root{
+  --card-shadow: 0px 20px 100px -10px rgba(66, 71, 91, 0.1);
+  
+}
+
+.card{
+    width: 360px;
+    height: 88px;
+    top: 489px;
+    left: 7px;
+    border-radius: 10px;
+    box-shadow: var(--card-shadow);
+}
+
+.text-vert{
+    color: #20DF7F;
+}
+
+.text-blue{
+    color: #093545;
+}
+
+.text-acceuil{
+    font-family: Montserrat;
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 49px;
+    letter-spacing: 0px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.titre{
+    font-family: Montserrat;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 39px;
+    letter-spacing: 0em;
+    color: #093545;
+
+}
+
+.sou-titre{
+    font-family: Lexend Deca;
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 50px;
+    letter-spacing: 0px;
+    color: #224957;
+
+}
+
+.paragraph{
+    font-family: Lexend Deca;
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: 0px;
+    color: #224957;
+
+
+}
+.descriptipn{
+    font-family: Montserrat;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 29px;
+    letter-spacing: 0em;
+}
+
+.sou-description{
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+    letter-spacing: 0em;
+    color: #312E49;
+
+}
+
+.input-info{
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    border: 1px solid #CDCED1;
+    background: linear-gradient(0deg, #CDCED1, #CDCED1),
+    linear-gradient(0deg, #F5F6F7, #F5F6F7);
+}
+
+.input-form{
+    width: 300px;
+    height: 45px;
+    top: 449px;
+    left: 38px;
+    border-radius: 100px;
+    border: 2px solid #093545;
+}
+
+.btn-form{
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: 0px;
+    text-align: center;
+}
+
+.bg-btn-blue{
+    background: #093545;
+    color: #FFF;
+}
+
+.bg-btn-vert{
+    background: #20DF7F;
+}  
