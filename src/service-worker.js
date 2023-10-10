@@ -63,10 +63,73 @@ registerRoute(
 
 // This allows the web app to trigger skipWaiting via
 // registration.waiting.postMessage({type: 'SKIP_WAITING'})
+// self.addEventListener('message', (event) => {
+//   if (event.data && event.data.type === 'SKIP_WAITING') {
+//     self.skipWaiting();
+//   }
+// });
+
+// Any other custom service worker logic can go here.
+
+//Gestion de mise a jour
+const CACHE_NAME = 'my-pwa-cache-v1';
+
+self.addEventListener('install', (event) => {
+  event.waitUntil(
+    caches.open(CACHE_NAME)
+      .then((cache) => {
+        return cache.addAll([
+          '/',
+          '/index.html',
+          '/app.js',
+          '/styles.css',
+          // Ajoutez ici d'autres ressources à mettre en cache
+        ]);
+      })
+  );
+});
+
+self.addEventListener('activate', (event) => {
+  event.waitUntil(
+    caches.keys().then((cacheNames) => {
+      return Promise.all(
+        cacheNames.map((cache) => {
+          if (cache !== CACHE_NAME) {
+            return caches.delete(cache);
+          }
+        })
+      );
+    })
+  );
+});
+ 
+self.addEventListener('fetch', (event) => {
+  event.respondWith(
+    caches.match(event.request)
+      .then((cachedResponse) => {
+        if (cachedResponse) {
+          return cachedResponse;
+        }
+        // Si la ressource n'est pas dans le cache, la récupérer depuis le réseau
+        return fetch(event.request)
+          .then((response) => {
+            // Mettre la nouvelle réponse en cache
+            return caches.open(CACHE_NAME)
+              .then((cache) => {
+                cache.put(event.request, response.clone());
+                return response;
+              });
+          })
+          .catch(() => {
+            // En cas d'échec de récupération depuis le réseau, vous pouvez servir une page de secours ou une ressource générique.
+          });
+      })
+  );
+});
+
 self.addEventListener('message', (event) => {
   if (event.data && event.data.type === 'SKIP_WAITING') {
+    // Forcer le service worker à s'activer immédiatement pour prendre en charge la nouvelle version.
     self.skipWaiting();
   }
 });
-
-// Any other custom service worker logic can go here.

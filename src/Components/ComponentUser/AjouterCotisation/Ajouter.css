@@ -1,12 +1,12 @@
-
-
 #header-profil .profil-img-containt{
     width: 106px;
     height: 106px;
     border-radius: 50%;
     border: 4.17px solid #20DF7F;
 }
-#header-profil .profil-img-containt h1{}
+
+/* #header-profil .profil-img-containt h1{} */
+
 .part1{
     text-align: center;
 }
@@ -154,8 +154,6 @@
     font-size: 20px;
 }
 
-<<<<<<< HEAD
-=======
 
 @media screen and (max-width: 500px) {
     .forme{
@@ -180,5 +178,4 @@
     .Inputs .form-select, .form-control{
         min-width: 80% !important;
     }
->>>>>>> b04296216fe30f515720f78471c2cf42f3e16ef7
 }
