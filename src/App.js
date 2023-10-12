@@ -21,11 +21,12 @@ import Ajouter from './Components/ComponentUser/AjouterCotisation/Ajouter';
 import TypeTontine from './Components/ComponentUser/Typetontine/TypeTontine';
 import Profil from './Components/ComponentUser/Profil/Profil';
 import ValiderAjout from './Components/ComponentUser/AjouterCotisation/ValiderAjout'
+import LoginPage from './Components/LoginSimulation/LoginPage';
 
 function App() {  
   return (
     <div className="">
-      <Router>
+      {/* <Router>
         <Routes>
           <Route path="/" exact element={<Accueil />} />
           <Route path="/idParCall"  element={<Identification />} />
@@ -35,7 +36,6 @@ function App() {
           <Route path="/mesCotisations"  element={<Cotisation />} />
           <Route path="/tontine"  element={<Tontine />} />
           <Route path="/ajouterCotisation"  element={<Ajouter />} />
-          {/* <Route path="/validerAjout"  element={<ValiderAjouter />} /> */}
           <Route path="/parametres"  element={<Parametre />} />
           <Route path="/typeTontine"  element={<TypeTontine />} />
           <Route path="/detailCotisation"  element={<Detailcotisation />} />
@@ -44,9 +44,17 @@ function App() {
           <Route path='/modifCodePin' element={<EditCodePin />} />
           <Route path='/connection' element={<Connection />} />
           <Route path='/validerAjout' element={<ValiderAjout />} />
+          <Route path='/login' element={<LoginPage />} />
 
         </Routes>
-      </Router> 
+      </Router>  */}
+      <Router>
+        <Routes>
+          <Route path="/" exact element={<LoginPage/>} />
+          <Route path="/mesCotisations"  element={<Cotisation />} />
+        </Routes>
+      </Router>
+      
     </div>
   );
 }
