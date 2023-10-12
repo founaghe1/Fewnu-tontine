@@ -1,8 +1,17 @@
 import React from "react";
 import './header.css'
 import user from "../../../Assets/user.png";
+import { useEffect, useState } from "react";
 
 const Header = () => {
+
+  const [username, setUsername] = useState("");
+
+  useEffect(() => {
+    // Récupérez le nom d'utilisateur depuis le Local Storage
+    const storedUsername = localStorage.getItem("username");
+    setUsername(storedUsername);
+  }, []);
   return (
     <div>
       <div className="d-flex justify-content-center header py-2 fixed-top" >
@@ -16,7 +25,7 @@ const Header = () => {
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              Faly Seck
+              {username}
             </a>
             <ul class="dropdown-menu">
               <li>
