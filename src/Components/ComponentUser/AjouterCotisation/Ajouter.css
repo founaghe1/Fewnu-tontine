@@ -4,7 +4,9 @@
     border-radius: 50%;
     border: 4.17px solid #20DF7F;
 }
-#header-profil .profil-img-containt h1{}
+
+/* #header-profil .profil-img-containt h1{} */
+
 .part1{
     text-align: center;
 }
