@@ -36,16 +36,6 @@ const login = async (req, res, next) => {
 
     console.log(passwordMatch);
     console.log(password);
-
-    
-    // const hashedPassword = await bcrypt.hash(password, 10);
-
-    // Load hash from your password DB.
-    // bcrypt.compare(password, user.password, function(err, result) {
-    //   console.log('err', err);
-    //   console.log('result', result);
-          
-    // });
     
 
     if (!passwordMatch) {
