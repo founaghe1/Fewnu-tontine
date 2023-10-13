@@ -20,7 +20,7 @@ app.use(cors());
 app.use('/auth', authRoutes);
 
 // Define user routes
-app.use('/user', userRoutes);
+app.use('/user', userRoutes); 
 
 // Start the server
 app.listen(PORT, () => {
