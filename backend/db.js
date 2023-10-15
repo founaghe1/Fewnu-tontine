@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 const connectDB = async () => {
-  MONGODB_URL=`mongodb+srv://founaghe:founaghe@cluster0.ly68n1b.mongodb.net/fewnu-tontin?retryWrites=true&w=majority`
+  MONGODB_URL=`mongodb+srv://founaghe:founagheatlas@cluster0.ly68n1b.mongodb.net/fewnu-tontin?retryWrites=true&w=majority`
   try {
     await mongoose.connect(process.env.MONGODB_URI, {
       useNewUrlParser: true,
