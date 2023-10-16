@@ -6,7 +6,7 @@ import Footer from '../Footer/Footer';
 const Layout = ({ children }) =>  {
   return (
     <div className="containers">
-      <div className='myApp shadow'>
+      <div className='myApp'>
         <Header />
         <main className='my-5 py-5 mains'>{children}</main>
         <Footer />

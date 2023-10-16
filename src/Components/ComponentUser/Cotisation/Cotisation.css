@@ -2,10 +2,6 @@
 
 #Cotisation{
     font-family: 'Montserrat';
-    width: 100%;
-    height: 100vh;
-    /* position: fixed; */
-    overflow-y: scroll;
 }
 .progression{
     height: 110px;
@@ -71,6 +67,10 @@
 }
 
 @media screen and (max-width: 900px){
+    #Cotisation{
+        box-shadow: none !important;
+    }
+
     .progression{
         width: 95% !important;
     }
