@@ -56,7 +56,7 @@
     }
 }
 
-@media screen and (min-width: 901px) and (max-width: 1440px) {
+@media screen and (min-width: 901px) and (max-width: 1728px) {
     .cart{
         width: 95% !important;
     }
