@@ -9,7 +9,7 @@
   }
 }
 
-@media screen and (min-width: 901px) and (max-width: 1400px) {
+@media screen and (min-width: 901px) and (max-width: 1440px) {
     .footerImg{
       width: 40%;
       position: fixed;
