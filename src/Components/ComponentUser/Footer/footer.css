@@ -33,7 +33,7 @@
     width: 100%;
     position: fixed;
     bottom: 0;
-  }
+}
 
 @media screen and (min-width: 901px) and (max-width: 1400px) {
     .footers{
