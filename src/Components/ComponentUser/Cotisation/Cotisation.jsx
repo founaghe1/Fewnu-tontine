@@ -96,7 +96,7 @@ const Cotisation = () => {
       console.log(cardsData);
       
     
-  return (
+  return ( 
     <Layout> 
     <div id='Cotisation'>
       <div className="container-fluid pt-3 d-flex justify-content-center flex-column">

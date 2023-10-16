@@ -1,3 +1,11 @@
 .bgblue{
     z-index: 1;
 }
+
+@media screen and (min-width: 901px) and (max-width: 1400px) {
+    .footerImg{
+      width: 40%;
+      position: fixed;
+      bottom: 0;
+    }
+}

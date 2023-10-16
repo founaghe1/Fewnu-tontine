@@ -5,7 +5,7 @@ import bgblue from '../../../Assets/bgblue.png'
 
 const FooterImg = () => {
   return (
-    <div className='fixed-bottom'>
+    <div className='footerImg'>
         <footer>
             <div className='position-relative'>
                 <img src={bggreen} alt="" className='w-100 position-absolute bggreen'/>

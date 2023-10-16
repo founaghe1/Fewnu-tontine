@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 const Creercode = () => {
   return (
-        <div className="pt-5 h-100">
+        <div className="pt-5 h-100 identif shadow">
         <div className="container py-5">
             <h1>Créer votre code PIN</h1>
             <form className='d-grid px-3'>

@@ -107,7 +107,7 @@ const Tontine = () => {
         }
       ];
       
-  return (
+  return ( 
     <Layout>
     <div className='container-fluid pt-3 page-totine d-flex justify-content-center '>
       <div className='d-flex flex-column justify-content-center cart'>

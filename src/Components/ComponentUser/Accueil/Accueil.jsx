@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import {BiSolidDownload} from 'react-icons/bi'
  
 const Accueil = () => { 
-  return (
+  return ( 
     <div id='Accueil' className='vh-100'>
       <div className="container pt-2  text-center">
         <h1 className='text-light title mb-4 px-2'>Bienvenue sur Fewnu tontine</h1>

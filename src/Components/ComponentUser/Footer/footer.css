@@ -2,7 +2,7 @@
     position: absolute;
     bottom: -10px;
     width: 100%;
-    border-top: 2px solid grey;
+    border-top: 1px solid grey;
     background-color: rgb(255, 255, 255);
 }
 .sacDalla,
@@ -27,4 +27,23 @@
     height: 50px;
     border-radius: 50%;
     color: rgba(32, 223, 127, 1) !important;
+}
+
+.footers{
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+  }
+
+@media screen and (min-width: 901px) and (max-width: 1400px) {
+    .footers{
+      width: 40%;
+      position: fixed;
+      bottom: 0;
+    }
+
+    .footer{
+        box-shadow: 0px 5px 9px grey;
+        padding-bottom: 2px;
+    }
 }
