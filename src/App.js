@@ -27,7 +27,7 @@ import ValiderAjout from './Components/ComponentUser/AjouterCotisation/ValiderAj
 
 function App() {  
   return (
-    <div className="">
+    <div className="App">
       <Router>
         <Routes>
           <Route path="/" exact element={<Accueil />} />
@@ -46,7 +46,7 @@ function App() {
           <Route path='/modifCodePin' element={<EditCodePin />} />
           <Route path='/connection' element={<Connection />} />
           <Route path='/validerAjout' element={<ValiderAjout />} />
-          
+
           {/* <Route path='/login' element={<LoginPage />} /> */}
 
         </Routes>

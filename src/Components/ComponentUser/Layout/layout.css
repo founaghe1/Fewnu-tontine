@@ -3,12 +3,8 @@
       width: 40%;
       margin: auto;
       height: 100vh;
-      box-shadow: 0 0  5px grey;
       position: fixed;
       overflow-y: scroll;
       left: 30%;
-      
-    }
-    
-    
+    } 
 }
