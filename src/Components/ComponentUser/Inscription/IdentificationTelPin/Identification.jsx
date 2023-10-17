@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 const Indentification = () => {
   return (
-    <div className='identif shadow'>
+    <div className='identif myIdentif shadow'>
         <h4 className='text-center title'><span className='wallet'><GiWallet /></span> fewnu Tontine </h4>
         <p className='paragIdentif text-center'>Identifiez-vous</p>
         <p className='paragText text-center'>Identifiez-vous et gérez vos cotisations</p>
