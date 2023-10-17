@@ -31,7 +31,7 @@ const Indentification = () => {
   };
 
   const fakeUserData = {
-    phoneNumber: "771010502",
+    phoneNumber: "771234567",
     password: "thiam123",
   };
 
