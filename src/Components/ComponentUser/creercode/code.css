@@ -29,3 +29,11 @@ h1{
     border: none;
     box-shadow: 2px 2px 5px grey;
 }
+
+.creerCode{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+    
