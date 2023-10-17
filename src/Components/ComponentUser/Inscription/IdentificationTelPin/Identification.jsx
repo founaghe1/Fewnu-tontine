@@ -102,7 +102,7 @@ const Indentification = () => {
             </div>
           </form>
 
-          {/* <FooterImg /> */}
+          <FooterImg />
         </div>
       )}
     </div>
