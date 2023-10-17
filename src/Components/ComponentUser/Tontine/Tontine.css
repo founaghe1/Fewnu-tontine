@@ -76,3 +76,12 @@
         width: 95% !important;
     }
 }
+
+@media screen and (min-width: 901px) and (max-width: 1728px) {
+    .progress{
+        width: 100% !important;
+    }
+    .carte{
+        width: 100% !important;
+    }
+}

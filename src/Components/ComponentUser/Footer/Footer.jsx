@@ -6,10 +6,10 @@ import { PiUsersThreeLight } from "react-icons/pi";
 import { FiSettings } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
-const Footer = () => {
+const Footer = () => { 
   return (
-    <div className="fixed-bottom">
-      <footer className="py-3 d-flex justify-content-around footer ">
+    <div className="footers">
+      <footer className="py-2 d-flex justify-content-around footer ">
         <p className="">
           <Link to='/mesCotisations'>
             <FaSackDollar className="text-dark fs-1 sacDalla" />

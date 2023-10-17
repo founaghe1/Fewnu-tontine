@@ -1,7 +1,7 @@
 import React from "react";
 import { TbMoneybag } from "react-icons/tb";
 
-const Progression = () => {
+const Progression = () => { 
   return (
     <div className="card progression p-3 mb-5">
       <div className="icon-containt  d-flex  justify-content-center align-items-center">

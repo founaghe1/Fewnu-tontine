@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+// import Cotisation from "../ComponentUser/Cotisation/Cotisation";
 import { useNavigate } from "react-router-dom";
-import Cotisation from "../ComponentUser/Cotisation/Cotisation";
+import Cotiser from "../cotiser/Cotiser";
 
 const fakeUserData = {
   username: "the_princetoutcouleur",
@@ -37,7 +38,7 @@ const LoginPage = () => {
       localStorage.setItem("username", enteredUsername);
       localStorage.setItem("password", enteredPassword);
       // Redirigez l'utilisateur vers la page de cotisation après une connexion réussie
-      navigate("/mesCotisations");
+      navigate("/cotiser");
     } else {
       setLoggedIn(false);
       setError("Nom d'utilisateur ou mot de passe incorrect.");
@@ -53,7 +54,9 @@ const LoginPage = () => {
   return (
     <div>
       {loggedIn ? (
-        <Cotisation/>
+        // <h1 className="mt-5">Bienvenue, <span className="bg-primary text-light">{formData.username}</span> ! Vous êtes connecté.</h1>
+        // <Cotisation/>
+        <Cotiser/>
       ) : (
         <div className="card m-5">
           <div className="card-body p-5 d-flex justify-content-center align-items-center">
@@ -96,3 +99,4 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
+ 

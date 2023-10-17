@@ -67,6 +67,22 @@
 }
 
 @media screen and (max-width: 900px){
+    #Cotisation{
+        box-shadow: none !important;
+    }
+
+    .progression{
+        width: 95% !important;
+    }
+    .carteWidth{
+        width: 95%;
+    }
+    .carte{
+        width: 100% !important;
+    }
+}
+
+@media screen and (min-width: 901px) and (max-width: 1440px) {
     .progression{
         width: 95% !important;
     }

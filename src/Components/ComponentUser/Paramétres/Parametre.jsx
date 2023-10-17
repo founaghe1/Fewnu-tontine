@@ -7,7 +7,7 @@ import Layout from '../Layout/Layout'
 const Parametre = () => {
   return (
     <Layout>
-    <div className='container mx-auto '>
+    <div className='container mx-auto parameter '>
       <div className=''>
         <p className='text-capitalize title-sec'>profil</p>
         <div className="  justify-content-center">

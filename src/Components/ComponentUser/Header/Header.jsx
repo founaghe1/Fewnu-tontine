@@ -13,9 +13,9 @@ const Header = () => {
     setUsername(storedUsername);
   }, []);
   return (
-    <div>
-      <div className="d-flex justify-content-center header py-2 fixed-top" >
-        <img src={user} alt="user" className="img"/>
+    <div className="headers"> 
+      <div className="d-flex justify-content-center header py-2 " >
+        <img src={user} alt="user" className="img"/> 
         <p className="pt-3 ps-2">
           <li class="nav-item dropdown li text-light">
             <a
