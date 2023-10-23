@@ -19,7 +19,9 @@ const addCotisation = async (req, res, next) => {
         if (user.phoneNumber !== phoneNumberCot) {
             console.log(user.phoneNumber);
             console.log(phoneNumberCot);
-            return res.status(400).json({ message: 'Le numéro de téléphone ne correspond pas à l\'utilisateur' });
+            return res.status(400).json({ message: 'Le numéro de téléphone ne correspond pas à l\'utilisateur',
+            user, phoneNumberCot
+        });
         }
 
         // Créez la cotisation en associant l'ID de l'utilisateur
