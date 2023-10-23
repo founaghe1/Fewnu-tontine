@@ -7,7 +7,7 @@ const addTontine = async (req, res, next) => {
     try {
       const tontineName = new Tontine({ tontine });
       await tontineName.save();
-      res.json({ message: 'Tontine Registration successful' });
+      res.json({ message: 'Tontine Registration success' });
   
     } catch (error) {
       next(error);
