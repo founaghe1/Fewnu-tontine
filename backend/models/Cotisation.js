@@ -8,7 +8,7 @@ const cotisationSchema = new mongoose.Schema(
       required: true,
     },
     phoneNumberCot: {
-        type: String,
+        type: Number,
         required: true,
     } ,
     user: {
