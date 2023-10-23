@@ -5,11 +5,11 @@ const User = require('../models/User');
 
 // Register a new user
 const register = async (req, res, next) => {
-  const { username, email, password } = req.body;
+  const { username, phoneNumber,  email, password } = req.body;
 
   try {
     // const hashedPassword = await bcrypt.hash(password, 10);
-    const user = new User({ username, email, password });
+    const user = new User({ username, phoneNumber, email, password });
     await user.save();
     res.json({ message: 'Registration successful' });
 
@@ -21,10 +21,10 @@ const register = async (req, res, next) => {
 // Login with an existing user
 const login = async (req, res, next) => {
   
-  const { username, password } = req.body;
+  const {phoneNumber, password } = req.body;
 
   try {
-    const user = await User.findOne({ username });
+    const user = await User.findOne({ phoneNumber });
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
