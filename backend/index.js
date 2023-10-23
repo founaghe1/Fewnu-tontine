@@ -2,6 +2,7 @@ const express = require('express');
 const connectDB = require('./db');
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
+const addTontineRoutes = require('./routes/addTontine')
 const cors = require("cors")
 
 const app = express();
@@ -21,6 +22,9 @@ app.use('/auth', authRoutes);
 
 // Define user routes
 app.use('/user', userRoutes); 
+
+// Define tontine routes
+app.use('/addTontine', addTontineRoutes); 
 
 // Start the server
 app.listen(PORT, () => {

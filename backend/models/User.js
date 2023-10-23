@@ -28,7 +28,15 @@ const userSchema = new mongoose.Schema(
       default: 'user'
     }
   },
-  { timestamps: true }
+  { timestamps: true },
+  {
+    tontine: {
+      type: String,
+      ref: 'Tontine',
+      required: true
+    }
+  }
+
 );
 
 // Hash the password before saving it to the database
