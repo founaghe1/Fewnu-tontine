@@ -5,15 +5,19 @@ const userSchema = new mongoose.Schema(
   {
     cotisation: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User', // Référence au modèle User
+      }
   },
   { timestamps: true }
 
 );
 
 
-const Cotisation = mongoose.model('Cotisation', userSchema);
+const Cotisation = mongoose.model('Cotisation', cotisationSchema);
   
 module.exports = Cotisation;
 

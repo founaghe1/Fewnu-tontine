@@ -37,7 +37,6 @@ const login = async (req, res, next) => {
     console.log(passwordMatch);
     console.log(password);
     
-
     if (!passwordMatch) {
       return res.status(401).json({ message: 'Incorrect password', password, passwordMatch });
     }
