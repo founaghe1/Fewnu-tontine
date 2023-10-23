@@ -17,6 +17,8 @@ const addCotisation = async (req, res, next) => {
 
         // Vérifiez si le numéro de téléphone correspond
         if (user.phoneNumber !== phoneNumberCot) {
+            console.log(user.phoneNumber);
+            console.log(phoneNumberCot);
             return res.status(400).json({ message: 'Le numéro de téléphone ne correspond pas à l\'utilisateur' });
         }
 
