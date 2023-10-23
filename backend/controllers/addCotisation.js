@@ -9,8 +9,9 @@ const addCotisation = async (req, res, next) => {
   
     try {
 
-        // vérifier si l'utilisateur existe avant de créer la cotisation
-        const user = await User.findOne(username);
+        // Recherchez l'utilisateur en fonction du numéro de téléphone
+        const user = await User.findOne({ phoneNumber: phoneNumberCot });
+        
         if (!user) {
         return res.status(404).json({ message: 'Utilisateur introuvable' });
         }
