@@ -5,7 +5,6 @@ const userSchema = new mongoose.Schema(
   {
     tontine: {
       type: String,
-      ref: 'Tontine',
       required: true
     }
   },

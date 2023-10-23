@@ -9,7 +9,7 @@ const cotisationSchema = new mongoose.Schema(
     },
     phoneNumberCot: {
         type: Number,
-        required: true,
+        required: false,
     } ,
     user: {
         type: mongoose.Schema.Types.ObjectId,
