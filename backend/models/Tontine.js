@@ -8,7 +8,8 @@ const userSchema = new mongoose.Schema(
       ref: 'Tontine',
       required: true
     }
-  }
+  },
+  { timestamps: true }
 
 );
 

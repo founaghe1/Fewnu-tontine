@@ -28,14 +28,7 @@ const userSchema = new mongoose.Schema(
       default: 'user'
     }
   },
-  { timestamps: true },
-  {
-    tontine: {
-      type: String,
-      ref: 'Tontine',
-      required: true
-    }
-  }
+  { timestamps: true }
 
 );
 
