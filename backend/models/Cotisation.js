@@ -7,6 +7,10 @@ const cotisationSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    phoneNumberCot: {
+        type: String,
+        required: true,
+    } ,
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User', // Référence au modèle User
