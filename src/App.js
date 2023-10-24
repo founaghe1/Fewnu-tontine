@@ -20,43 +20,46 @@ import Ajouter from './Components/ComponentUser/AjouterCotisation/Ajouter';
 import TypeTontine from './Components/ComponentUser/Typetontine/TypeTontine';
 import Profil from './Components/ComponentUser/Profil/Profil';
 import ValiderAjout from './Components/ComponentUser/AjouterCotisation/ValiderAjout';
+import Listcotiser from './Components/cotiser/Listcotiser';
 
 
-// import LoginPage from './Components/LoginSimulation/LoginPage';
-// import Cotiser from './Components/cotiser/Cotiser';
+import LoginPage from './Components/LoginSimulation/LoginPage';
+import Cotiser from './Components/cotiser/Cotiser';
 
 function App() {  
   return (
     <div className="App">
       <Router>
-        <Routes>
-          <Route path="/" exact element={<Accueil />} />
-          <Route path="/idParCall"  element={<Identification />} />
-          <Route path="/confirmNumber"  element={<Confime />} />
-          <Route path="/infoPersonnelle"  element={<InfoPersonnelle />} />
-          <Route path="/creatCode"  element={<Creercode />} />
-          <Route path="/mesCotisations"  element={<Cotisation />} />
-          <Route path="/tontine"  element={<Tontine />} />
-          <Route path="/ajouterCotisation"  element={<Ajouter />} />
-          <Route path="/parametres"  element={<Parametre />} />
-          <Route path="/typeTontine"  element={<TypeTontine />} />
-          <Route path="/detailCotisation"  element={<Detailcotisation />} />
-          <Route path="/profil"  element={<Profil />} />
-          <Route path='/modifInfoGeneral' element={<EditProfil />} />
-          <Route path='/modifCodePin' element={<EditCodePin />} />
-          <Route path='/connection' element={<Connection />} />
-          <Route path='/validerAjout' element={<ValiderAjout />} />
+        {/* <Routes> */}
+          {/* <Route path="/" exact element={<Accueil />} /> */}
+          {/* <Route path="/idParCall"  element={<Identification />} /> */}
+          {/* <Route path="/confirmNumber"  element={<Confime />} /> */}
+          {/* <Route path="/infoPersonnelle"  element={<InfoPersonnelle />} /> */}
+          {/* <Route path="/creatCode"  element={<Creercode />} /> */}
+          {/* <Route path="/mesCotisations"  element={<Cotisation />} /> */}
+          {/* <Route path="/tontine"  element={<Tontine />} /> */}
+          {/* <Route path="/ajouterCotisation"  element={<Ajouter />} /> */}
+          {/* <Route path="/parametres"  element={<Parametre />} /> */}
+          {/* <Route path="/typeTontine"  element={<TypeTontine />} /> */}
+          {/* <Route path="/detailCotisation"  element={<Detailcotisation />} /> */}
+          {/* <Route path="/profil"  element={<Profil />} /> */}
+          {/* <Route path='/modifInfoGeneral' element={<EditProfil />} /> */}
+          {/* <Route path='/modifCodePin' element={<EditCodePin />} /> */}
+          {/* <Route path='/connection' element={<Connection />} /> */}
+          {/* <Route path='/validerAjout' element={<ValiderAjout />} /> */}
 
           {/* <Route path='/login' element={<LoginPage />} /> */}
 
-        </Routes>
+        {/* </Routes> */}
       </Router> 
-      {/* <Router>
+      <Router>
         <Routes>
           <Route path="/" exact element={<LoginPage/>} />
           <Route path="/cotiser"  element={<Cotiser />} />
+          <Route path="/cotise" element={<Cotisation/>}/>
+          <Route path="/listcotiser" element={<Listcotiser/>}/>
         </Routes>
-      </Router> */}
+      </Router>
     </div>
   );
 }
