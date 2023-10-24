@@ -41,11 +41,11 @@ const login = async (req, res, next) => {
       return res.status(401).json({ message: 'Incorrect password', password, passwordMatch });
     }
 
-    const token = jwt.sign({ userId: user._id }, process.env.SECRET_KEY, {
-      expiresIn: '1 hour'
-    });
+    // const token = jwt.sign({ userId: user._id }, process.env.SECRET_KEY, {
+    //   expiresIn: '1 hour'
+    // });
 
-    res.json({ token });
+    // res.json({ token });
   } catch (error) {
     next(error);
   }
