@@ -3,7 +3,7 @@ const connectDB = require('./db');
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
 const addTontineRoutes = require('./routes/addTontine')
-const addCotisationRoutes = require('./routes/addCotisation')
+const addCotisationRoutes = require('./routes/getCotisation')
 
 const cors = require("cors")
 
