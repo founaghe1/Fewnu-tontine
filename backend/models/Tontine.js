@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const userSchema = new mongoose.Schema(
+const tontineSchema = new mongoose.Schema(
 
   {
     tontine: {
@@ -13,7 +13,7 @@ const userSchema = new mongoose.Schema(
 );
 
 
-const Tontine = mongoose.model('Tontine', userSchema);
+const Tontine = mongoose.model('Tontine', tontineSchema);
   
 module.exports = Tontine;
 
