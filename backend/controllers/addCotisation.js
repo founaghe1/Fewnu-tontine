@@ -1,0 +1,26 @@
+const Cotisation = require('../models/Cotisation');
+const User = require('../models/User');
+
+// Enregistrez une nouvelle Cotisation en associant automatiquement l'ID de l'utilisateur
+const addCotisation = async (req, res, next) => {
+  const { cotisation, phoneNumberCot } = req.body; // Récupérez le numéro de téléphone à partir du corps de la requête
+
+  try {
+    // Recherchez l'utilisateur en fonction du numéro de téléphone
+    const user = await User.findOne({ phoneNumber: phoneNumberCot });
+
+    if (!user) {
+      return res.status(404).json({ message: 'Aucun utilisateur avec ce numéro de téléphone' });
+    }
+
+    // Créez la cotisation en associant l'ID de l'utilisateur
+    const CotisationMtn = new Cotisation({ cotisation, user: user._id });
+    await CotisationMtn.save();
+    res.json({ message: 'Enregistrement de la cotisation réussi' });
+
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports = { addCotisation };

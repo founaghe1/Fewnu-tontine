@@ -8,7 +8,7 @@ const Progression = () => {
         <TbMoneybag className="icon" />
       </div> 
       <div className="info-containt mt-2">
-        <p className="text-capitalize">mes cotiations</p>
+        <p className="text-capitalize">mes cotisations</p>
         <p className="text-uppercase">
           <span>500.000</span> fcfa 
         </p>

@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&family=Lato:wght@700&family=Lexend+Deca&family=Montserrat:wght@700&family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@300&family=Roboto+Slab:wght@500;600&family=Roboto:wght@500;700&family=Rubik&family=Work+Sans&display=swap');
 
 .title{
-    margin-top: 50px;
+    margin-top: 40px;
     font-family: Montserrat;
     font-weight: 700;
     font-size: 31.77px;
@@ -13,7 +13,7 @@
     color: rgba(9, 53, 69, 1);
 }
 .paragIdentif{
-    margin-top: 50px;
+    margin-top: 20px;
     font-family: Lexend Deca;
     font-weight: 400;
     font-size: 40px;
@@ -21,7 +21,7 @@
     color: rgba(9, 53, 69, 1);
 }
 .paragText{
-    margin-top: 50px;
+    margin-top: 30px;
     font-family: Lexend Deca;
     font-size: 16.5px;
     line-height: 20.63px;
@@ -32,7 +32,7 @@
     background-color: rgba(34, 73, 87, 1);
     height: 45px;
     width: 300px;
-    margin-top: 50px;
+    margin-top: 30px !important;
     color: rgba(255, 255, 255, 1);
     font-family: Montserrat;
 }
@@ -43,7 +43,7 @@
 }
 
 .btnIdenti{
-    margin-top: 50px;
+    margin-top: 30px;
     background: rgba(32, 223, 127, 1);
     border-radius: 10px;
     width: 300px;

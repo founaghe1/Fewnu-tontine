@@ -26,4 +26,13 @@
     .parameter{
         width: 100%;
     }
-} 
+}  
+
+@media screen and (min-width: 901px) and (max-width: 1728px) {
+    .item-sec{
+        width: 100%;
+    }
+    .parameter{
+        width: 80%;
+    }
+}
