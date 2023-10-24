@@ -22,7 +22,7 @@ const addCotisation = async (req, res, next) => {
     }
 
     // Créez la cotisation en associant l'ID de l'utilisateur
-    const CotisationMtn = new Cotisation({ cotisation, user: user._id, tontineName: tontine._id });
+    const CotisationMtn = new Cotisation({ cotisation, user: user._id, tontine: tontine._id });
     await CotisationMtn.save();
     res.json({ message: 'Enregistrement de la cotisation réussi' });
 
