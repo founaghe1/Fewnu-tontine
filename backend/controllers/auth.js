@@ -9,6 +9,8 @@ const register = async (req, res, next) => {
 
   try {
     // const hashedPassword = await bcrypt.hash(password, 10);
+
+    //creer une intence du Model User puis l'enregistre dans la base de données
     const user = new User({ username, phoneNumber, email, password });
     await user.save();
     res.json({ message: 'Registration successful' });
@@ -24,6 +26,7 @@ const login = async (req, res, next) => {
   const {phoneNumber, password } = req.body;
 
   try {
+    //Verification de l'existence du user dans la base de données en utlisant le phoneNumber
     const user = await User.findOne({ phoneNumber });
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
@@ -32,6 +35,8 @@ const login = async (req, res, next) => {
 
     console.log(user);
 
+
+    //Comparaisons du password saisi parraport a celui existant dans la base de données
     const passwordMatch = await user.comparePassword(password);
 
     console.log(passwordMatch);
@@ -42,7 +47,7 @@ const login = async (req, res, next) => {
     }
 
     // Renvoyez un message de bienvenue avec le nom d'utilisateur
-    res.json({ message: 'Bienvenue, ' + user.username });
+    res.json({ message: 'Bienvenue, ' + user.username + user.phoneNumber });
 
     // const token = jwt.sign({ userId: user._id }, process.env.SECRET_KEY, {
     //   expiresIn: '1 hour'
@@ -54,34 +59,6 @@ const login = async (req, res, next) => {
   }
 };
 
-
-// const login = (req, res, next) => {
-//   const { username, password } = req.body;
-  
-//   User.findOne({ username })
-//     .then(user => {
-//       if (!user) {
-//         return res.status(401).json({ error: 'Utilisateur non trouvé !' });
-//       }
-
-      
-//       bcrypt.compare(password, user.password).then(valid => {
-//           if (!valid) {
-//             return res.status(401).json({ error: 'Mot de passe incorrect !' });
-//           }
-//           res.status(200).json({
-//             userId: user._id,
-//             token: jwt.sign(
-//               { userId: user._id },
-//               'RANDOM_TOKEN_SECRET',
-//               { expiresIn: '24h' }
-//             )
-//           });
-//         })
-//         .catch(error => res.status(500).json({ error }));
-//     })
-//     .catch(error => res.status(500).json({ error }));
-// };
 
 
 module.exports = { register, login };
