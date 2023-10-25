@@ -4,10 +4,10 @@ const User = require('../models/User');
 
 router.get('/profile', async (req, res, next) => {
   try {
-    // Récupérer toutes les tontines depuis la base de données
+    // Récupérer tous les utilisateur depuis la base de données
     const user = await User.find(); 
 
-    // Renvoyer les tontines en tant que réponse JSON
+    // Renvoyer la liste des utilisateurs en tant que réponse JSON
     res.json(user); 
   } catch (error) {
     next(error);
