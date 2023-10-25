@@ -4,13 +4,13 @@ import './index.css';
 import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter } from 'react-router-dom';
+import { AuthProvider } from './Components/ComponentUser/Inscription/IdentificationTelPin/Context/AuthContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  <AuthProvider>
     <App />
-  </React.StrictMode>
+  </AuthProvider>
 );
 
 // If you want your app to work offline and load faster, you can change
