@@ -29,6 +29,14 @@ const Identification = () => {
   .then((response) => {
     // Arrêtez le chargement en cas de réussite
     setLoading(false);
+
+    // Extraction des informations utilisateur de la réponse
+    const userData = response.data; 
+    // Supposons que les informations sont dans response.data
+
+    // Stockage des informations utilisateur dans le local storage
+    localStorage.setItem("userData", JSON.stringify(userData));
+
     navigate('/mesCotisations');
   })
   .catch((err) => {

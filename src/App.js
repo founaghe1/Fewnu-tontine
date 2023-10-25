@@ -35,11 +35,9 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/" element={<Identification />} />
+          <Route path="/" exact element={<Accueil />} />
+          <Route path="/idParCall" element={<Identification />} />
           <Route path="/mesCotisations" element={<Cotisation />} />
-          {/* <Route from="/" element={<Navigate to="/idParCall" />} /> */}
-
-          {/* <Route path="/" exact element={<Accueil />} />
           <Route path="/confirmNumber"  element={<Confime />} />
           <Route path="/infoPersonnelle"  element={<InfoPersonnelle />} />
           <Route path="/creatCode"  element={<Creercode />} />
@@ -52,7 +50,7 @@ function App() {
           <Route path='/modifInfoGeneral' element={<EditProfil />} />
           <Route path='/modifCodePin' element={<EditCodePin />} />
           <Route path='/connection' element={<Connection />} />
-          <Route path='/validerAjout' element={<ValiderAjout />} /> */}
+          <Route path='/validerAjout' element={<ValiderAjout />} />
         </Routes>
       </Router>
     </div>

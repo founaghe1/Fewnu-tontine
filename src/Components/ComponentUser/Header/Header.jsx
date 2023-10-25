@@ -8,9 +8,14 @@ const Header = () => {
   const [username, setUsername] = useState("");
 
   useEffect(() => {
-    // Récupérez le nom d'utilisateur depuis le Local Storage
-    const storedUsername = localStorage.getItem("username");
-    setUsername(storedUsername);
+    // Récupérez le nom de l'utilisateur depuis le localStorage
+    const storedUsername = localStorage.getItem("userData");
+
+    // Assurez-vous que les données existent et sont valides
+    if (storedUsername) {
+      const userData = JSON.parse(storedUsername);
+      setUsername(userData.user.username); // Assurez-vous que la propriété "username" existe dans vos données utilisateur
+    }
   }, []);
   return (
     <div className="headers"> 
