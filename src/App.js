@@ -28,14 +28,14 @@ import TypeTontine from "./Components/ComponentUser/Typetontine/TypeTontine";
 import Profil from "./Components/ComponentUser/Profil/Profil";
 import ValiderAjout from "./Components/ComponentUser/AjouterCotisation/ValiderAjout";
 
-import { AuthProvider } from "./Components/ComponentUser/Inscription/IdentificationTelPin/Context/AuthContext";
 
-function App() {
+
+function App() { 
   return (
     <div className="App">
       <Router>
         <Routes>
-          {/* <Route path="/" exact element={<Accueil />} /> */}
+          <Route path="/" exact element={<Accueil />} />
           <Route path="/" element={<Identification />} />
           <Route path="/mesCotisations" element={<Cotisation />} />
           {/* <Route path="/confirmNumber"  element={<Confime />} /> */}

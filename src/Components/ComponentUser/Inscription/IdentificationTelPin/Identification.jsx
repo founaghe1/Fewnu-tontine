@@ -5,13 +5,14 @@ import Input from "../../Input/Input";
 import Button from "../../Button/Button";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
+import FooterImg from '../../FooterImg/FooterImg'
 
 const Identification = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     phoneNumber: "",
     password: "",
-  });
+  }); 
 
   const [loading, setLoading] = useState(false);
 
@@ -90,7 +91,7 @@ const Identification = () => {
           {loading && <p className="mt-5 text-secondary">Chargement en cours...</p>}
         </form>
 
-        {/* <FooterImg /> */}
+        <FooterImg />
       </div>
     </div>
   );
