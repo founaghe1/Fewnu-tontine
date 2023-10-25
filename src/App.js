@@ -36,7 +36,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" exact element={<Accueil />} />
-          <Route path="/" element={<Identification />} />
+          <Route path="/idParCall" element={<Identification />} />
           <Route path="/mesCotisations" element={<Cotisation />} />
           {/* <Route path="/confirmNumber"  element={<Confime />} /> */}
           <Route path="/infoPersonnelle"  element={<InfoPersonnelle />} />
