@@ -35,12 +35,12 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/" exact element={<Accueil />} />
-          <Route path="/idParCall" element={<Identification />} />
+          {/* <Route path="/" exact element={<Accueil />} /> */}
+          <Route path="/" element={<Identification />} />
           <Route path="/mesCotisations" element={<Cotisation />} />
-          <Route path="/confirmNumber"  element={<Confime />} />
+          {/* <Route path="/confirmNumber"  element={<Confime />} /> */}
           <Route path="/infoPersonnelle"  element={<InfoPersonnelle />} />
-          <Route path="/creatCode"  element={<Creercode />} />
+          {/* <Route path="/creatCode"  element={<Creercode />} /> */}
           <Route path="/tontine"  element={<Tontine />} />
           <Route path="/ajouterCotisation"  element={<Ajouter />} />
           <Route path="/parametres"  element={<Parametre />} />
@@ -49,7 +49,7 @@ function App() {
           <Route path="/profil"  element={<Profil />} />
           <Route path='/modifInfoGeneral' element={<EditProfil />} />
           <Route path='/modifCodePin' element={<EditCodePin />} />
-          <Route path='/connection' element={<Connection />} />
+          {/* <Route path='/connection' element={<Connection />} /> */}
           <Route path='/validerAjout' element={<ValiderAjout />} />
         </Routes>
       </Router>
