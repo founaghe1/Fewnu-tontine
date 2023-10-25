@@ -12,7 +12,7 @@ const Identification = () => {
   const [formData, setFormData] = useState({
     phoneNumber: "",
     password: "",
-  });
+  }); 
 
   const [loading, setLoading] = useState(false);
 

@@ -30,12 +30,12 @@ import ValiderAjout from "./Components/ComponentUser/AjouterCotisation/ValiderAj
 
 
 
-function App() {
+function App() { 
   return (
     <div className="App">
       <Router>
         <Routes>
-          {/* <Route path="/" exact element={<Accueil />} /> */}
+          <Route path="/" exact element={<Accueil />} />
           <Route path="/" element={<Identification />} />
           <Route path="/mesCotisations" element={<Cotisation />} />
           {/* <Route path="/confirmNumber"  element={<Confime />} /> */}
