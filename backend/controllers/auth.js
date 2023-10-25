@@ -47,7 +47,7 @@ const login = async (req, res, next) => {
     }
 
     // Renvoyez un message de bienvenue avec le nom d'utilisateur
-    res.json({ message: 'Bienvenue, ' + user.username + user.phoneNumber });
+    res.json({ user });
 
     // const token = jwt.sign({ userId: user._id }, process.env.SECRET_KEY, {
     //   expiresIn: '1 hour'
