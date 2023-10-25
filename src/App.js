@@ -28,7 +28,7 @@ import TypeTontine from "./Components/ComponentUser/Typetontine/TypeTontine";
 import Profil from "./Components/ComponentUser/Profil/Profil";
 import ValiderAjout from "./Components/ComponentUser/AjouterCotisation/ValiderAjout";
 
-import { AuthProvider } from "./Components/ComponentUser/Inscription/IdentificationTelPin/Context/AuthContext";
+
 
 function App() {
   return (
