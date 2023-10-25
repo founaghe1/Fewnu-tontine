@@ -1,16 +1,25 @@
-La Documentation de fewnu tontine
-Fewnu tontine est une application web progressive qui permet de gérer des tontines .
-Cote Front end
-L’application se forme sur deux parties :
 
-    Partie Utilisateur
+# La Documentation de fewnu tontine
+Fewnu tontine est une application web progressive qui permet de gérer des tontines .
+
+## Installation
+    cloner le project
+        ```bash
+            cd fewnu-tontine
+            npm install 
+            npm run start
+        ```
+## structure du project
+
+### Cote Frontend
+#### Partie Utilisateur
         1-	Page de connexion
         2-	Page d’ajouter des cotisations
         3-	List des cotisations
         4-	Page de modification de profil
         5-	List des tontines
 
-    Partie Administration
+#### Partie Administration
         1-	Page d’inscription des membres
         2-	Page de création de tontine
         3-	Page ajout membre
@@ -22,9 +31,9 @@ L’application se forme sur deux parties :
         9-	Statistique des cotisations
         10-	Top progression
 
-Cote Back end
+### Cote Backend
 
-    Partie utilisateur
+#### Partie utilisateur
         •	S'authentifier;
         •	Se rappeler son code utilisateur;
         •	Se rappeler son mot de passe.
@@ -33,11 +42,31 @@ Cote Back end
         •	Voir la List de ces cotisations
         •	Pouvoir modifier son profil 
 
-    Partie admin
+#### Partie admin
         •	Ajouter, modifier, archiver des membres
         •	Lister des membres
         •	Ajouter des tontines
         •	Voir Access sur les tontines
         •	Voir les cotisations des membres de chaque tontine
         •	Voir historique des cotisations
+
+
+## Technologie utilise
+
+**Client:** Pwa Reactjs
+
+**Server:** Node, Express, mongoDB
+
+
+## Deployment
+
+le deploiment se fait sur la branch master qui est un deploiment continue sur vercel
+
+```bash
+  git add 
+  git commit -m
+  git push 
+
+```
+
 
