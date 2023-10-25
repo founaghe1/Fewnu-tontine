@@ -13,17 +13,27 @@ const Identification = () => {
     password: "",
   });
 
+  const [loading, setLoading] = useState(false);
+
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleLogin = (e) => {
     e.preventDefault()
+
+    //Commencer le chargement
+    setLoading(true);
+
     axios.post('https://fewnu-tontin.onrender.com/auth/login', formData)
   .then((response) => {
+    // Arrêtez le chargement en cas de réussite
+    setLoading(false);
     navigate('/mesCotisations');
   })
   .catch((err) => {
+    // Arrêtez le chargement en cas d'erreur
+    setLoading(false);
     console.error('Erreur de connexion :', err);
   });
   };
@@ -69,6 +79,7 @@ const Identification = () => {
               type="submit"
             />
           </div>
+          {loading && <p className="mt-5 text-secondary">Chargement en cours...</p>}
         </form>
 
         {/* <FooterImg /> */}
