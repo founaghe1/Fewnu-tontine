@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
+
+// Définit un schéma MongoDB pour l'entité "User".
 const userSchema = new mongoose.Schema(
   {
     username: {
@@ -55,7 +57,7 @@ userSchema.methods.comparePassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
 
-  
+// Crée un modèle Mongoose appelé "User" à partir du schéma défini ci-dessus.  
 const User = mongoose.model('User', userSchema);
   
 module.exports = User;

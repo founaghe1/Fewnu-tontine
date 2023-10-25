@@ -10,7 +10,7 @@ const register = async (req, res, next) => {
   try {
     // const hashedPassword = await bcrypt.hash(password, 10);
 
-    //creer une intence du Model User puis l'enregistre dans la base de données
+    //creer une instance du Model User puis l'enregistre dans la base de données
     const user = new User({ username, phoneNumber, email, password });
     await user.save();
     res.json({ message: 'Registration successful' });
