@@ -2,6 +2,11 @@ const express = require('express');
 const connectDB = require('./db');
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
+const addTontineRoutes = require('./routes/addTontine')
+const addCotisationRoutes = require('./routes/getCotisation')
+
+const addTontinesRoutes = require('./routes/getTontine')
+
 const cors = require("cors")
 
 const app = express();
@@ -21,6 +26,17 @@ app.use('/auth', authRoutes);
 
 // Define user routes
 app.use('/user', userRoutes); 
+
+// Define tontine routes
+app.use('/addTontine', addTontineRoutes);
+
+// Define cotisation routes
+app.use('/addCotisation', addCotisationRoutes);
+
+
+app.use('/cotisations', addCotisationRoutes);
+
+app.use('/tontines', addTontinesRoutes);
 
 // Start the server
 app.listen(PORT, () => {

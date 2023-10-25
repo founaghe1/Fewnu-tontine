@@ -1,14 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const User = require('../models/User');
+const Tontine = require('../models/Tontine');
 
-router.get('/profile', async (req, res, next) => {
+router.get('/getTontines', async (req, res, next) => {
   try {
     // Récupérer toutes les tontines depuis la base de données
-    const user = await User.find(); 
+    const tontine = await Tontine.find(); 
 
     // Renvoyer les tontines en tant que réponse JSON
-    res.json(user); 
+    res.json(tontine); 
   } catch (error) {
     next(error);
   }
