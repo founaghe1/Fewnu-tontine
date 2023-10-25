@@ -8,7 +8,7 @@ require('dotenv').config();
 const connectDB = async () => {
 
   // Définit l'URL de la base de données MongoDB; le nom de l'URL est stocké dans le fichier .env.
-  MONGODB_URL=`mongodb+srv://founaghe:founagheatlas@cluster0.ly68n1b.mongodb.net/fewnu-tontin?retryWrites=true&w=majority`
+  // MONGODB_URL=`mongodb+srv://founaghe:founagheatlas@cluster0.ly68n1b.mongodb.net/fewnu-tontin?retryWrites=true&w=majority`
 
   try {
      // Tente de se connecter à la base de données MongoDB en utilisant les options spécifiées.
@@ -16,7 +16,7 @@ const connectDB = async () => {
 
       // Utilise le nouveau moteur d'analyse d'URL (URL parser).
       useNewUrlParser: true,
-      
+
       // Utilise la nouvelle infrastructure de gestion de connexion.
       useUnifiedTopology: true,
     });
