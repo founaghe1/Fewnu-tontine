@@ -13,7 +13,7 @@ const CarteTontine = (props) => {
               <p className="montant text-uppercase">
                 <span>{props.montant}</span>f
               </p>
-              <img src={props.via} alt="" />
+              <img src={props.via} alt="" /> 
             </div>
           </div>
           <div className="bottom d-flex justify-content-between">

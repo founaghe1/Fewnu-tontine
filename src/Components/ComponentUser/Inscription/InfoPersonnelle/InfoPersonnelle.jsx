@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 const InfoPersonnelle = () => {
   return (
-    <div>
+    <div className='identif shadow'>
         <h4 className='text-center title'><span className='wallet'><GiWallet /></span> fewnu Tontine </h4>
         <p className='paragInfo text-center'>Informations personnelles</p>
         <p className='textInfo'>Renseigner vos informations</p>

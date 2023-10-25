@@ -8,11 +8,31 @@
     width: 330px;
     height: 42px;
     background-color: rgba(128, 128, 128, 0.073);
-    border-radius: 10px;
+    border-radius: 100px;
     padding-top: 12px;
     padding-left: 20px;
 }
 .item-sec p{
     text-align: left;
     font-size: 15px;
+}
+
+
+
+@media screen and (max-width: 900px) {
+    .item-sec{
+        width: 100%;
+    }
+    .parameter{
+        width: 100%;
+    }
+}  
+
+@media screen and (min-width: 901px) and (max-width: 1728px) {
+    .item-sec{
+        width: 100%;
+    }
+    .parameter{
+        width: 80%;
+    }
 }

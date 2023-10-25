@@ -3,6 +3,7 @@ import React from 'react'
 const Carte = (props) => {
   return (
     <div className='d-flex justify-content-center'>
+      <div className='carteWidth d-flex justify-content-center'>
       <div className='carte rounded-4 mb-3  d-flex'>
       <div className='left-side rounded-start-4 '>
       </div>
@@ -16,7 +17,8 @@ const Carte = (props) => {
             <p className="statut text-capitalize">{props.statut}</p>
         </div>
       </div>
-    </div>
+      </div>
+      </div>
     </div>
   )
 }

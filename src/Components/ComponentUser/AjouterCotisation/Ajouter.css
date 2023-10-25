@@ -4,7 +4,9 @@
     border-radius: 50%;
     border: 4.17px solid #20DF7F;
 }
-#header-profil .profil-img-containt h1{}
+
+/* #header-profil .profil-img-containt h1{} */
+
 .part1{
     text-align: center;
 }
@@ -36,10 +38,14 @@
 .Inputs .form-select, .form-control{
     min-width: 350px;
     height: 45px;
-    border-radius: 10px;
+    border-radius: 100px;
     border: 2px solid #093545;
     color: #093545;
     outline: none;
+}
+.form-check-input{
+    font-size: 15px;
+    border: 1px solid rgb(7, 6, 6);
 }
 .form-check-input:checked{
     background-color: #093545;
@@ -146,4 +152,30 @@
 .checkbox{
     border: 1px solid #093545;
     font-size: 20px;
+}
+
+
+@media screen and (max-width: 500px) {
+    .forme{
+        width: 98% !important;
+    }
+    .Inputs{
+        width: 100% !important;
+    }
+    .Inputs .form-select, .form-control{
+        min-width: 100%;
+    }
+}
+
+
+@media screen and (min-width: 500px) and (max-width: 900px) {
+    .forme{
+        width: 80% !important;
+    }
+    .Inputs{
+        width: 80% !important;
+    }
+    .Inputs .form-select, .form-control{
+        min-width: 80% !important;
+    }
 }

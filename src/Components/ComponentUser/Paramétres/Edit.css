@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Lato:wght@700&family=Lexend+Deca&family=Montserrat:wght@500;700&family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@300&family=Roboto+Slab:wght@500;600&family=Roboto:wght@500;700&family=Rubik&family=Work+Sans&display=swap');
+
 /* edit profil */
 #edit-profil #header-profil .profil-img-containt{
     width: 106px;
@@ -30,10 +32,10 @@
     text-align: center;
 }
 #edit-profil input{
-    background-color: #E5E5E5;
-    height: 35px;
-    border: 1.37px;
-    border-radius: 4.78px;
+    background-color: #e5e5e500;
+    height: 45px;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 100px;
 }
 #edit-profil label{
     font-family: Montserrat;
@@ -53,7 +55,6 @@
     font-size: 12px;
     font-weight: 700;
     line-height: 15px;
-    letter-spacing: 0em;
     text-align: left;
 }
 
@@ -92,10 +93,10 @@
     text-align: center;
 }
 #edit-code input{
-    background-color: #E5E5E5;
+    background-color: #e5e5e500;
     height: 35px;
-    border: 1.37px;
-    border-radius: 4.78px;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 100px;
 }
 #edit-code label{
     font-family: Montserrat;
@@ -118,3 +119,35 @@
     letter-spacing: 0em;
     text-align: left;
 }
+
+.form-label{
+    font-family: Montserrat !important;
+    font-weight: 500 !important;
+    font-size: 14px !important;
+    line-height: 15.85px !important;
+}
+
+
+    @media screen and (max-width: 500px) {
+        .form{
+            width: 98% !important;
+        }
+        .Inputs{
+            width: 100% !important;
+        }
+        .Inputs .form-select, .form-control{
+            min-width: 100% !important;
+        }
+    }
+
+    @media screen and (min-width: 500px) and (max-width: 900px) {
+        .form{
+            width: 80% !important;
+        }
+        .Inputs{
+            width: 50% !important;
+        }
+        .Inputs .form-select, .form-control{
+            min-width: 50% !important;
+        }
+    }

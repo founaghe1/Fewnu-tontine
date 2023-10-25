@@ -19,9 +19,9 @@ const EditProfil = () => {
             <HeaderProfil/>
         </div>
             <h1>Informations Générales</h1>
-        <div className='container'>
-            <form className=''>
-                <div class="mb-3">
+        <div className='container d-flex justify-content-center'>
+            <form className='px-2 form'>
+                <div class="mb-3"> 
                     <label for="exampleInputEmail1" class="form-label">Nom</label>
                     <input type="text" class="form-control"/>
                 </div>
@@ -41,9 +41,9 @@ const EditProfil = () => {
                     <label for="exampleInputPassword1" class="form-label">Proffession</label>
                     <input type="text" class="form-control"/>
                 </div>
-                <div className='d-flex justify-content-center pb-2'>
+                <div className='d-flex justify-content-center pb-2'> 
                     <Link to='/profil'>
-                        <button type="submit" id="Edit-button" className='px-2 '>Mettre à jour</button>
+                        <button type="submit" id="Edit-button" className='px-3 '>Mettre à jour</button>
                     </Link>    
                 </div>
             </form>

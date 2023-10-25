@@ -7,10 +7,10 @@ import Layout from '../Layout/Layout'
 const Parametre = () => {
   return (
     <Layout>
-    <div className='container mx-auto'>
-      <div className='py-5 px-4'>
-        <p className='text-capitalize title-sec '>profil</p>
-        <div className="justify-content-center">
+    <div className='container mx-auto parameter '>
+      <div className=''>
+        <p className='text-capitalize title-sec'>profil</p>
+        <div className="  justify-content-center">
             <div className='mb-3'>
                 <Link to='/profil' className='text-decoration-none text-dark'>
                 <div className='item-sec'>
@@ -34,7 +34,7 @@ const Parametre = () => {
             </div>    
         </div>
         <p className='text-capitalize title-sec '>support</p>
-        <div className="justify-content-center">
+        <div className=" justify-content-center">
             <div className='mb-3'>
                 <Link className='text-decoration-none text-dark'>
                 <div className='item-sec'>
@@ -56,7 +56,7 @@ const Parametre = () => {
                 </div>
                 </Link>
             </div>    
-            <div className='mb-3'>
+            <div className='mb-3'> 
                 <Link className='text-decoration-none text-dark'>
                 <div className='item-sec'>
                     <Link to='/connection' className='text-dark text-decoration-none'>
@@ -69,7 +69,7 @@ const Parametre = () => {
         
       </div>
     </div>
-    </Layout>
+    </Layout> 
   )
 }
 

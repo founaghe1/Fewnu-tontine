@@ -107,16 +107,16 @@ const Tontine = () => {
         }
       ];
       
-  return (
+  return ( 
     <Layout>
-    <div className='container-fluid pt-3 page-totine d-flex justify-content-center'>
-      <div>
+    <div className='container-fluid pt-3 page-totine d-flex justify-content-center '>
+      <div className='d-flex flex-column justify-content-center cart'>
       <AjoutCotisation/>
       <Link to='/detailCotisation' className='text-decoration-none text-dark'>
         {cardsData.map((card) => (
               <CarteTontine mois={card.mois} via={card.via} montant={card.montant} date={card.date} heure={card.heure} statut={card.statut}/>
             ))}
-      </Link>
+      </Link> 
       </div>
     </div>
     </Layout>

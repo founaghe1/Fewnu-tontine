@@ -12,6 +12,19 @@
 }
 .header{
     border: 1px solid rgba(255, 255, 255, 1);
-    background-color: rgb(8, 17, 56);
-    
+    background-color: rgb(8, 17, 56); 
+}
+.headers{
+    width:100%;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+  }
+
+@media screen and (min-width: 901px) and (max-width: 1728px) {
+    .headers{
+      width: 40%;
+      position: fixed;
+      top: 0;
+    }
 }

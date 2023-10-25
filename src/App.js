@@ -2,8 +2,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js'
 import './App.css';
-
-
+ 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Detailcotisation from './Components/ComponentUser/Detailscotisations/Detailcotisation/Detailcotisation';
 import Accueil from './Components/ComponentUser/Accueil/Accueil';
@@ -20,11 +19,15 @@ import EditCodePin from './Components/ComponentUser/Paramétres/EditCodePin';
 import Ajouter from './Components/ComponentUser/AjouterCotisation/Ajouter';
 import TypeTontine from './Components/ComponentUser/Typetontine/TypeTontine';
 import Profil from './Components/ComponentUser/Profil/Profil';
-import ValiderAjout from './Components/ComponentUser/AjouterCotisation/ValiderAjout'
+import ValiderAjout from './Components/ComponentUser/AjouterCotisation/ValiderAjout';
+
+
+// import LoginPage from './Components/LoginSimulation/LoginPage';
+// import Cotiser from './Components/cotiser/Cotiser';
 
 function App() {  
   return (
-    <div className="">
+    <div className="App">
       <Router>
         <Routes>
           <Route path="/" exact element={<Accueil />} />
@@ -35,7 +38,6 @@ function App() {
           <Route path="/mesCotisations"  element={<Cotisation />} />
           <Route path="/tontine"  element={<Tontine />} />
           <Route path="/ajouterCotisation"  element={<Ajouter />} />
-          {/* <Route path="/validerAjout"  element={<ValiderAjouter />} /> */}
           <Route path="/parametres"  element={<Parametre />} />
           <Route path="/typeTontine"  element={<TypeTontine />} />
           <Route path="/detailCotisation"  element={<Detailcotisation />} />
@@ -45,10 +47,18 @@ function App() {
           <Route path='/connection' element={<Connection />} />
           <Route path='/validerAjout' element={<ValiderAjout />} />
 
+          {/* <Route path='/login' element={<LoginPage />} /> */}
+
         </Routes>
       </Router> 
+      {/* <Router>
+        <Routes>
+          <Route path="/" exact element={<LoginPage/>} />
+          <Route path="/cotiser"  element={<Cotiser />} />
+        </Routes>
+      </Router> */}
     </div>
   );
-}
+} 
 
 export default App;
