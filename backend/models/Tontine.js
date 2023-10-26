@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 
-const userSchema = new mongoose.Schema(
+
+// Définit un schéma MongoDB pour l'entité "Tontine".
+const tontineSchema = new mongoose.Schema(
 
   {
     tontine: {
@@ -12,8 +14,8 @@ const userSchema = new mongoose.Schema(
 
 );
 
-
-const Tontine = mongoose.model('Tontine', userSchema);
+// Crée un modèle Mongoose appelé "Tontine" à partir du schéma défini ci-dessus.
+const Tontine = mongoose.model('Tontine', tontineSchema);
   
 module.exports = Tontine;
 

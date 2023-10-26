@@ -1,10 +1,17 @@
-// const express = require('express');
-// const { authenticate } = require('../middlewares/auth');
+const express = require('express');
+const router = express.Router();
+const Tontine = require('../models/Tontine');
 
-// const router = express.Router();
+router.get('/getTontines', async (req, res, next) => {
+  try {
+    // Récupérer toutes les tontines depuis la base de données
+    const tontine = await Tontine.find(); 
 
-// router.get('/profile', authenticate, (req, res) => {
-//   res.json({ message: `Welcome ${req.user.username}` });
-// });
+    // Renvoyer les tontines en tant que réponse JSON
+    res.json(tontine); 
+  } catch (error) {
+    next(error);
+  }
+});
 
-// module.exports = router;
+module.exports = router;
