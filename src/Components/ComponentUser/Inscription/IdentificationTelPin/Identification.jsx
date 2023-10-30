@@ -5,7 +5,10 @@ import Input from "../../Input/Input";
 import Button from "../../Button/Button";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
-import FooterImg from '../../FooterImg/FooterImg'
+import FooterImg from '../../FooterImg/FooterImg';
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 const Identification = () => {
   const navigate = useNavigate();
@@ -14,7 +17,6 @@ const Identification = () => {
     password: "",
   }); 
 
-  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleInputChange = (e) => {
@@ -45,11 +47,11 @@ const Identification = () => {
     // Arrêtez le chargement en cas d'erreur
     setLoading(false);
 
-    if (err.response && err.response.data && err.response.data.message) {
-          setError(err.response.data.message);
-        } else {
-          setError("Une erreur s'est produite lors de la connexion. Veuillez réessayer.");
-        }
+    // Utilisez toast.error pour afficher le message d'erreur
+    toast.error(
+      err.response?.data?.message ||
+        "Numéro téléphone ou mot de passe incorrect."
+    );
   });
   };
 
@@ -95,8 +97,9 @@ const Identification = () => {
             />
           </div>
           {loading && <p className="mt-5 text-secondary">Chargement en cours...</p>}
-          {error && <p className="mt-3 text-danger">{error}</p>}
+          
         </form>
+        <ToastContainer position="top-center" autoClose={3000} hideProgressBar />
 
         <FooterImg />
       </div>
