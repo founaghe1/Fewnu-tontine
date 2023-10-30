@@ -18,7 +18,7 @@ const Parametre = ({ status = [] }) => {
 
 
 // function deconnection
-const logOut = () => {
+const logOut = () => { 
   try {
     
     localStorage.removeItem("userData");
