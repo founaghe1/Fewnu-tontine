@@ -3,18 +3,34 @@ import "./Parametre.css";
 import { Link, useNavigate } from "react-router-dom";
 import Layout from "../Layout/Layout";
 
-const Parametre = () => {
-  const navigate = useNavigate();
+const Parametre = ({ status = [] }) => {
+    const navigate = useNavigate();
 
   // Fonction pour gérer la déconnexion
-  const handleLogout = () => {
-    // Effacez les données de l'utilisateur du localStorage (ou tout autre moyen de stockage)
-    localStorage.removeItem("userData"); // Supprimez la clé de stockage
+//   const handleLogout = () => {
+//     // Effacez les données de l'utilisateur du localStorage (ou tout autre moyen de stockage)
+//     localStorage.removeItem('userData'); // Supprimez la clé de stockage
 
-    // Redirigez l'utilisateur vers la page d'accueil
-    navigate("/idParCall");
-  };
-  return (
+//     // Redirigez l'utilisateur vers la page d'accueil
+//     navigate('/');
+//   };
+
+
+
+// function deconnection
+const logOut = () => {
+  try {
+    
+    localStorage.removeItem("userData");
+    navigate("/idParCall", {replace: true});
+  } catch (error) {
+    alert("Erreur de deconnection, veuillez verifier votre connection");
+    console.error(error);
+  }
+};
+
+
+return (
     <Layout>
       <div className="container mx-auto parameter ">
         <div className="">
@@ -73,7 +89,7 @@ const Parametre = () => {
             </div>
             <div className="mb-3">
               <Link className="text-decoration-none text-dark">
-                <div className="item-sec" onClick={handleLogout}>
+                <div className="item-sec" onClick={logOut}>
                   <Link className="text-dark text-decoration-none">
                     <p>Se déconnecter</p>
                   </Link>
@@ -82,6 +98,40 @@ const Parametre = () => {
             </div>
           </div>
         </div>
+        <p className='text-capitalize title-sec '>support</p>
+        <div className=" justify-content-center">
+            <div className='mb-3'>
+                <Link className='text-decoration-none text-dark'>
+                <div className='item-sec'>
+                    <p>Contact par téléphone</p>
+                </div>
+                </Link>
+            </div>    
+            <div className='mb-3'>
+                <Link className='text-decoration-none text-dark'>
+                <div className='item-sec'>
+                    <p>Contact par whatsapp</p>
+                </div>
+                </Link>
+            </div>    
+            <div className='mb-5'>
+                <Link className='text-decoration-none text-dark'>
+                <div className='item-sec'>
+                    <p>Devenir administrateur</p>
+                </div>
+                </Link>
+            </div>    
+            <div className='mb-3'> 
+                <Link className='text-decoration-none text-dark'>
+                <div className='item-sec' onClick={logOut}>
+                    <Link className='text-dark text-decoration-none'>
+                        <p>Se déconnecter</p>
+                    </Link>
+                </div>
+                </Link>
+            </div>    
+        </div>
+        
       </div>
     </Layout>
   );
