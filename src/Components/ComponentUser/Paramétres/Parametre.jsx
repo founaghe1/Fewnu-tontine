@@ -3,25 +3,15 @@ import "./Parametre.css";
 import { Link, useNavigate } from "react-router-dom";
 import Layout from "../Layout/Layout";
 
-const Parametre = ({ status = [] }) => {
+const Parametre = () => {
     const navigate = useNavigate();
-
-  // Fonction pour gérer la déconnexion
-//   const handleLogout = () => {
-//     // Effacez les données de l'utilisateur du localStorage (ou tout autre moyen de stockage)
-//     localStorage.removeItem('userData'); // Supprimez la clé de stockage
-
-//     // Redirigez l'utilisateur vers la page d'accueil
-//     navigate('/');
-//   };
-
-
 
 // function deconnection
 const logOut = () => { 
   try {
-    
+    // Effacez les données de l'utilisateur du localStorage (ou tout autre moyen de stockage)
     localStorage.removeItem("userData");
+    // Redirigez l'utilisateur vers la page de connexion
     navigate("/idParCall", {replace: true});
   } catch (error) {
     alert("Erreur de deconnection, veuillez verifier votre connection");
