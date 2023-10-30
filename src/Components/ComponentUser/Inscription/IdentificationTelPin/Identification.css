@@ -36,12 +36,43 @@
     color: rgba(255, 255, 255, 1);
     font-family: Montserrat;
 }
+#motDePasse{
+    background-color: rgba(34, 73, 87, 1);
+    height: 45px;
+    width: 255px;
+    color: rgba(255, 255, 255, 1);
+    font-family: Montserrat;
+    border: none;
+    outline: none;
+}
 .input::placeholder{
     color: rgba(255, 255, 255, 1);
     font-family: Montserrat;
     font-size: 14px;
 }
-
+.password-input-container{
+    background-color: rgba(34, 73, 87, 1);
+    height: 45px;
+    width: 300px;
+    margin-top: 30px !important;
+    padding-top: 0;
+    color: rgba(255, 255, 255, 1);
+    font-family: Montserrat;
+    border-radius: 100px;
+}
+#password-toggle-button{
+    color: rgba(34, 73, 87, 1);
+    background: rgba(32, 223, 127, 1);
+    border-radius: 100px;
+    height: 35px;
+    width: 35px;
+    border: none;
+    font-family: Montserrat;
+    font-weight: 700;
+    line-height: 20px;
+    font-size: 16px;
+    box-shadow: 2px 2px 5px grey;
+}
 .btnIdenti{
     margin-top: 30px;
     background: rgba(32, 223, 127, 1);
