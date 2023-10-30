@@ -28,7 +28,7 @@ import TypeTontine from "./Components/ComponentUser/Typetontine/TypeTontine";
 import Profil from "./Components/ComponentUser/Profil/Profil";
 import ValiderAjout from "./Components/ComponentUser/AjouterCotisation/ValiderAjout";
 import PrivateRoute from "./Components/ComponentUser/Routes/PrivateRoute/PrivateRoute";
-import UserRoute from "./Components/ComponentUser/Routes/UserRoute/UserRoute";
+
 
 
 
@@ -42,7 +42,7 @@ function App() {
           <Route path="/"  element={<Accueil />} />
           <Route path="/idParCall" element={<Identification />} />
 
-          <Route path="/" element={<PrivateRoute role={["user"]} />} >
+          <Route path="/" element={<PrivateRoute />} >
             <Route index path="/mesCotisations" element={<Cotisation />} />
             {/* <Route path="/confirmNumber"  element={<Confime />} /> */}
             {/* <Route path="/infoPersonnelle"  element={<InfoPersonnelle />} /> */}

@@ -23,7 +23,7 @@ const logOut = () => {
   try {
     
     localStorage.removeItem("userData");
-    navigate("/", {replace: true});
+    navigate("/idParCall", {replace: true});
   } catch (error) {
     alert("Erreur de deconnection, veuillez verifier votre connection");
     console.error(error);

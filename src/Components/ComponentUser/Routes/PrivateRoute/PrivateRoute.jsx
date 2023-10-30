@@ -19,7 +19,7 @@ const PrivateRoute = ({ children }) => {
         return <Outlet />;
     } else {
         // Si l'utilisateur a un rôle différent, redirigez-le vers une autre page (par exemple, un message d'erreur ou la page d'accueil)
-        return <Navigate to="/" />;
+        return <Navigate to="/idParCall" />;
     }
   
 }
