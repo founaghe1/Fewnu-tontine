@@ -17,6 +17,16 @@ root.render(
 // Learn more about service workers: https://cra.link/PWA
 serviceWorkerRegistration.register();
 
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/service-worker.js')
+    .then(registration => {
+      console.log('Service Worker enregistré avec succès:', registration);
+    })
+    .catch(error => {
+      console.log('Erreur denregistrement du Service Worker:', error);
+    });
+}
+
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
