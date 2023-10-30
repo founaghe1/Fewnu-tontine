@@ -43,20 +43,20 @@ function App() {
           <Route path="/idParCall" element={<Identification />} />
 
           <Route path="/" element={<PrivateRoute role={["user"]} />} >
-          <Route index path="/mesCotisations" element={<Cotisation />} />
-          {/* <Route path="/confirmNumber"  element={<Confime />} /> */}
-          {/* <Route path="/infoPersonnelle"  element={<InfoPersonnelle />} /> */}
-          {/* <Route path="/creatCode"  element={<Creercode />} /> */}
-          <Route path="/tontine"  element={<Tontine />} />
-          <Route path="/ajouterCotisation"  element={<Ajouter />} />
-          <Route path="/parametres"  element={<Parametre />} />
-          <Route path="/typeTontine"  element={<TypeTontine />} />
-          <Route path="/detailCotisation"  element={<Detailcotisation />} />
-          <Route path="/profil"  element={<Profil />} />
-          <Route path='/modifInfoGeneral' element={<EditProfil />} />
-          <Route path='/modifCodePin' element={<EditCodePin />} />
-          {/* <Route path='/connection' element={<Connection />} /> */}
-          <Route path='/validerAjout' element={<ValiderAjout />} />
+            <Route index path="/mesCotisations" element={<Cotisation />} />
+            {/* <Route path="/confirmNumber"  element={<Confime />} /> */}
+            {/* <Route path="/infoPersonnelle"  element={<InfoPersonnelle />} /> */}
+            {/* <Route path="/creatCode"  element={<Creercode />} /> */}
+            <Route path="/tontine"  element={<Tontine />} />
+            <Route path="/ajouterCotisation"  element={<Ajouter />} />
+            <Route path="/parametres"  element={<Parametre />} />
+            <Route path="/typeTontine"  element={<TypeTontine />} />
+            <Route path="/detailCotisation"  element={<Detailcotisation />} />
+            <Route path="/profil"  element={<Profil />} />
+            <Route path='/modifInfoGeneral' element={<EditProfil />} />
+            <Route path='/modifCodePin' element={<EditCodePin />} />
+            {/* <Route path='/connection' element={<Connection />} /> */}
+            <Route path='/validerAjout' element={<ValiderAjout />} />
           </Route>
 
         </Routes>
