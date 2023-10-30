@@ -113,7 +113,7 @@ const Identification = () => {
                 onClick={toggleShowPassword}
                 id="password-toggle-button"
               >
-                {showPassword ? <FaEyeSlash /> : <FaEye />}
+                {showPassword ? <FaEyeSlash className="fs-5"/> : <FaEye className="fs-5"/>}
               </button>
             </div>
           </div>
