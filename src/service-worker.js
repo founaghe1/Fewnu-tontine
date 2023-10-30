@@ -133,3 +133,13 @@ self.addEventListener('message', (event) => {
     self.skipWaiting();
   }
 });
+
+self.addEventListener('fetch', (event) => {
+  event.respondWith(async function () {
+    try {
+      return await fetch(event.request);
+    } catch (err) {
+      return caches.match(event.request);
+    }
+  }());
+});
