@@ -14,6 +14,7 @@ const Identification = () => {
     password: "",
   }); 
 
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleInputChange = (e) => {
@@ -43,7 +44,12 @@ const Identification = () => {
   .catch((err) => {
     // Arrêtez le chargement en cas d'erreur
     setLoading(false);
-    console.error('Erreur de connexion :', err);
+
+    if (err.response && err.response.data && err.response.data.message) {
+          setError(err.response.data.message);
+        } else {
+          setError("Une erreur s'est produite lors de la connexion. Veuillez réessayer.");
+        }
   });
   };
 
@@ -89,6 +95,7 @@ const Identification = () => {
             />
           </div>
           {loading && <p className="mt-5 text-secondary">Chargement en cours...</p>}
+          {error && <p className="mt-3 text-danger">{error}</p>}
         </form>
 
         <FooterImg />
