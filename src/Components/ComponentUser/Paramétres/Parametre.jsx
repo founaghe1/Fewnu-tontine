@@ -98,39 +98,6 @@ return (
             </div>
           </div>
         </div>
-        <p className='text-capitalize title-sec '>support</p>
-        <div className=" justify-content-center">
-            <div className='mb-3'>
-                <Link className='text-decoration-none text-dark'>
-                <div className='item-sec'>
-                    <p>Contact par téléphone</p>
-                </div>
-                </Link>
-            </div>    
-            <div className='mb-3'>
-                <Link className='text-decoration-none text-dark'>
-                <div className='item-sec'>
-                    <p>Contact par whatsapp</p>
-                </div>
-                </Link>
-            </div>    
-            <div className='mb-5'>
-                <Link className='text-decoration-none text-dark'>
-                <div className='item-sec'>
-                    <p>Devenir administrateur</p>
-                </div>
-                </Link>
-            </div>    
-            <div className='mb-3'> 
-                <Link className='text-decoration-none text-dark'>
-                <div className='item-sec' onClick={logOut}>
-                    <Link className='text-dark text-decoration-none'>
-                        <p>Se déconnecter</p>
-                    </Link>
-                </div>
-                </Link>
-            </div>    
-        </div>
         
       </div>
     </Layout>
