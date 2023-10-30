@@ -27,19 +27,25 @@ import Ajouter from "./Components/ComponentUser/AjouterCotisation/Ajouter";
 import TypeTontine from "./Components/ComponentUser/Typetontine/TypeTontine";
 import Profil from "./Components/ComponentUser/Profil/Profil";
 import ValiderAjout from "./Components/ComponentUser/AjouterCotisation/ValiderAjout";
+import PrivateRoute from "./Components/ComponentUser/Routes/PrivateRoute/PrivateRoute";
+import UserRoute from "./Components/ComponentUser/Routes/UserRoute/UserRoute";
 
 
 
 function App() { 
+
+
   return (
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/" exact element={<Accueil />} />
+          <Route path="/"  element={<Accueil />} />
           <Route path="/idParCall" element={<Identification />} />
-          <Route path="/mesCotisations" element={<Cotisation />} />
+
+          <Route path="/" element={<PrivateRoute role={["user"]} />} >
+          <Route index path="/mesCotisations" element={<Cotisation />} />
           {/* <Route path="/confirmNumber"  element={<Confime />} /> */}
-          <Route path="/infoPersonnelle"  element={<InfoPersonnelle />} />
+          {/* <Route path="/infoPersonnelle"  element={<InfoPersonnelle />} /> */}
           {/* <Route path="/creatCode"  element={<Creercode />} /> */}
           <Route path="/tontine"  element={<Tontine />} />
           <Route path="/ajouterCotisation"  element={<Ajouter />} />
@@ -51,6 +57,8 @@ function App() {
           <Route path='/modifCodePin' element={<EditCodePin />} />
           {/* <Route path='/connection' element={<Connection />} /> */}
           <Route path='/validerAjout' element={<ValiderAjout />} />
+          </Route>
+
         </Routes>
       </Router>
     </div>

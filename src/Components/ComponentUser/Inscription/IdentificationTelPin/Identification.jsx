@@ -9,6 +9,7 @@ import FooterImg from '../../FooterImg/FooterImg'
 
 const Identification = () => {
   const navigate = useNavigate();
+  const [userStatus, setUserStatus] = useState("");
   const [formData, setFormData] = useState({
     phoneNumber: "",
     password: "",
@@ -26,26 +27,37 @@ const Identification = () => {
     //Commencer le chargement
     setLoading(true);
 
-    axios.post('https://fewnu-tontin.onrender.com/auth/login', formData)
-  .then((response) => {
+    axios.post('https://fewnu-tontin.onrender.com/auth/login', formData).then((response) => {
     // Arrêtez le chargement en cas de réussite
     setLoading(false);
 
     // Extraction des informations utilisateur de la réponse
     const userData = response.data; 
     // Supposons que les informations sont dans response.data
-
+  
     // Stockage des informations utilisateur dans le local storage
     localStorage.setItem("userData", JSON.stringify(userData));
+    const role = userData.user.role;
+    console.log(userData.user.role);
+    setUserStatus(role);
+    
+   
 
-    navigate('/mesCotisations');
-  })
-  .catch((err) => {
+      if (role === "user") {
+        navigate("/mesCotisations");
+        console.log(role);
+      }
+   
+
+  }).catch((err) => {
     // Arrêtez le chargement en cas d'erreur
     setLoading(false);
     console.error('Erreur de connexion :', err);
   });
   };
+
+
+  
 
   return (
     <div className="identif shadow">
@@ -86,6 +98,7 @@ const Identification = () => {
               libelet="S’identifier"
               className="btnIdenti"
               type="submit"
+              
             />
           </div>
           {loading && <p className="mt-5 text-secondary">Chargement en cours...</p>}

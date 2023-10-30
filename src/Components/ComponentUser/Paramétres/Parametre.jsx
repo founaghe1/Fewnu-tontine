@@ -4,18 +4,34 @@ import { Link, useNavigate } from 'react-router-dom'
 import Layout from '../Layout/Layout'
 
 
-const Parametre = () => {
+const Parametre = ({ status = [] }) => {
     const navigate = useNavigate();
 
   // Fonction pour gérer la déconnexion
-  const handleLogout = () => {
-    // Effacez les données de l'utilisateur du localStorage (ou tout autre moyen de stockage)
-    localStorage.removeItem('userData'); // Supprimez la clé de stockage
+//   const handleLogout = () => {
+//     // Effacez les données de l'utilisateur du localStorage (ou tout autre moyen de stockage)
+//     localStorage.removeItem('userData'); // Supprimez la clé de stockage
 
-    // Redirigez l'utilisateur vers la page d'accueil
-    navigate('/');
-  };
-  return (
+//     // Redirigez l'utilisateur vers la page d'accueil
+//     navigate('/');
+//   };
+
+
+
+// function deconnection
+const logOut = () => {
+  try {
+    
+    localStorage.removeItem("userData");
+    navigate("/", {replace: true});
+  } catch (error) {
+    alert("Erreur de deconnection, veuillez verifier votre connection");
+    console.error(error);
+  }
+};
+
+
+return (
     <Layout>
     <div className='container mx-auto parameter '>
       <div className=''>
@@ -68,7 +84,7 @@ const Parametre = () => {
             </div>    
             <div className='mb-3'> 
                 <Link className='text-decoration-none text-dark'>
-                <div className='item-sec' onClick={handleLogout}>
+                <div className='item-sec' onClick={logOut}>
                     <Link className='text-dark text-decoration-none'>
                         <p>Se déconnecter</p>
                     </Link>
