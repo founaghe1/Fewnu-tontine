@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { BiSolidDownload } from "react-icons/bi";
 
 const Accueil = () => {
+  
   const [showInstallBanner, setShowInstallBanner] = useState(false);
   let promptEvent = null;
 
