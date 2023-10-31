@@ -47,7 +47,7 @@ const login = async (req, res, next) => {
       return res.status(401).json({ message: 'Incorrect password', password, passwordMatch });
     }
 
-    // Renvoyez un message de bienvenue avec le nom d'utilisateur
+    // Renvoyez les informations du user
     res.json({ user });
 
     // const token = jwt.sign({ userId: user._id }, process.env.SECRET_KEY, {
