@@ -12,7 +12,7 @@ const AjoutCotisation = () => {
           <FaSackDollar className="icon" /> 
         </div>
         <div className="info-containt mt-2">
-          <p className="text-capitalize fw-bold fs-4">cotiations</p>
+          <p className="text-capitalize fw-bold fs-4">cotisations</p>
           <p className="text-capitalize text-start">
             <span>tontine téléphone</span>
           </p>
