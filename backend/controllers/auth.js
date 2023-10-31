@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
+const mongoose = require('mongoose');
 const User = require('../models/User');
 
 
@@ -61,4 +62,45 @@ const login = async (req, res, next) => {
 
 
 
-module.exports = { register, login };
+const update = async (req, res, next) => {
+  const userId = req.params.id; // Vous devez avoir un moyen de transmettre l'ID de l'utilisateur à mettre à jour (par exemple, depuis les paramètres de l'URL).
+
+  try {
+    // Vérifiez si l'utilisateur existe en recherchant son ID.
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    // Mettez à jour les propriétés de l'utilisateur avec les nouvelles valeurs.
+    if (req.body.username) {
+      user.username = req.body.username;
+    }
+
+    if (req.body.phoneNumber) {
+      user.phoneNumber = req.body.phoneNumber;
+    }
+
+    if (req.body.email) {
+      user.email = req.body.email;
+    }
+
+    if (req.body.password) {
+      user.password = req.body.password;
+    }
+
+    // Enregistrez les modifications dans la base de données.
+    await user.save();
+
+    res.json({ message: 'User updated successfully', user });
+  } catch (error) {
+    next(error);
+  }
+  
+};
+
+
+
+
+module.exports = { register, login, update };
