@@ -47,43 +47,6 @@ const handleUpdatePW = () => {
       });
   }
 };
-
- 
-  
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  
-  //   // Récupérez l'ID de l'utilisateur depuis le stockage local
-  //   const userData = JSON.parse(localStorage.getItem("userData"));
-  //   const userID = userData.user._id;
-  
-  //   try {
-  //     // Utilisez l'ID de l'utilisateur pour construire l'URL de la requête API
-  //     const url = `https://fewnu-tontin.onrender.com/updateUser/updateUser/${userID}`;
-  
-  //     const response = await axios.put(url, {
-  //       oldPassword,
-  //       newPassword,
-  //     });
-  
-  //     if (response.data.success) {
-  //       // Mot de passe modifié avec succès
-  //       toast.success('Mot de passe modifié avec succès');
-  
-  //       // Mise à jour la propriété "password" du tableau "user" dans le local storage
-  //       userData.user.password = newPassword; 
-  //       // Mise à jour du mot de passe
-  //       localStorage.setItem("userData", JSON.stringify(userData));
-  
-  //     } else {
-  //       // Gérer les erreurs
-  //       toast.error(`Échec de la modification du mot de passe : ${response.data.message}`);
-  //     }
-  //   } catch (error) {
-  //     // Gérer les erreurs
-  //     toast.error('Erreur de modification du mot de passe');
-  //   }
-  // };
   
 
   return (
@@ -125,7 +88,7 @@ const handleUpdatePW = () => {
               />
             </div>
             <div className="d-flex justify-content-center mt-5 mb-3">
-              <button type="submit"  id="Edit-button" className="px-3" onClick={handleUpdatePW}>
+              <button type="button"  id="Edit-button" className="px-3" onClick={handleUpdatePW}>
                 Mettre à jour
               </button>
             </div>
