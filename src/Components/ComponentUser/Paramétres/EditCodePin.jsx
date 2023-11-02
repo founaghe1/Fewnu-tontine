@@ -12,8 +12,7 @@ const EditCodePin = () => {
   const [oldPassword, setOldPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
 
- useEffect(() => {
-}, []);
+
 const handleUpdatePW = () => {
   const updatedPassword = {
     newPassword,
