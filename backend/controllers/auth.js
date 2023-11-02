@@ -6,13 +6,13 @@ const User = require('../models/User');
 
 // Register a new user
 const register = async (req, res, next) => {
-  const { username, phoneNumber,  email, password } = req.body;
+  const { firstName, lastName, phoneNumber,  email, password } = req.body;
 
   try {
     // const hashedPassword = await bcrypt.hash(password, 10);
 
     //creer une instance du Model User puis l'enregistre dans la base de données
-    const user = new User({ username, phoneNumber, email, password });
+    const user = new User({ firstName, lastName, phoneNumber, email, password });
     await user.save();
     res.json({ message: 'Registration successful' });
 
@@ -74,8 +74,12 @@ const update = async (req, res, next) => {
     }
 
     // Mettez à jour les propriétés de l'utilisateur avec les nouvelles valeurs.
-    if (req.body.username) {
-      user.username = req.body.username;
+    if (req.body.firstName) {
+      user.firstName = req.body.firstName;
+    }
+
+    if (req.body.lastName) {
+      user.lastName = req.body.lastName;
     }
 
     if (req.body.phoneNumber) {
