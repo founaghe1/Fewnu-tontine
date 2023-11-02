@@ -5,6 +5,8 @@ import { MdKeyboardArrowLeft } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import Layout from '../Layout/Layout';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const EditProfil = () => {
 
@@ -48,15 +50,20 @@ const EditProfil = () => {
       // Effectuez une requête HTTP PUT pour mettre à jour le profil de l'utilisateur.
       axios.put(`https://fewnu-tontin.onrender.com/updateUser/updateUser/${userId}`, updatedProfileData)
         .then((response) => {
-          // Mise à jour des données dans le localStorage
-          userData.user.firstName = updatedProfileData.firstName;
-          userData.user.lastName = updatedProfileData.lastName;
-          userData.user.phoneNumber = updatedProfileData.phoneNumber;
-          userData.user.email = updatedProfileData.email;
-          localStorage.setItem("userData", JSON.stringify(userData));
+            // Mise à jour des données dans le localStorage
+            userData.user.firstName = updatedProfileData.firstName;
+            userData.user.lastName = updatedProfileData.lastName;
+            userData.user.phoneNumber = updatedProfileData.phoneNumber;
+            userData.user.email = updatedProfileData.email;
+            localStorage.setItem("userData", JSON.stringify(userData));
 
-          // Gérez la réponse de l'API ici (par exemple, affichez un message de succès).
-          console.log(response.data);
+            // Affichez un toast de succès
+            toast.success("Profil mis à jour avec succès", {
+                position: toast.POSITION.TOP_CENTER, // Position du toast
+            });
+
+            // Gérez la réponse de l'API ici (affichez un message de succès au console).
+            console.log(response.data);
         })
         .catch((error) => {
           // Gérez les erreurs ici (par exemple, affichez un message d'erreur).
@@ -84,6 +91,7 @@ const EditProfil = () => {
 
   return (
     <Layout>
+        <ToastContainer />
     <div id='edit-profil' className='p-0'>
         <span className="ps-3">
             <Link to='/parametres' >
