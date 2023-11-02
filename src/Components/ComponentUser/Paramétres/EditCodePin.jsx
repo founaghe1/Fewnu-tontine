@@ -12,42 +12,49 @@ const EditCodePin = () => {
   const [oldPassword, setOldPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
 
+  useEffect(() => {
+    // Récupérez le nom de l'utilisateur depuis le localStorage
+    const storedUser = localStorage.getItem("userData");
 
-const handleUpdatePW = () => {
-  const updatedPassword = {
-    newPassword,
-  };
+    // Assurez-vous que les données existent et sont valides
+    if (storedUser) {
+      const userData = JSON.parse(storedUser);
+      setOldPassword(userData.user.password); // Récupérez le mot de passe en clair
+    }
+  }, []);
 
-  // Récupérez l'userId de l'utilisateur connecté depuis le localStorage
-  const storedUser = localStorage.getItem("userData");
-  if (storedUser) {
-    const userData = JSON.parse(storedUser);
-    const userId = userData.user._id;
+  const handleUpdatePW = () => {
+    const updatedPassword = {
+      newPassword,
+    };
 
-    console.log("userId : ",userData.user._id);
+    // Récupérez l'userId de l'utilisateur connecté depuis le localStorage
+    const storedUser = localStorage.getItem("userData");
+    if (storedUser) {
+      const userData = JSON.parse(storedUser);
+      const userId = userData.user._id;
 
-    // Effectuez une requête HTTP PUT pour mettre à jour le profil de l'utilisateur.
-    axios.put(`https://fewnu-tontin.onrender.com/updateUser/updateUser/${userId}`, updatedPassword)
-      .then((response) => {
+      // Effectuez une requête HTTP PUT pour mettre à jour le mot de passe de l'utilisateur dans la base de données.
+      axios.put(`https://fewnu-tontin.onrender.com/updateUser/updateUser/${userId}`, updatedPassword)
+        .then((response) => {
           // Mise à jour des données dans le localStorage
           userData.user.password = updatedPassword.newPassword;
           localStorage.setItem("userData", JSON.stringify(userData));
 
           // Affichez un toast de succès
-          toast.success("Mis à jour du mot de passe avec succès", {
-              position: toast.POSITION.TOP_CENTER, // Position du toast
+          toast.success("Mise à jour du mot de passe avec succès", {
+            position: toast.POSITION.TOP_CENTER,
           });
 
           // Gérez la réponse de l'API ici (affichez un message de succès au console).
           console.log(response.data);
-      })
-      .catch((error) => {
-        // Gérez les erreurs ici (par exemple, affichez un message d'erreur).
-        console.error(error);
-      });
-  }
-};
-  
+        })
+        .catch((error) => {
+          // Gérez les erreurs ici (par exemple, affichez un message d'erreur).
+          console.error(error);
+        });
+    }
+  };
 
   return (
     <Layout>
@@ -62,14 +69,14 @@ const handleUpdatePW = () => {
         </div>
         <h1>Modifier votre code PIN</h1>
         <div className="container d-flex justify-content-center">
-          <form className="px-3 form" >
+          <form className="px-3 form">
             <div className="mb-3">
               <label htmlFor="exampleInputEmail1" className="form-label">
-                Actuel mot de passe
+                Ancien mot de passe
               </label>
               <input
-                type="password"
-                placeholder="Actuel mot de passe"
+                type=""
+                placeholder="Ancien mot de passe"
                 value={oldPassword}
                 onChange={(e) => setOldPassword(e.target.value)}
                 className="form-control"
@@ -88,7 +95,7 @@ const handleUpdatePW = () => {
               />
             </div>
             <div className="d-flex justify-content-center mt-5 mb-3">
-              <button type="button"  id="Edit-button" className="px-3" onClick={handleUpdatePW}>
+              <button type="button" id="Edit-button" className="px-3" onClick={handleUpdatePW}>
                 Mettre à jour
               </button>
             </div>

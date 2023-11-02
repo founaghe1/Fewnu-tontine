@@ -9,6 +9,8 @@ const getCotisationsRoutes = require('./routes/getCotisation')
 const getTontinesRoutes = require('./routes/getTontine')
 const updateUser = require('./routes/updateUser')
 
+const updatePassword = require('./routes/updateUser')
+
 const cors = require("cors")
 
 const app = express();
@@ -43,6 +45,8 @@ app.use('/tontines', getTontinesRoutes);
 
 // Utilisez le routeur pour gérer les routes liées aux utilisateurs.
 app.use('/updateUser', updateUser);
+
+app.use('/updatePassword', updatePassword);
 
 // Start the server
 app.listen(PORT, () => {

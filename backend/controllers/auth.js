@@ -105,6 +105,33 @@ const update = async (req, res, next) => {
 };
 
 
+const updatePassword = async (req, res, next) => {
+  const userId = req.params.id; // Vous devez avoir un moyen de transmettre l'ID de l'utilisateur à mettre à jour (par exemple, depuis les paramètres de l'URL).
+
+  try {
+    // Vérifiez si l'utilisateur existe en recherchant son ID.
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
 
 
-module.exports = { register, login, update };
+    if (req.body.password) {
+      user.password = req.body.password;
+    }
+
+    // Enregistrez les modifications dans la base de données.
+    await user.save();
+
+    res.json({ message: 'password updated successfully', user });
+  } catch (error) {
+    next(error);
+  }
+  
+};
+
+
+
+
+module.exports = { register, login, update, updatePassword };
