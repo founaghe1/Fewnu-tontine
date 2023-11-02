@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Fewnu Tontin",
+  "short_name": "Fewnu Tontine",
+  "name": "Fewnu Tontine",
+  "description": "Fewnu Tontine est une application en PWA permettant de gerer des Tontines",
   "icons": [
     {
       "src": "favicon.ico",
@@ -18,7 +19,7 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": ".",
+  "start_url": "/index.html",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"

@@ -7,6 +7,7 @@ const addCotisationRoutes = require('./routes/addCotisation')
 const getCotisationsRoutes = require('./routes/getCotisation')
 
 const getTontinesRoutes = require('./routes/getTontine')
+const updateUser = require('./routes/updateUser')
 
 const cors = require("cors")
 
@@ -39,6 +40,9 @@ app.use('/cotisations', getCotisationsRoutes);
 
 // Define tontines routes for geting tontines
 app.use('/tontines', getTontinesRoutes);
+
+// Utilisez le routeur pour gérer les routes liées aux utilisateurs.
+app.use('/updateUser', updateUser);
 
 // Start the server
 app.listen(PORT, () => {
