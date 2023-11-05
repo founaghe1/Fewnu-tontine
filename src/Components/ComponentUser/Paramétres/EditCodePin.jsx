@@ -7,6 +7,7 @@ import HeaderProfil from '../Profil/HeaderProfil';
 import { Link } from 'react-router-dom';
 import { MdKeyboardArrowLeft } from 'react-icons/md';
 import Layout from '../Layout/Layout';
+import bcrypt from 'bcryptjs';
 
 const EditCodePin = () => {
   const [oldPassword, setOldPassword] = useState('');
@@ -23,36 +24,45 @@ const EditCodePin = () => {
     }
   }, []);
 
-  const handleUpdatePW = () => {
-    const updatedPassword = {
-      newPassword,
-    };
+  const handleUpdatePW = async () => {
+    const saltRounds = 10;
 
-    // Récupérez l'userId de l'utilisateur connecté depuis le localStorage
-    const storedUser = localStorage.getItem("userData");
-    if (storedUser) {
-      const userData = JSON.parse(storedUser);
-      const userId = userData.user._id;
+    try {
+      const hashedNewPassword = await bcrypt.hash(newPassword, saltRounds);
 
-      // Effectuez une requête HTTP PUT pour mettre à jour le mot de passe de l'utilisateur dans la base de données.
-      axios.put(`https://fewnu-tontin.onrender.com/updateUser/updateUser/${userId}`, updatedPassword)
-        .then((response) => {
-          // Mise à jour des données dans le localStorage
-          userData.user.password = updatedPassword.newPassword;
-          localStorage.setItem("userData", JSON.stringify(userData));
+      const updatedPassword = {
+        newPassword: hashedNewPassword,
+      };
 
-          // Affichez un toast de succès
-          toast.success("Mise à jour du mot de passe avec succès", {
-            position: toast.POSITION.TOP_CENTER,
+      // Récupérez l'userId de l'utilisateur connecté depuis le localStorage
+      const storedUser = localStorage.getItem('userData');
+      if (storedUser) {
+        const userData = JSON.parse(storedUser);
+        const userId = userData.user._id;
+
+        // Effectuez une requête HTTP PUT pour mettre à jour le mot de passe de l'utilisateur dans la base de données.
+        axios.put(`https://fewnu-tontin.onrender.com/updatePassword/updatePassword/${userId}`, updatedPassword)
+          .then((response) => {
+            // Mise à jour des données dans le localStorage
+            userData.user.password = updatedPassword.newPassword;
+            localStorage.setItem('userData', JSON.stringify(userData));
+
+            // Affichez un toast de succès
+            toast.success('Mise à jour du mot de passe avec succès', {
+              position: toast.POSITION.TOP_CENTER,
+            });
+
+            // Gérez la réponse de l'API ici (affichez un message de succès au console).
+            console.log(response.data);
+          })
+          .catch((error) => {
+            // Gérez les erreurs ici (par exemple, affichez un message d'erreur).
+            console.error(error);
           });
-
-          // Gérez la réponse de l'API ici (affichez un message de succès au console).
-          console.log(response.data);
-        })
-        .catch((error) => {
-          // Gérez les erreurs ici (par exemple, affichez un message d'erreur).
-          console.error(error);
-        });
+      }
+    } catch (error) {
+      // Gérez les erreurs ici (par exemple, affichez un message d'erreur).
+      console.error(error);
     }
   };
 
@@ -87,7 +97,7 @@ const EditCodePin = () => {
                 Nouveau mot de passe
               </label>
               <input
-                type="password"
+                type="text"
                 placeholder="Nouveau mot de passe"
                 value={newPassword}
                 onChange={(e) => setNewPassword(e.target.value)}

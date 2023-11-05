@@ -50,10 +50,6 @@ const login = async (req, res, next) => {
     // Renvoyez les informations du user
     res.json({ user });
 
-    // const token = jwt.sign({ userId: user._id }, process.env.SECRET_KEY, {
-    //   expiresIn: '1 hour'
-    // });
-
     // res.json({ token });
   } catch (error) {
     next(error);
@@ -90,9 +86,6 @@ const update = async (req, res, next) => {
       user.email = req.body.email;
     }
 
-    if (req.body.password) {
-      user.password = req.body.password;
-    }
 
     // Enregistrez les modifications dans la base de données.
     await user.save();
@@ -106,29 +99,30 @@ const update = async (req, res, next) => {
 
 
 const updatePassword = async (req, res, next) => {
-  const userId = req.params.id; // Vous devez avoir un moyen de transmettre l'ID de l'utilisateur à mettre à jour (par exemple, depuis les paramètres de l'URL).
+  const userId = req.params.id;
 
   try {
-    // Vérifiez si l'utilisateur existe en recherchant son ID.
     const user = await User.findById(userId);
 
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
 
-
     if (req.body.password) {
-      user.password = req.body.password;
+      // Hachez le nouveau mot de passe
+      const newPassword = req.body.password;
+      const salt = await bcrypt.genSalt(10);
+      const hashedPassword = await bcrypt.hash(newPassword, salt);
+      
+      user.password = hashedPassword;
     }
 
-    // Enregistrez les modifications dans la base de données.
     await user.save();
 
-    res.json({ message: 'password updated successfully', user });
+    res.json({ message: 'Password updated successfully', user });
   } catch (error) {
     next(error);
   }
-  
 };
 
 
