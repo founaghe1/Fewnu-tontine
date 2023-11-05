@@ -107,7 +107,7 @@ const updatePassword = async (req, res, next) => {
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
-
+    
     if (req.body.password) {
       // Hachez le nouveau mot de passe
       const newPassword = req.body.password;
