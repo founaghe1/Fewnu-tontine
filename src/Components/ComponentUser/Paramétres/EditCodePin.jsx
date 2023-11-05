@@ -87,8 +87,8 @@ const EditCodePin = () => {
               <input
                 type=""
                 placeholder="Ancien mot de passe"
-                value={oldPassword}
-                onChange={(e) => setOldPassword(e.target.value)}
+                // value={oldPassword}
+                // onChange={(e) => setOldPassword(e.target.value)}
                 className="form-control"
               />
             </div>
