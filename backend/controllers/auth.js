@@ -107,14 +107,18 @@ const updatePassword = async (req, res, next) => {
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
-    
-    if (req.body.password) {
-      // Hachez le nouveau mot de passe
-      const newPassword = req.body.password;
-      const salt = await bcrypt.genSalt(10);
-      const hashedPassword = await bcrypt.hash(newPassword, salt);
+
+    // if (req.body.password) {
+    //   // Hachez le nouveau mot de passe
+    //   const newPassword = req.body.password;
+    //   const salt = await bcrypt.genSalt(10);
+    //   const hashedPassword = await bcrypt.hash(newPassword, salt);
       
-      user.password = hashedPassword;
+    //   user.password = hashedPassword;
+    // }
+
+    if (req.body.password) {
+      user.password = req.body.password;
     }
 
     await user.save();
