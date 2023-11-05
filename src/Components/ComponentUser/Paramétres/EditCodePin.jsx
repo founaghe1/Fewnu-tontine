@@ -13,16 +13,16 @@ const EditCodePin = () => {
   const [oldPassword, setOldPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
 
-  useEffect(() => {
-    // Récupérez le nom de l'utilisateur depuis le localStorage
-    const storedUser = localStorage.getItem("userData");
+  // useEffect(() => {
+  //   // Récupérez le nom de l'utilisateur depuis le localStorage
+  //   const storedUser = localStorage.getItem("userData");
 
-    // Assurez-vous que les données existent et sont valides
-    if (storedUser) {
-      const userData = JSON.parse(storedUser);
-      setOldPassword(userData.user.password); // Récupérez le mot de passe en clair
-    }
-  }, []);
+  //   // Assurez-vous que les données existent et sont valides
+  //   if (storedUser) {
+  //     const userData = JSON.parse(storedUser);
+  //     setOldPassword(userData.user.password); // Récupérez le mot de passe en clair
+  //   }
+  // }, []);
 
   const handleUpdatePW = async () => {
     const saltRounds = 10;
