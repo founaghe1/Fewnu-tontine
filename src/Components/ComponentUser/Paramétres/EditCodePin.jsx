@@ -1,53 +1,69 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './Edit.css';
 import HeaderProfil from '../Profil/HeaderProfil';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { MdKeyboardArrowLeft } from 'react-icons/md';
 import Layout from '../Layout/Layout';
 
 const EditCodePin = () => {
   const [oldPassword, setOldPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
+  // const navigate = useNavigate();
 
+  const handleCheckPassword = async () => {
+    try {
+      // Effectuez une requête pour vérifier le mot de passe actuel
+      const response = await axios.post('https://fewnu-tontin.onrender.com/updateUser/updateUser', {
+        oldPassword,
+      });
 
-const handleUpdatePW = () => {
-  const updatedPassword = {
-    newPassword,
+      if (response.data.success) {
+        // Mot de passe actuel correct, maintenant mettez à jour le mot de passe
+        handleUpdatePassword();
+      } else {
+        // Mot de passe actuel incorrect, affichez un message d'erreur
+        toast.error('Mot de passe actuel incorrect');
+      }
+    } catch (error) {
+      toast.error('Erreur de vérification du mot de passe actuel');
+    }
   };
 
-  // Récupérez l'userId de l'utilisateur connecté depuis le localStorage
-  const storedUser = localStorage.getItem("userData");
-  if (storedUser) {
-    const userData = JSON.parse(storedUser);
-    const userId = userData.user._id;
+  const handleUpdatePassword = async () => {
+    const updatedPassword = {
+      newPassword,
+    };
 
-    console.log("userId : ",userData.user._id);
+    // Récupérez l'userId de l'utilisateur connecté depuis le localStorage
+    const storedUser = localStorage.getItem("userData");
+    if (storedUser) {
+      const userData = JSON.parse(storedUser);
+      const userId = userData.user._id;
 
-    // Effectuez une requête HTTP PUT pour mettre à jour le profil de l'utilisateur.
-    axios.put(`https://fewnu-tontin.onrender.com/updateUser/updateUser/${userId}`, updatedPassword)
-      .then((response) => {
-          // Mise à jour des données dans le localStorage
-          userData.user.password = updatedPassword.newPassword;
-          localStorage.setItem("userData", JSON.stringify(userData));
+      try {
+        // Effectuez une requête HTTP PUT pour mettre à jour le mot de passe de l'utilisateur.
+        const response = await axios.put(`https://fewnu-tontin.onrender.com/updateUser/updateUser/${userId}`, updatedPassword);
+        console.log(response);
 
-          // Affichez un toast de succès
-          toast.success("Mis à jour du mot de passe avec succès", {
-              position: toast.POSITION.TOP_CENTER, // Position du toast
-          });
+        // Mise à jour des données dans le localStorage
+        userData.user.password = updatedPassword.newPassword;
+        localStorage.setItem("userData", JSON.stringify(userData));
 
-          // Gérez la réponse de l'API ici (affichez un message de succès au console).
-          console.log(response.data);
-      })
-      .catch((error) => {
-        // Gérez les erreurs ici (par exemple, affichez un message d'erreur).
+        // Demander à l'utilisateur de se reconnecter avec le nouveau mot de passe
+        toast.success("Mot de passe mis à jour avec succès. Veuillez vous reconnecter avec le nouveau mot de passe.");
+
+        // Gérez la réponse de l'API ici (affichez un message de succès dans la console).
+        console.log(response.data);
+      } catch (error) {
+        // Gérez les erreurs ici (par exemple, affichez un message d'erreur à l'utilisateur).
         console.error(error);
-      });
-  }
-};
-  
+        toast.error("Échec de la mise à jour du mot de passe. Vérifiez vos informations.");
+      }
+    }
+  };
 
   return (
     <Layout>
@@ -62,7 +78,7 @@ const handleUpdatePW = () => {
         </div>
         <h1>Modifier votre code PIN</h1>
         <div className="container d-flex justify-content-center">
-          <form className="px-3 form" >
+          <form className="px-3 form">
             <div className="mb-3">
               <label htmlFor="exampleInputEmail1" className="form-label">
                 Actuel mot de passe
@@ -88,7 +104,7 @@ const handleUpdatePW = () => {
               />
             </div>
             <div className="d-flex justify-content-center mt-5 mb-3">
-              <button type="button"  id="Edit-button" className="px-3" onClick={handleUpdatePW}>
+              <button type="button" id="Edit-button" className="px-3" onClick={handleCheckPassword}>
                 Mettre à jour
               </button>
             </div>
