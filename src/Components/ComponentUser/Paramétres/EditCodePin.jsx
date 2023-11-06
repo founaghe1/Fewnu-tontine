@@ -58,7 +58,7 @@ const EditCodePin = () => {
         console.log("userId : ", userId);
 
         // Effectuez une requête HTTP PUT pour mettre à jour le mot de passe de l'utilisateur dans la base de données.
-        axios.put(`https://fewnu-tontin.onrender.com/updatePassword/updatePassword/${userId}`, updatedPassword)
+        axios.post(`https://fewnu-tontin.onrender.com/updatePassword/updatePassword/${userId}`, updatedPassword)
           .then((response) => {
             // Mise à jour des données dans le localStorage
             userData.user.password = updatedPassword.newPassword;

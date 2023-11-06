@@ -8,7 +8,7 @@ const { update, updatePassword } = require('../controllers/auth');
 router.put('/updateUser/:id', update);
 
 // Définissez la route de mise à jour en utilisant le verbe HTTP PUT.
-router.put('/updatePassword/:id', updatePassword);
+router.post('/updatePassword/:id', updatePassword);
 
 // Exportez le routeur.
 module.exports = router;
