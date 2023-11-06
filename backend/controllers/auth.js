@@ -50,10 +50,6 @@ const login = async (req, res, next) => {
     // Renvoyez les informations du user
     res.json({ user });
 
-    // const token = jwt.sign({ userId: user._id }, process.env.SECRET_KEY, {
-    //   expiresIn: '1 hour'
-    // });
-
     // res.json({ token });
   } catch (error) {
     next(error);
@@ -90,9 +86,6 @@ const update = async (req, res, next) => {
       user.email = req.body.email;
     }
 
-    if (req.body.password) {
-      user.password = req.body.password;
-    }
 
     // Enregistrez les modifications dans la base de données.
     await user.save();
@@ -105,6 +98,37 @@ const update = async (req, res, next) => {
 };
 
 
+const updatePassword = async (req, res, next) => {
+  const userId = req.params.id;
+
+  try {
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    const { oldPassword, newPassword } = req.body;
+
+    // Vérifiez si l'ancien mot de passe correspond au mot de passe actuel de l'utilisateur
+    const passwordMatch = await bcrypt.compare(oldPassword, user.password);
+
+    if (!passwordMatch) {
+      return res.status(401).json({ message: 'Incorrect old password' });
+    }
+
+    // Mettez à jour le mot de passe avec le nouveau mot de passe
+    user.password = newPassword;
+
+    await user.save();
+
+    res.json({ message: 'Password updated successfully', user });
+  } catch (error) {
+    next(error);
+  }
+};
 
 
-module.exports = { register, login, update };
+
+
+module.exports = { register, login, update, updatePassword };

@@ -50,6 +50,8 @@ const Identification = () => {
     const role = userData.user.role;
     console.log(userData.user.role);
     setUserStatus(role);
+    const password = userData.user.password;
+    console.log(password);
     
    
 

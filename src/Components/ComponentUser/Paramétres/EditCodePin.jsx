@@ -7,6 +7,7 @@ import HeaderProfil from '../Profil/HeaderProfil';
 import { Link, useNavigate } from 'react-router-dom';
 import { MdKeyboardArrowLeft } from 'react-icons/md';
 import Layout from '../Layout/Layout';
+import bcrypt from 'bcryptjs';
 
 const EditCodePin = () => {
   const [oldPassword, setOldPassword] = useState('');
@@ -81,11 +82,11 @@ const EditCodePin = () => {
           <form className="px-3 form">
             <div className="mb-3">
               <label htmlFor="exampleInputEmail1" className="form-label">
-                Actuel mot de passe
+                Ancien mot de passe
               </label>
               <input
-                type="password"
-                placeholder="Actuel mot de passe"
+                type=""
+                placeholder="Ancien mot de passe"
                 value={oldPassword}
                 onChange={(e) => setOldPassword(e.target.value)}
                 className="form-control"
@@ -96,7 +97,7 @@ const EditCodePin = () => {
                 Nouveau mot de passe
               </label>
               <input
-                type="password"
+                type="text"
                 placeholder="Nouveau mot de passe"
                 value={newPassword}
                 onChange={(e) => setNewPassword(e.target.value)}
