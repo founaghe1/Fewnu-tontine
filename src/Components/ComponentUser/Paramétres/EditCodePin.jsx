@@ -28,7 +28,8 @@ const EditCodePin = () => {
     const saltRounds = 10;
 
     try {
-      // const hashedNewPassword = await bcrypt.hash(newPassword, saltRounds);
+
+      const hashedNewPassword = await bcrypt.hash(newPassword, saltRounds);
 
       // Récupérez l'ancien mot de passe stocké localement
       const storedUser = localStorage.getItem('userData');
@@ -48,10 +49,13 @@ const EditCodePin = () => {
         }
 
         const updatedPassword = {
-          newPassword: newPassword,
+          newPassword: hashedNewPassword,
         };
+        console.log("newPasswor : ", hashedNewPassword);
 
         const userId = userData.user._id;
+
+        console.log("userId : ", userId);
 
         // Effectuez une requête HTTP PUT pour mettre à jour le mot de passe de l'utilisateur dans la base de données.
         axios.put(`https://fewnu-tontin.onrender.com/updatePassword/updatePassword/${userId}`, updatedPassword)
@@ -59,6 +63,8 @@ const EditCodePin = () => {
             // Mise à jour des données dans le localStorage
             userData.user.password = updatedPassword.newPassword;
             localStorage.setItem('userData', JSON.stringify(userData));
+
+            console.log("newPasswor2 : ", userData.user.password);
 
             // Affichez un toast de succès
             toast.success('Mise à jour du mot de passe avec succès', {

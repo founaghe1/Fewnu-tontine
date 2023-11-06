@@ -103,29 +103,29 @@ self.addEventListener('activate', (event) => {
   );
 });
  
-self.addEventListener('fetch', (event) => {
-  event.respondWith(
-    caches.match(event.request)
-      .then((cachedResponse) => {
-        if (cachedResponse) {
-          return cachedResponse;
-        }
-        // Si la ressource n'est pas dans le cache, la récupérer depuis le réseau
-        return fetch(event.request)
-          .then((response) => {
-            // Mettre la nouvelle réponse en cache
-            return caches.open(CACHE_NAME)
-              .then((cache) => {
-                cache.put(event.request, response.clone());
-                return response;
-              });
-          })
-          .catch(() => {
-            // En cas d'échec de récupération depuis le réseau, vous pouvez servir une page de secours ou une ressource générique.
-          });
-      })
-  );
-});
+// self.addEventListener('fetch', (event) => {
+//   event.respondWith(
+//     caches.match(event.request)
+//       .then((cachedResponse) => {
+//         if (cachedResponse) {
+//           return cachedResponse;
+//         }
+//         // Si la ressource n'est pas dans le cache, la récupérer depuis le réseau
+//         return fetch(event.request)
+//           .then((response) => {
+//             // Mettre la nouvelle réponse en cache
+//             return caches.open(CACHE_NAME)
+//               .then((cache) => {
+//                 cache.put(event.request, response.clone());
+//                 return response;
+//               });
+//           })
+//           .catch(() => {
+//             // En cas d'échec de récupération depuis le réseau, vous pouvez servir une page de secours ou une ressource générique.
+//           });
+//       })
+//   );
+// });
 
 self.addEventListener('message', (event) => {
   if (event.data && event.data.type === 'SKIP_WAITING') {
