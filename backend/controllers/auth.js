@@ -117,8 +117,11 @@ const updatePassword = async (req, res, next) => {
       return res.status(401).json({ message: 'Incorrect old password' });
     }
 
-    // Mettez à jour le mot de passe avec le nouveau mot de passe
-    user.password = newPassword;
+    // Hash the new password
+    const hashedNewPassword = await bcrypt.hash(newPassword, 10); // You can adjust the saltRounds (10 in this example) as needed
+
+    // Mettez à jour le mot de passe avec le nouveau mot de passe haché
+    user.password = hashedNewPassword;
 
     await user.save();
 

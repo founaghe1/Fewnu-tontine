@@ -28,7 +28,7 @@ const EditCodePin = () => {
     const saltRounds = 10;
 
     try {
-      const hashedNewPassword = await bcrypt.hash(newPassword, saltRounds);
+      // const hashedNewPassword = await bcrypt.hash(newPassword, saltRounds);
 
       // Récupérez l'ancien mot de passe stocké localement
       const storedUser = localStorage.getItem('userData');
@@ -48,7 +48,7 @@ const EditCodePin = () => {
         }
 
         const updatedPassword = {
-          newPassword: hashedNewPassword,
+          newPassword: newPassword,
         };
 
         const userId = userData.user._id;
