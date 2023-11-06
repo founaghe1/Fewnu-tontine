@@ -30,16 +30,29 @@ const EditCodePin = () => {
     try {
       const hashedNewPassword = await bcrypt.hash(newPassword, saltRounds);
 
-      const updatedPassword = {
-        newPassword: hashedNewPassword,
-      };
-
-      // Récupérez l'userId de l'utilisateur connecté depuis le localStorage
+      // Récupérez l'ancien mot de passe stocké localement
       const storedUser = localStorage.getItem('userData');
       if (storedUser) {
         const userData = JSON.parse(storedUser);
+        const oldStoredPassword = userData.user.password; // Ancien mot de passe
+
+        // Comparez l'ancien mot de passe saisi avec l'ancien mot de passe stocké
+        const isOldPasswordValid = await bcrypt.compare(oldPassword, oldStoredPassword);
+
+        if (!isOldPasswordValid) {
+          // Le mot de passe saisi ne correspond pas à l'ancien mot de passe
+          toast.error('Ancien mot de passe incorrect', {
+            position: toast.POSITION.TOP_CENTER,
+          });
+          return; // Ne continuez pas si l'ancien mot de passe est incorrect
+        }
+
+        const updatedPassword = {
+          newPassword: hashedNewPassword,
+        };
+
         const userId = userData.user._id;
-   
+
         // Effectuez une requête HTTP PUT pour mettre à jour le mot de passe de l'utilisateur dans la base de données.
         axios.put(`https://fewnu-tontin.onrender.com/updatePassword/updatePassword/${userId}`, updatedPassword)
           .then((response) => {
@@ -87,8 +100,8 @@ const EditCodePin = () => {
               <input
                 type=""
                 placeholder="Ancien mot de passe"
-                // value={oldPassword}
-                // onChange={(e) => setOldPassword(e.target.value)}
+                value={oldPassword}
+                onChange={(e) => setOldPassword(e.target.value)}
                 className="form-control"
               />
             </div>
