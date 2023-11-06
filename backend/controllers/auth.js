@@ -108,18 +108,17 @@ const updatePassword = async (req, res, next) => {
       return res.status(404).json({ message: 'User not found' });
     }
 
-    // if (req.body.password) {
-    //   // Hachez le nouveau mot de passe
-    //   const newPassword = req.body.password;
-    //   const salt = await bcrypt.genSalt(10);
-    //   const hashedPassword = await bcrypt.hash(newPassword, salt);
-      
-    //   user.password = hashedPassword;
-    // }
+    const { oldPassword, newPassword } = req.body;
 
-    if (req.body.password) {
-      user.password = req.body.password;
+    // Vérifiez si l'ancien mot de passe correspond au mot de passe actuel de l'utilisateur
+    const passwordMatch = await bcrypt.compare(oldPassword, user.password);
+
+    if (!passwordMatch) {
+      return res.status(401).json({ message: 'Incorrect old password' });
     }
+
+    // Mettez à jour le mot de passe avec le nouveau mot de passe
+    user.password = newPassword;
 
     await user.save();
 
