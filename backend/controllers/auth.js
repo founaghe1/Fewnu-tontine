@@ -118,7 +118,14 @@ const updatePassword = async (req, res, next) => {
     }
 
     // Mettez à jour le mot de passe avec le nouveau mot de passe
-    user.password = newPassword;
+    if (req.body.password) {
+      // Hachez le nouveau mot de passe
+      const newPassword = req.body.password;
+      const salt = await bcrypt.genSalt(10);
+      const hashedPassword = await bcrypt.hash(newPassword, salt);
+      
+      user.password = hashedPassword;
+    }
 
     await user.save();
 
