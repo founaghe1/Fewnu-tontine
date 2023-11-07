@@ -13,6 +13,11 @@ const tontineSchema = new mongoose.Schema(
       type : Number,
       default : 0,
       required: true
+    },
+    cotisationDay: {
+      type : String,
+      enum: ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'],
+      required: true
     }
   },
   { timestamps: true }
