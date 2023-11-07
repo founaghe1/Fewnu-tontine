@@ -44,7 +44,7 @@ const TypeTontine = () => {
   return (
     <Layout >
       <div className="mx-4 mt-3 d-flex justify-content-between mb-5">
-        <div className="img"><img src={imgton1} className='img-fluid w-100 tof' alt="" /></div>
+        <div className="img"><img src={imgton1} className='img-fluid tof' alt="" /></div>
         <div className="img"><img src={imgton2} className='img-fluid tof' alt="" /></div>
         <div className="img"><img src={imgton3} className='img-fluid tof' alt="" /></div>
         <div className="img"><img src={imgton1} className='img-fluid tof' alt="" /></div>

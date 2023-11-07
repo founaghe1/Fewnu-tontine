@@ -8,6 +8,11 @@ const tontineSchema = new mongoose.Schema(
     tontine: {
       type: String,
       required: true
+    },
+    somme: {
+      type : Number,
+      default : 0,
+      required: true
     }
   },
   { timestamps: true }
