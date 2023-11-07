@@ -8,13 +8,13 @@ import imgton2 from '../../../Assets/img-ton2.png'
 import imgton3 from '../../../Assets/img-ton3.png'
 
 const TypeTontine = () => {
-  const [tontines, setTontines] = useState([]); // État pour stocker les tontines
+  const [tontines, setTontines] = useState([]); 
 
-  // Effectuer une requête GET pour obtenir les tontines depuis l'API
+  // requête GET pour obtenir les tontines depuis l'API
   useEffect(() => {
     axios.get('https://fewnu-tontin.onrender.com/tontines/getTontines')
       .then((response) => {
-        // Stockez les tontines dans l'état
+        // Stockage des tontines dans l'état
         setTontines(response.data);
       })
       .catch((error) => {
