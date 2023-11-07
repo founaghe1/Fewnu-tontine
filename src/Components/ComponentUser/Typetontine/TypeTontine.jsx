@@ -1,94 +1,107 @@
-import React from 'react'
-import './tontine.css'
-import Layout from '../Layout/Layout'
-import Cardtontine from './Cardtontine'
-import imgton1 from '../../../Assets/img-ton1.png'
-import imgton2 from '../../../Assets/img-ton2.png'
-import imgton3 from '../../../Assets/img-ton3.png'
-import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import axios from 'axios'; 
-
+import React, { useState, useEffect } from "react";
+import "./tontine.css";
+import Layout from "../Layout/Layout";
+import imgton1 from "../../../Assets/img-ton1.png";
+import imgton2 from "../../../Assets/img-ton2.png";
+import imgton3 from "../../../Assets/img-ton3.png";
+import Button from "../Button/Button";
 
 const TypeTontine = () => {
+  const [tontineSelectionnee, setTontineSelectionnee] = useState("telephone");
+  const [tontineData, setTontineData] = useState(null);
 
-  const [tontines, setTontines] = useState([]); // État pour stocker les tontines
+  const gererClicTontine = (typeTontine) => {
+    setTontineSelectionnee(typeTontine);
+  };
 
-  // Effectuer une requête GET pour obtenir les tontines depuis l'API
   useEffect(() => {
-    axios.get('https://fewnu-tontin.onrender.com/tontines/getTontines')
-      .then((response) => {
-        // Stockez les tontines dans l'état
-        setTontines(response.data);
+    // Effectuer une requête GET pour récupérer les informations de la tontine
+    fetch(`/tontines/${tontineSelectionnee}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setTontineData(data.tontine);
       })
       .catch((error) => {
-        console.error('Erreur lors de la récupération des tontines :', error);
+        console.error('Erreur lors de la récupération de la tontine :', error);
       });
-  }, []);
-
-
-
-
-
-
-  // const typedata =[
-  //   {
-  //     titre:'Tontine téléphone',
-  //     des:'Chaque Samedi ',
-  //     img:imgton1,
-  //     some:'5.000 fcfa'
-  //   },
-  //   {
-  //     titre:'Tontine greffage',
-  //     des:'Chaque Lundi ',
-  //     img:imgton2,
-  //     some:'2.000 fcfa'
-  //   },
-  //   {
-  //     titre:'Tontine ordinateur',
-  //     des:'19-2022 à  22h 30 ',
-  //     img:imgton3,
-  //     some:'5.000 fcfa'
-  //   },
-  //   {
-  //     titre:'Tontine greffage',
-  //     des:'Chaque Lundi ',
-  //     img:imgton2,
-  //     some:'2.000 fcfa'
-  //   },
-  //   {
-  //     titre:'Tontine téléphone',
-  //     des:'Chaque Samedi ',
-  //     img:imgton1,
-  //     some:'5.000 fcfa'
-  //   }
-  // ];
+  }, [tontineSelectionnee]);
 
   return (
-    <Layout >
+    <Layout>
       <div className="mx-4 mt-3 d-flex justify-content-between mb-5">
-        <div className="img"><img src={imgton1} className='img-fluid tof' alt="" /></div>
-        <div className="img"><img src={imgton2} className='img-fluid tof' alt="" /></div>
-        <div className="img"><img src={imgton3} className='img-fluid tof' alt="" /></div>
-        <div className="img"><img src={imgton1} className='img-fluid tof' alt="" /></div>
-        <div className="img"><img src={imgton2} className='img-fluid tof' alt="" /></div>
-      </div>  
-      <div className='mx-2 d-flex justify-content-center'>
-        <div className='cart rounded'>
-          {tontines.map((tontine, index) => (
-            <Cardtontine
-              key={index}
-              titre={tontine.tontine}
-              des={tontine.cotisationDay}
-              img={tontine.image}
-              some={tontine.somme}
-            />
-          ))}
+        <div>
+          <button
+            type="button"
+            className={`btn btn-light ${tontineSelectionnee === "telephone" ? "active" : ""}`}
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+            onClick={() => gererClicTontine("telephone")}
+          >
+            <div className="img">
+              <img src={imgton1} className="img-fluid w-100 tof" alt="" />
+            </div>
+          </button>
+        </div>
+        <div>
+          <button
+            type="button"
+            className={`btn btn-light ${tontineSelectionnee === "greffage" ? "active" : ""}`}
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+            onClick={() => gererClicTontine("greffage")}
+          >
+            <div className="img">
+              <img src={imgton2} className="img-fluid w-100 tof" alt="" />
+            </div>
+          </button>
+        </div>
+        <div>
+          <button
+            type="button"
+            className={`btn btn-light ${tontineSelectionnee === "ordinateur" ? "active" : ""}`}
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+            onClick={() => gererClicTontine("ordinateur")}
+          >
+            <div className="img">
+              <img src={imgton3} className="img-fluid w-100 tof" alt="" />
+            </div>
+          </button>
         </div>
       </div>
-   
-    </Layout>
-  )
-}
 
-export default TypeTontine
+      {tontineData && (
+        <div>
+          <p>Nom de la tontine: {tontineData.tontine}</p>
+          <p>Somme: {tontineData.somme}</p>
+          <p>Jour de cotisation: {tontineData.cotisationDay}</p>
+          <Button libelet="Participer" className="btnIdenti" type="submit" />
+        </div>
+      )}
+
+    <div
+      className="modal fade"
+      id="exampleModal" // Assurez-vous que l'ID correspond à celui du bouton
+      tabIndex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div className="modal-dialog">
+        <div className="modal-content">
+          <div className="modal-body d-flex justify-content-center align-items-center">
+            <div className="my-auto">
+              <p className="text-secondary fs-6 fw-bold mt-3">
+                Participer à la tontine {tontineSelectionnee}
+              </p>
+              <Button libelet="Participer" className="btnIdenti" type="submit" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    </Layout>
+  );
+};
+
+export default TypeTontine;
