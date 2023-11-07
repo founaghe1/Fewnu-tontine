@@ -2,7 +2,7 @@ import React from 'react'
 import './tontine.css'
 
 const Cardtontine = (props) => {
-  return (
+  return ( 
     <div className='d-flex justify-content-center'>
         <div className='carte rounded-4 mb-3  d-flex'>
             <div className='left-side rounded-start-4 '>
