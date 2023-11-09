@@ -92,6 +92,7 @@ const TypeTontine = () => {
               des={tontine.cotisationDay}
               some={tontine.somme}
               onParticipate={() => handleParticipate(tontine._id)} 
+              onLeave={() => handleLeave(tontine._id)}
             />
           ))}
         </div>

@@ -40,21 +40,22 @@ const participateInTontine = async (req, res, next) => {
 
 // Leave a tontine
 const leaveTontine = async (req, res, next) => {
-  const userId = req.params.userId; // Assuming userId is passed in the URL parameters
-  const tontineId = req.params.tontineId; // Assuming tontineId is passed in the URL parameters
+  const { tontineId, userId } = req.params;
 
   try {
-    // Find the tontine by ID
     const tontine = await Tontine.findById(tontineId);
 
-    // Remove the user's ID from the tontine's participants array
-    tontine.participants = tontine.participants.filter(participant => participant !== userId);
+    if (!tontine) {
+      return res.status(404).json({ message: 'Tontine not found' });
+    }
 
-    // Save the updated tontine
+    // Supprimez l'userId de la liste des participants
+    tontine.participants.pull(userId);
+
+    // Enregistrez la tontine mise à jour
     await tontine.save();
 
-    res.json({ message: 'User has left the tontine' });
-
+    res.json({ message: 'User left the tontine successfully' });
   } catch (error) {
     next(error);
   }
