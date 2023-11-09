@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Layout from '../ComponentUser/Layout/Layout'
 import HeaderProfil from '../ComponentUser/Profil/HeaderProfil'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom';
 
 const Cotiser = () => {
    const [selectedTontine, setSelectedTontine] = useState('');
