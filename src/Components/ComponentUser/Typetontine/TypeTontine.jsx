@@ -9,7 +9,9 @@ import imgton3 from '../../../Assets/img-ton3.png'
 
 const TypeTontine = () => {
   const [tontines, setTontines] = useState([]);
-  const userId = localStorage.getItem('userId');
+  
+  // Utilisez le localStorage pour stocker les tontines auxquelles l'utilisateur participe
+  const participatingTontines = JSON.parse(localStorage.getItem('participatingTontines')) || {};
 
   useEffect(() => {
     axios.get('https://fewnu-tontin.onrender.com/tontines/getTontines')
@@ -29,6 +31,10 @@ const TypeTontine = () => {
       const userId = userData.user._id;
 
       console.log("userId : ",userData.user._id);
+
+      // Stockez l'information de participation dans le localStorage
+      participatingTontines[tontineId] = true;
+      localStorage.setItem('participatingTontines', JSON.stringify(participatingTontines));
 
       axios.post(`https://fewnu-tontin.onrender.com/addTontine/participateTontine/${tontineId}/${userId}`)
         .then(response => {
@@ -54,6 +60,10 @@ const TypeTontine = () => {
     if (storedUser) {
       const userData = JSON.parse(storedUser);
       const userId = userData.user._id;
+
+      // Supprimez l'information de participation du localStorage
+      delete participatingTontines[tontineId];
+      localStorage.setItem('participatingTontines', JSON.stringify(participatingTontines));
 
       axios.post(`https://fewnu-tontin.onrender.com/addTontine/leaveTontine/${tontineId}/${userId}`)
         .then(response => {
