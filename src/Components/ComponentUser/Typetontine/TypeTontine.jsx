@@ -8,14 +8,53 @@ import Button from "../Button/Button";
 
 const TypeTontine = () => {
   const [tontineSelectionnee, setTontineSelectionnee] = useState("telephone");
+  const [aParticipe, setAParticipe] = useState(false);
+
+  const gererClicParticiper = () => {
+    console.log("Participer clicked");
+    setAParticipe(true);
+  };
+
+  const gererClicQuitter = () => {
+    setAParticipe(false);
+  };
+  
+  const boutonsTontine = [
+    {
+      image: imgton1,
+      gererClicTontine: () => gererClicTontine("telephone"),
+      tontineSelectionnee: "telephone",
+      aParticipe,
+      gererClicParticiper,
+      gererClicQuitter,
+    },
+    {
+      image: imgton2,
+      gererClicTontine: () => gererClicTontine("greffage"),
+      tontineSelectionnee: "greffage",
+      aParticipe,
+      gererClicParticiper,
+      gererClicQuitter,
+    },
+    {
+      image: imgton3,
+      gererClicTontine: () => gererClicTontine("ordinateur"),
+      tontineSelectionnee: "ordinateur",
+      aParticipe,
+      gererClicParticiper,
+      gererClicQuitter,
+    },
+  ];
 
   const gererClicTontine = (typeTontine) => {
     setTontineSelectionnee(typeTontine);
+    setAParticipe(false);
   };
+
 
   return (
     <Layout>
-      <div className="mx-4 mt-3 d-flex justify-content-between mb-5">
+      {/* <div className="mx-4 mt-3 d-flex justify-content-between mb-5">
         <div>
           <button
             type="button"
@@ -55,6 +94,23 @@ const TypeTontine = () => {
             </div>
           </button>
         </div>
+      </div> */}
+      <div className="mx-4 mt-3 d-flex justify-content-between mb-5">
+        {boutonsTontine.map((bouton, index) => (
+          <div key={index}>
+            <button
+              type="button"
+              className={`btn btn-light ${tontineSelectionnee === bouton.tontineSelectionnee ? "" : ""}`}
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+              onClick={bouton.gererClicTontine}
+            >
+              <div className="img">
+                <img src={bouton.image} className="img-fluid w-100 tof" alt="" />
+              </div>
+            </button>
+          </div>
+        ))}
       </div>
 
       <div
@@ -69,9 +125,13 @@ const TypeTontine = () => {
             <div className="modal-body d-flex justify-content-center align-items-center">
               <div className="my-auto">
                 <p className="text-secondary fs-6 fw-bold mt-3">
-                  Participer à la tontine {tontineSelectionnee}
+                  {aParticipe ? `Quitter la tontine ${tontineSelectionnee}` : `Participer à la tontine ${tontineSelectionnee}`}
                 </p>
-                <Button libelet="Participer" className="btnIdenti" type="submit" />
+                {aParticipe ? (
+                  <Button libelet="Quitter" className="btnIdenti" type="button" onClick={gererClicQuitter} />
+                ) : (
+                  <Button libelet="Participer" className="btnIdenti" type="button" onClick={gererClicParticiper} />
+                )}
               </div>
             </div>
           </div>
