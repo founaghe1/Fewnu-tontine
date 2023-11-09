@@ -48,6 +48,31 @@ const TypeTontine = () => {
     }
   };
 
+  const handleLeave = (tontineId) => {
+    // Récupérez l'userId de l'utilisateur connecté depuis le localStorage
+    const storedUser = localStorage.getItem("userData");
+    if (storedUser) {
+      const userData = JSON.parse(storedUser);
+      const userId = userData.user._id;
+
+      axios.post(`https://fewnu-tontin.onrender.com/addTontine/leaveTontine/${tontineId}/${userId}`)
+        .then(response => {
+          console.log(response.data);
+          // Mettez à jour l'état local en récupérant les tontines mises à jour
+          axios.get('https://fewnu-tontin.onrender.com/tontines/getTontines')
+            .then((response) => {
+              setTontines(response.data);
+            })
+            .catch((error) => {
+              console.error('Erreur lors de la récupération des tontines :', error);
+            });
+        })
+        .catch(error => {
+          console.error('Erreur lors de la sortie de la tontine :', error);
+        });
+    }
+  };
+
   return (
     <Layout>
       <div className="mx-4 mt-3 d-flex justify-content-between mb-5">
