@@ -1,15 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./tontine.css";
 
 const Cardtontine = (props) => {
-  const [isParticipating, setIsParticipating] = useState(true);
+  // Get the initial participation status from localStorage or default to true
+  const [isParticipating, setIsParticipating] = useState(
+    localStorage.getItem(`${props.titre}-participation`) === "true" || true
+  );
 
   const handleButtonClick = () => {
-    setIsParticipating(!isParticipating);
+    // Toggle the participation status
+    const newStatus = !isParticipating;
+    setIsParticipating(newStatus);
+
+    // Save the participation status to localStorage
+    localStorage.setItem(`${props.titre}-participation`, newStatus.toString());
+
     // Check if the onParticipate or onLeave function is passed as a prop and call it
-    if (isParticipating && props.onParticipate) {
+    if (newStatus && props.onParticipate) {
       props.onParticipate();
-    } else if (!isParticipating && props.onLeave) {
+    } else if (!newStatus && props.onLeave) {
       props.onLeave();
     }
   };

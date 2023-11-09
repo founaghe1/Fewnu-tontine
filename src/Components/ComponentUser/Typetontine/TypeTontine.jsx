@@ -9,7 +9,8 @@ import imgton3 from '../../../Assets/img-ton3.png'
 
 const TypeTontine = () => {
   const [tontines, setTontines] = useState([]);
-  
+  const userId = localStorage.getItem('userId');
+
   // Utilisez le localStorage pour stocker les tontines auxquelles l'utilisateur participe
   const participatingTontines = JSON.parse(localStorage.getItem('participatingTontines')) || {};
 
@@ -24,13 +25,10 @@ const TypeTontine = () => {
   }, []);
 
   const handleParticipate = (tontineId) => {
-    // Récupérez l'userId de l'utilisateur connecté depuis le localStorage
     const storedUser = localStorage.getItem("userData");
     if (storedUser) {
       const userData = JSON.parse(storedUser);
       const userId = userData.user._id;
-
-      console.log("userId : ",userData.user._id);
 
       // Stockez l'information de participation dans le localStorage
       participatingTontines[tontineId] = true;
@@ -55,7 +53,6 @@ const TypeTontine = () => {
   };
 
   const handleLeave = (tontineId) => {
-    // Récupérez l'userId de l'utilisateur connecté depuis le localStorage
     const storedUser = localStorage.getItem("userData");
     if (storedUser) {
       const userData = JSON.parse(storedUser);
@@ -68,7 +65,6 @@ const TypeTontine = () => {
       axios.post(`https://fewnu-tontin.onrender.com/addTontine/leaveTontine/${tontineId}/${userId}`)
         .then(response => {
           console.log(response.data);
-          // Mettez à jour l'état local en récupérant les tontines mises à jour
           axios.get('https://fewnu-tontin.onrender.com/tontines/getTontines')
             .then((response) => {
               setTontines(response.data);
@@ -101,8 +97,9 @@ const TypeTontine = () => {
               titre={tontine.tontine}
               des={tontine.cotisationDay}
               some={tontine.somme}
-              onParticipate={() => handleParticipate(tontine._id)} 
+              onParticipate={() => handleParticipate(tontine._id)}
               onLeave={() => handleLeave(tontine._id)}
+              isParticipating={participatingTontines[tontine._id]} // Ajoutez cette prop pour indiquer si l'utilisateur participe
             />
           ))}
         </div>
