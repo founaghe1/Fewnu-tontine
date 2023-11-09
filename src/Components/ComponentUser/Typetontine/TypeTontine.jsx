@@ -9,7 +9,6 @@ import imgton3 from '../../../Assets/img-ton3.png'
 
 const TypeTontine = () => {
   const [tontines, setTontines] = useState([]);
-  const userId = localStorage.getItem('userId');
 
   // Utilisez le localStorage pour stocker les tontines auxquelles l'utilisateur participe
   const participatingTontines = JSON.parse(localStorage.getItem('participatingTontines')) || {};
