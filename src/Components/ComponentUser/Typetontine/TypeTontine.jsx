@@ -8,19 +8,54 @@ import imgton2 from '../../../Assets/img-ton2.png'
 import imgton3 from '../../../Assets/img-ton3.png'
 
 const TypeTontine = () => {
-  const [tontines, setTontines] = useState([]); 
+  const [tontines, setTontines] = useState([]);
 
-  // requête GET pour obtenir les tontines depuis l'API
   useEffect(() => {
     axios.get('https://fewnu-tontin.onrender.com/tontines/getTontines')
       .then((response) => {
-        // Stockage des tontines dans l'état
         setTontines(response.data);
       })
       .catch((error) => {
-        console.error('Erreur lors de la récupération des tontines :', error);
+        console.error('Error fetching tontines:', error);
       });
   }, []);
+
+  const handleParticipate = (tontineId) => {
+    axios.post(`https://fewnu-tontin.onrender.com/addTontine/participate/${tontineId}`)
+      .then(response => {
+        console.log(response.data);
+        // Update the local state by fetching the updated tontines
+        axios.get('https://fewnu-tontin.onrender.com/tontines/getTontines')
+          .then((response) => {
+            setTontines(response.data);
+          })
+          .catch((error) => {
+            console.error('Error fetching tontines:', error);
+          });
+      })
+      .catch(error => {
+        console.error('Error participating in tontine:', error);
+      });
+  };
+
+  const handleLeave = (tontineId) => {
+    axios.post(`https://fewnu-tontin.onrender.com/addTontine/leave/${tontineId}`)
+      .then(response => {
+        console.log(response.data);
+        // Update the local state by fetching the updated tontines
+        axios.get('https://fewnu-tontin.onrender.com/tontines/getTontines')
+          .then((response) => {
+            setTontines(response.data);
+          })
+          .catch((error) => {
+            console.error('Error fetching tontines:', error);
+          });
+      })
+      .catch(error => {
+        console.error('Error leaving tontine:', error);
+      });
+  };
+
 
   return (
     <Layout>
@@ -40,6 +75,8 @@ const TypeTontine = () => {
               titre={tontine.tontine}
               des={tontine.cotisationDay}
               some={tontine.somme}
+              onParticipate={() => handleParticipate(tontine._id)} 
+              onLeave={() => handleLeave(tontine._id)}
             />
           ))}
         </div>
