@@ -2,14 +2,14 @@ const express = require('express');
 const connectDB = require('./db');
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
-const addTontineRoutes = require('./routes/addTontine')
-const addCotisationRoutes = require('./routes/addCotisation')
-const getCotisationsRoutes = require('./routes/getCotisation')
-
-const getTontinesRoutes = require('./routes/getTontine')
-const updateUser = require('./routes/updateUser')
-
-const updatePassword = require('./routes/updateUser')
+const addTontineRoutes = require('./routes/addTontine');
+const addCotisationRoutes = require('./routes/addCotisation');
+const getCotisationsRoutes = require('./routes/getCotisation');
+const getTontinesRoutes = require('./routes/getTontine');
+const updateUser = require('./routes/updateUser');
+const updatePassword = require('./routes/updateUser');
+const participantTontine = require('./routes/addTontine');
+const leaveTontine = require('./routes/addTontine');
 
 const cors = require("cors")
 
@@ -47,6 +47,14 @@ app.use('/tontines', getTontinesRoutes);
 app.use('/updateUser', updateUser);
 
 app.use('/updatePassword', updatePassword);
+
+// Utiliser le routeur pour gérer les routes liées à la participation de l'utilisateur à une tontine
+app.use("/participateTontine", participantTontine);
+
+// Utiliser le routeur pour gérer les routes liées au départ d'un utilisateur d'une tontine
+app.use("/leaveTontine", leaveTontine);
+
+
 
 // Start the server
 app.listen(PORT, () => {

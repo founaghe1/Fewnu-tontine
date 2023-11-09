@@ -6,6 +6,12 @@ const Cardtontine = (props) => {
 
   const handleButtonClick = () => {
     setIsParticipating(!isParticipating);
+    // Check if the onParticipate or onLeave function is passed as a prop and call it
+    if (isParticipating && props.onParticipate) {
+      props.onParticipate();
+    } else if (!isParticipating && props.onLeave) {
+      props.onLeave();
+    }
   };
 
   return (
