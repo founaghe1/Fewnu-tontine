@@ -1,31 +1,33 @@
+// ../models/Tontine.js
+
 const mongoose = require('mongoose');
 
-
-// Définit un schéma MongoDB pour l'entité "Tontine".
 const tontineSchema = new mongoose.Schema(
-
   {
     tontine: {
       type: String,
-      required: true
+      required: true,
     },
     somme: {
-      type : Number,
-      default : 0,
-      required: true
+      type: Number,
+      default: 0,
+      required: true,
     },
     cotisationDay: {
-      type : String,
+      type: String,
       enum: ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'],
-      required: true
-    }
+      required: true,
+    },
+    participants: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User', // Assuming your user model is named 'User'
+      },
+    ],
   },
   { timestamps: true }
-
 );
 
-// Crée un modèle Mongoose appelé "Tontine" à partir du schéma défini ci-dessus.
 const Tontine = mongoose.model('Tontine', tontineSchema);
-  
-module.exports = Tontine;
 
+module.exports = Tontine;

@@ -20,8 +20,8 @@ const TypeTontine = () => {
       });
   }, []);
 
-  const handleParticipate = (tontineId) => {
-    axios.post(`https://fewnu-tontin.onrender.com/addTontine/participate/${tontineId}`)
+  const handleParticipate = (tontineId, userId) => {
+    axios.post(`https://fewnu-tontin.onrender.com/participateTontine/participateTontine/${tontineId}/${userId}`)
       .then(response => {
         console.log(response.data);
         // Update the local state by fetching the updated tontines
@@ -38,8 +38,8 @@ const TypeTontine = () => {
       });
   };
 
-  const handleLeave = (tontineId) => {
-    axios.post(`https://fewnu-tontin.onrender.com/addTontine/leave/${tontineId}`)
+  const handleLeave = (tontineId, userId) => {
+    axios.post(`https://fewnu-tontin.onrender.com/leaveTontine/leaveTontine/${tontineId}/${userId}`)
       .then(response => {
         console.log(response.data);
         // Update the local state by fetching the updated tontines
