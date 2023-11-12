@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./tontine.css";
 
 const Cardtontine = (props) => {
@@ -35,11 +35,8 @@ const Cardtontine = (props) => {
             <p className="titreC">{props.titre}</p>
             <button
               onClick={handleButtonClick}
-              className={`btn ${
-                isParticipating ? "btn-secondary" : "btn-success"
-              }`}
+              className={`btn ${isParticipating ? 'btn-secondary' : 'btn-success'}`}
               aria-label={isParticipating ? "Quitter" : "Participer"}
-              disabled={!isParticipating} // Disable the button if not participating
             >
               {isParticipating ? "Quitter" : "Participer"}
             </button>
