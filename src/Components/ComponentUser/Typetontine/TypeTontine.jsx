@@ -31,7 +31,7 @@ const TypeTontine = () => {
       const userId = userData.user._id;
 
       // Fetch participating tontines from the server
-      axios.get(`https://fewnu-tontin.onrender.com/getPaticipants/getPaticipants/${userId}`)
+      axios.get(`https://fewnu-tontin.onrender.com/getParticipants/${userId}`)
         .then((response) => {
           setParticipatingTontines(response.data);
         })
