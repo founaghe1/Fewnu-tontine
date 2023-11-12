@@ -18,6 +18,6 @@ router.post('/participateTontine/:tontineId/:userId', participateInTontine);
 // Lorsqu'une requête POST est reçue à cette URL, elle sera gérée par la fonction 'leaveTontine' du contrôleur.
 router.post('/leaveTontine/:tontineId/:userId', leaveTontine);
 
-router.post('/updateTontineParticipation', updateTontineParticipation)
+router.post('/updateTontineParticipation/:userId/:tontineId', updateTontineParticipation)
 
 module.exports = router;
