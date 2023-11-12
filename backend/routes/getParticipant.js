@@ -3,10 +3,10 @@ const express = require('express');
 const router = express.Router();
 
 // Assuming you have a User model
-const User = require('../models/User'); // Make sure to adjust the path based on your actual file structure
+const User = require('../models/User'); // 
 
 // Route to get participating tontines for a specific user
-router.get('/getParticipants/:userId/participatingTontines', async (req, res, next) => {
+router.get('/getParticipants/:userId', async (req, res, next) => {
   const userId = req.params.userId;
 
   try {
