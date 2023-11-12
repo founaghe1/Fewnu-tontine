@@ -43,7 +43,7 @@ const TypeTontine = () => {
 
   const participateInTontineOnServer = async (userId, tontineId, participate) => {
     try {
-      await axios.post(`https://fewnu-tontin.onrender.com/updateTontineParticipation/${userId}/${tontineId}`, { participate });
+      await axios.put(`https://fewnu-tontin.onrender.com/addTontine/updateTontineParticipation/${userId}/${tontineId}`, { participate });
       // After updating the server, re-fetch participating tontines
       fetchParticipatingTontinesFromServer();
     } catch (error) {

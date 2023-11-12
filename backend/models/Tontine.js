@@ -1,4 +1,3 @@
-// ../models/Tontine.js
 
 const mongoose = require('mongoose');
 
