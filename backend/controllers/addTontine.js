@@ -61,4 +61,34 @@ const leaveTontine = async (req, res, next) => {
   }
 };
 
-module.exports = { addTontine, participateInTontine, leaveTontine };
+// Update tontine participation status
+const updateTontineParticipation = async (req, res, next) => {
+  const { userId, tontineId, participate } = req.body;
+
+  try {
+    const tontine = await Tontine.findById(tontineId);
+
+    if (!tontine) {
+      return res.status(404).json({ message: 'Tontine not found' });
+    }
+
+    const userIndex = tontine.participants.indexOf(userId);
+
+    if (participate && userIndex === -1) {
+      // User wants to participate, add them to the participants list
+      tontine.participants.push(userId);
+    } else if (!participate && userIndex !== -1) {
+      // User wants to leave, remove them from the participants list
+      tontine.participants.splice(userIndex, 1);
+    }
+
+    // Save the updated tontine
+    await tontine.save();
+
+    res.json({ message: 'Tontine participation updated successfully' });
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports = { addTontine, participateInTontine, leaveTontine, updateTontineParticipation };

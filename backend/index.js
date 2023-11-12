@@ -10,6 +10,7 @@ const updateUser = require('./routes/updateUser');
 const updatePassword = require('./routes/updateUser');
 const participantTontine = require('./routes/addTontine');
 const leaveTontine = require('./routes/addTontine');
+const updateTontineParticipation = require('./routes/addTontine');
 
 const cors = require("cors")
 
@@ -53,6 +54,8 @@ app.use("/participateTontine", participantTontine);
 
 // Utiliser le routeur pour gérer les routes liées au départ d'un utilisateur d'une tontine
 app.use("/leaveTontine", leaveTontine);
+// Utiliser le routeur pour gérer les routes liées à la modification des informations sur sa participation à une tontine
+app.use('/updateTontineParticipation', updateTontineParticipation);
 
 
 

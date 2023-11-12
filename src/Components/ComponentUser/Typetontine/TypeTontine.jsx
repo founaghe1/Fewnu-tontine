@@ -20,10 +20,36 @@ const TypeTontine = () => {
         console.error('Erreur lors de la récupération des tontines :', error);
       });
 
-    // Fetch the participating tontines from localStorage and update state
-    const storedParticipatingTontines = JSON.parse(localStorage.getItem('participatingTontines')) || {};
-    setParticipatingTontines(storedParticipatingTontines);
+    // Fetch the participating tontines from the server
+    fetchParticipatingTontinesFromServer();
   }, []);
+
+  const fetchParticipatingTontinesFromServer = () => {
+    const storedUser = localStorage.getItem("userData");
+    if (storedUser) {
+      const userData = JSON.parse(storedUser);
+      const userId = userData.user._id;
+
+      // Fetch participating tontines from the server
+      axios.get(`https://fewnu-tontin.onrender.com/updateTontineParticipation/${userId}/participatingTontines`)
+        .then((response) => {
+          setParticipatingTontines(response.data);
+        })
+        .catch((error) => {
+          console.error('Erreur lors de la récupération des tontines participantes :', error);
+        });
+    }
+  };
+
+  const participateInTontineOnServer = async (userId, tontineId, participate) => {
+    try {
+      await axios.post(`https://fewnu-tontin.onrender.com/updateTontineParticipation/${userId}/tontine/${tontineId}/participate`, { participate });
+      // After updating the server, re-fetch participating tontines
+      fetchParticipatingTontinesFromServer();
+    } catch (error) {
+      console.error('Error updating tontine participation on the server:', error);
+    }
+  };
 
   const handleParticipate = (tontineId) => {
     const storedUser = localStorage.getItem("userData");
@@ -31,9 +57,8 @@ const TypeTontine = () => {
       const userData = JSON.parse(storedUser);
       const userId = userData.user._id;
 
-      // Update the participating tontines in localStorage
-      participatingTontines[tontineId] = true;
-      localStorage.setItem('participatingTontines', JSON.stringify(participatingTontines));
+      // Update the server with the participation status
+      participateInTontineOnServer(userId, tontineId, true);
 
       axios.post(`https://fewnu-tontin.onrender.com/addTontine/participateTontine/${tontineId}/${userId}`)
         .then(response => {
@@ -59,9 +84,8 @@ const TypeTontine = () => {
       const userData = JSON.parse(storedUser);
       const userId = userData.user._id;
 
-      // Update the participating tontines in localStorage
-      delete participatingTontines[tontineId];
-      localStorage.setItem('participatingTontines', JSON.stringify(participatingTontines));
+      // Update the server with the participation status
+      participateInTontineOnServer(userId, tontineId, false);
 
       axios.post(`https://fewnu-tontin.onrender.com/addTontine/leaveTontine/${tontineId}/${userId}`)
         .then(response => {
