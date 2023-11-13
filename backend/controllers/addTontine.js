@@ -64,6 +64,9 @@ const leaveTontine = async (req, res, next) => {
 // Update tontine participation status
 const updateTontineParticipation = async (req, res, next) => {
   const { userId, tontineId, participate } = req.body;
+  userId = req.params.userId;
+  tontineId = req.params.tontineId;
+
 
   try {
     const tontine = await Tontine.findById(tontineId);
