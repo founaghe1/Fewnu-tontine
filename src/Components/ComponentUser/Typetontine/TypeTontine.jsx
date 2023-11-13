@@ -29,21 +29,26 @@ const TypeTontine = () => {
     if (storedUser) {
       const userData = JSON.parse(storedUser);
       const userId = userData.user._id;
-
+  
       // Fetch participating tontines from the server
       axios.get(`https://fewnu-tontin.onrender.com/getParticipants/getParticipants/${userId}`)
         .then((response) => {
-          setParticipatingTontines(response.data);
+          const participatingTontinesMap = {};
+          response.data.forEach(tontine => {
+            participatingTontinesMap[tontine._id] = true;
+          });
+          setParticipatingTontines(participatingTontinesMap);
         })
         .catch((error) => {
           console.error('Erreur lors de la récupération des tontines participantes :', error);
         });
     }
   };
+  
 
   const participateInTontineOnServer = async (userId, tontineId, participate) => {
     try {
-      await axios.post(`https://fewnu-tontin.onrender.com/updateTontineParticipations/updateTontineParticipation/${userId}/${tontineId}`, { participate });
+      await axios.put(`https://fewnu-tontin.onrender.com/updateTontineParticipations/updateTontineParticipation/${userId}/${tontineId}`, { participate });
       // After updating the server, re-fetch participating tontines
       fetchParticipatingTontinesFromServer();
       // Fetch the updated tontines and update state

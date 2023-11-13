@@ -3,9 +3,11 @@ import "./tontine.css";
 
 const Cardtontine = (props) => {
   const handleButtonClick = () => {
-    if (props.isParticipating && props.onLeave) {
+    if (props.isParticipating) {
+      // User is participating, trigger the leave function
       props.onLeave();
-    } else if (!props.isParticipating && props.onParticipate) {
+    } else {
+      // User is not participating, trigger the participate function
       props.onParticipate();
     }
   };
@@ -19,7 +21,7 @@ const Cardtontine = (props) => {
             <p className="titreC">{props.titre}</p>
             <button
               onClick={handleButtonClick}
-              className={`btn ${props.isParticipating ? 'btn-secondary' : 'btn-success'}`}
+              className={`btn ${props.isParticipating ? 'btn-danger' : 'btn-success'}`}
               aria-label={props.isParticipating ? "Quitter" : "Participer"}
             >
               {props.isParticipating ? "Quitter" : "Participer"}
