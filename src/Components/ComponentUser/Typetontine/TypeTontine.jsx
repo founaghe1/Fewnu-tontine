@@ -31,7 +31,7 @@ const TypeTontine = () => {
       const userId = userData.user._id;
 
       // Fetch participating tontines from the server
-      axios.get(`https://fewnu-tontin.onrender.com/getParticipants/${userId}`)
+      axios.get(`https://fewnu-tontin.onrender.com/getParticipants/getParticipants/${userId}`)
         .then((response) => {
           setParticipatingTontines(response.data);
         })
@@ -43,7 +43,7 @@ const TypeTontine = () => {
 
   const participateInTontineOnServer = async (userId, tontineId, participate) => {
     try {
-      await axios.post(`https://fewnu-tontin.onrender.com/updateTontineParticipation/${userId}/${tontineId}`, { participate });
+      await axios.put(`https://fewnu-tontin.onrender.com/updateTontineParticipation/updateTontineParticipation/${userId}/${tontineId}`, { participate });
       // After updating the server, re-fetch participating tontines
       fetchParticipatingTontinesFromServer();
       // Fetch the updated tontines and update state
