@@ -46,7 +46,6 @@ const Cotisation = () => {
         <div className='d-flex justify-content-center '>
           <Progression/>
         </div>
-
         <Link to='/tontine' className='link'>
           {Object.keys(cotisations).map((tontine) => (
             <div className="card shadow mx-3">

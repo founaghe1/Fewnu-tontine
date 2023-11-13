@@ -5,10 +5,43 @@ import wave from '../../../Assets/wave.png'
 import orange from '../../../Assets/orange-money.png'
 import './Ajouter.css'
 import {GiTwoCoins} from 'react-icons/gi'
-import Button from '../Button/Button'
-import { Link } from 'react-router-dom'
+// import Button from '../Button/Button'
+import { useState, useEffect } from 'react'
+import { useNavigate } from "react-router-dom";
+import axios from 'axios'
 
 const ValiderAjout = () => {
+    const navigate = useNavigate();
+    const [cotisationData, setCotisationData] = useState('');
+
+    useEffect(() => {
+        // Récupérez les données stockées dans le stockage local
+        const storedData = localStorage.getItem('cotisationData');
+        if (storedData) {
+          setCotisationData(JSON.parse(storedData));
+          console.log(storedData);
+        }
+      }, []);
+
+      const handleEnregistrer = () => {
+        // Envoyez les données à l'API
+        axios.post("https://fewnu-tontin.onrender.com/addCotisation/addCotisation",cotisationData)
+            .then((response) => {
+                // Réussi à envoyer les données à l'API
+                alert("Données enregistrées avec succès : " + JSON.stringify(cotisationData));
+
+                // Nettoyez les données du local stockage 
+                localStorage.removeItem('cotisationData');
+
+                // Redirigez l'utilisateur où vous le souhaitez
+                navigate('/mesCotisations');
+            })
+            .catch((error) => {
+                // Gérez les erreurs ici
+                console.error("Erreur lors de l'envoi des données à l'API : " + error);
+            });
+      };
+    
   return (
       <Layout>
         <div className="h-100">
@@ -26,12 +59,13 @@ const ValiderAjout = () => {
 
             <div className="part2">
                 <p className='para1'>Tontine</p>
-                <p className='para2'>Tontine téléphone</p>
+                <p className='para2'>{cotisationData.tontine}</p>
                 <p className='para3'>Montant</p>
-                <p className='para4'>2.000 fcfa</p>
+                <p className='para4'>{cotisationData.cotisation}</p>
             </div>
             <div className="part3">
                 <p className='para5'>Mode de payement :</p>
+                {/* <p>Mode de paiement : {cotisationData.modePaiement.mensuel ? "Mensuel" : "Global"}</p> */}
                 <form>
                     <div className="d-flex gap-5">
                         <div className="form-check">
@@ -50,9 +84,8 @@ const ValiderAjout = () => {
                 </form>
             </div>
             <div className="text-center mt-3">
-                <Link to='/tontine'>
-                    <Button className="btn-form shadow" libelet="Enregistrer"/>
-                </Link>
+                {/* <Button className="btn-form shadow" libelet="Enregistrer" onClick={ajouter} /> */}
+                <button className='btn-form shadow' onClick={handleEnregistrer}>Enregistrer</button>
             </div>
         </div>
     </Layout>
