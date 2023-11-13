@@ -43,9 +43,17 @@ const TypeTontine = () => {
 
   const participateInTontineOnServer = async (userId, tontineId, participate) => {
     try {
-      await axios.put(`https://fewnu-tontin.onrender.com/addTontine/updateTontineParticipation/${userId}/${tontineId}`, { participate });
+      await axios.put(`https://fewnu-tontin.onrender.com/updateTontineParticipation/${userId}/${tontineId}`, { participate });
       // After updating the server, re-fetch participating tontines
       fetchParticipatingTontinesFromServer();
+      // Fetch the updated tontines and update state
+      axios.get('https://fewnu-tontin.onrender.com/tontines/getTontines')
+        .then((response) => {
+          setTontines(response.data);
+        })
+        .catch((error) => {
+          console.error('Erreur lors de la récupération des tontines :', error);
+        });
     } catch (error) {
       console.error('Error updating tontine participation on the server:', error);
     }
@@ -59,22 +67,6 @@ const TypeTontine = () => {
 
       // Update the server with the participation status
       participateInTontineOnServer(userId, tontineId, true);
-
-      axios.post(`https://fewnu-tontin.onrender.com/addTontine/participateTontine/${tontineId}/${userId}`)
-        .then(response => {
-          console.log(response.data);
-          // Fetch the updated tontines and update state
-          axios.get('https://fewnu-tontin.onrender.com/tontines/getTontines')
-            .then((response) => {
-              setTontines(response.data);
-            })
-            .catch((error) => {
-              console.error('Erreur lors de la récupération des tontines :', error);
-            });
-        })
-        .catch(error => {
-          console.error('Erreur lors de la participation à la tontine :', error);
-        });
     }
   };
 
@@ -86,22 +78,6 @@ const TypeTontine = () => {
 
       // Update the server with the participation status
       participateInTontineOnServer(userId, tontineId, false);
-
-      axios.post(`https://fewnu-tontin.onrender.com/addTontine/leaveTontine/${tontineId}/${userId}`)
-        .then(response => {
-          console.log(response.data);
-          // Fetch the updated tontines and update state
-          axios.get('https://fewnu-tontin.onrender.com/tontines/getTontines')
-            .then((response) => {
-              setTontines(response.data);
-            })
-            .catch((error) => {
-              console.error('Erreur lors de la récupération des tontines :', error);
-            });
-        })
-        .catch(error => {
-          console.error('Erreur lors de la sortie de la tontine :', error);
-        });
     }
   };
 

@@ -85,7 +85,8 @@ const updateTontineParticipation = async (req, res, next) => {
     // Save the updated tontine
     await tontine.save();
 
-    res.json({ message: 'Tontine participation updated successfully' });
+    // Respond with the updated tontine
+    res.json({ message: 'Tontine participation updated successfully', updatedTontine: tontine });
   } catch (error) {
     next(error);
   }

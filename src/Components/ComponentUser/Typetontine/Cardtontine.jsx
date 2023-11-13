@@ -1,28 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./tontine.css";
 
 const Cardtontine = (props) => {
-  const tontineKey = `${props.titre}-participation`;
-
-  const [isParticipating, setIsParticipating] = useState(() => {
-    const storedStatus = localStorage.getItem(tontineKey);
-    return storedStatus === "true" || false;
-  });
-
-  useEffect(() => {
-    const storedStatus = localStorage.getItem(tontineKey);
-    setIsParticipating(storedStatus === "true" || false);
-  }, [tontineKey]);
-
   const handleButtonClick = () => {
-    if (isParticipating && props.onLeave) {
+    if (props.isParticipating && props.onLeave) {
       props.onLeave();
-      setIsParticipating(false);
-      localStorage.setItem(tontineKey, "false");
-    } else if (!isParticipating && props.onParticipate) {
+    } else if (!props.isParticipating && props.onParticipate) {
       props.onParticipate();
-      setIsParticipating(true);
-      localStorage.setItem(tontineKey, "true");
     }
   };
 
@@ -35,10 +19,10 @@ const Cardtontine = (props) => {
             <p className="titreC">{props.titre}</p>
             <button
               onClick={handleButtonClick}
-              className={`btn ${isParticipating ? 'btn-secondary' : 'btn-success'}`}
-              aria-label={isParticipating ? "Quitter" : "Participer"}
+              className={`btn ${props.isParticipating ? 'btn-secondary' : 'btn-success'}`}
+              aria-label={props.isParticipating ? "Quitter" : "Participer"}
             >
-              {isParticipating ? "Quitter" : "Participer"}
+              {props.isParticipating ? "Quitter" : "Participer"}
             </button>
           </div>
           <div className="bottom d-flex justify-content-between">
