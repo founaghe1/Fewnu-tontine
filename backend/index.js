@@ -12,6 +12,7 @@ const participantTontine = require('./routes/addTontine');
 const leaveTontine = require('./routes/addTontine');
 const updateTontineParticipation = require('./routes/addTontine');
 const getParticipant = require('./routes/getParticipant');
+const checkParticipationStatus = require('./routes/getCheckParticipant')
 
 const cors = require("cors")
 
@@ -59,6 +60,8 @@ app.use("/leaveTontine", leaveTontine);
 app.use('/updateTontineParticipations', updateTontineParticipation);
 // Utiliser le routeur pour gérer les routes liées aux participants d'une tontine
 app.use("/getParticipants", getParticipant);
+
+app.use("/checkParticipationStatus", checkParticipationStatus)
 
 
 

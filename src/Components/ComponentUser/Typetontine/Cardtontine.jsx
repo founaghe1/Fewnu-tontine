@@ -5,7 +5,9 @@ const Cardtontine = (props) => {
   const handleButtonClick = () => {
     if (props.isParticipating) {
       // User is participating, trigger the leave function
+      
       props.onLeave();
+
     } else {
       // User is not participating, trigger the participate function
       props.onParticipate();
