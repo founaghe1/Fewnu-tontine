@@ -25,24 +25,24 @@ const TypeTontine = () => {
       gererClicTontine: () => gererClicTontine("telephone"),
       tontineSelectionnee: "telephone",
       aParticipe,
-      gererClicParticiper,
-      gererClicQuitter,
+      gererClicParticiper: () => gererClicParticiper(),
+      gererClicQuitter: () => gererClicQuitter(),
     },
     {
       image: imgton2,
       gererClicTontine: () => gererClicTontine("greffage"),
       tontineSelectionnee: "greffage",
       aParticipe,
-      gererClicParticiper,
-      gererClicQuitter,
+      gererClicParticiper: () => gererClicParticiper(),
+      gererClicQuitter: () => gererClicQuitter(),
     },
     {
       image: imgton3,
       gererClicTontine: () => gererClicTontine("ordinateur"),
       tontineSelectionnee: "ordinateur",
       aParticipe,
-      gererClicParticiper,
-      gererClicQuitter,
+      gererClicParticiper: () => gererClicParticiper(),
+      gererClicQuitter: () => gererClicQuitter(),
     },
   ];
 
@@ -54,47 +54,6 @@ const TypeTontine = () => {
 
   return (
     <Layout>
-      {/* <div className="mx-4 mt-3 d-flex justify-content-between mb-5">
-        <div>
-          <button
-            type="button"
-            className={`btn btn-light ${tontineSelectionnee === "telephone" ? "" : ""}`}
-            data-bs-toggle="modal"
-            data-bs-target="#exampleModal"
-            onClick={() => gererClicTontine("telephone")}
-          >
-            <div className="img">
-              <img src={imgton1} className="img-fluid w-100 tof" alt="" />
-            </div>
-          </button>
-        </div>
-        <div>
-          <button
-            type="button"
-            className={`btn btn-light ${tontineSelectionnee === "greffage" ? "" : ""}`}
-            data-bs-toggle="modal"
-            data-bs-target="#exampleModal"
-            onClick={() => gererClicTontine("greffage")}
-          >
-            <div className="img">
-              <img src={imgton2} className="img-fluid w-100 tof" alt="" />
-            </div>
-          </button>
-        </div>
-        <div>
-          <button
-            type="button"
-            className={`btn btn-light ${tontineSelectionnee === "ordinateur" ? "" : ""}`}
-            data-bs-toggle="modal"
-            data-bs-target="#exampleModal"
-            onClick={() => gererClicTontine("ordinateur")}
-          >
-            <div className="img">
-              <img src={imgton3} className="img-fluid w-100 tof" alt="" />
-            </div>
-          </button>
-        </div>
-      </div> */}
       <div className="mx-4 mt-3 d-flex justify-content-between mb-5">
         {boutonsTontine.map((bouton, index) => (
           <div key={index}>
@@ -128,9 +87,11 @@ const TypeTontine = () => {
                   {aParticipe ? `Quitter la tontine ${tontineSelectionnee}` : `Participer à la tontine ${tontineSelectionnee}`}
                 </p>
                 {aParticipe ? (
-                  <Button libelet="Quitter" className="btnIdenti" type="button" onClick={gererClicQuitter} />
+                  // <Button libelet="Quitter" className="btnIdenti" type="button" onClick={gererClicQuitter} />
+                  <button type="button" class="btn btn-success btnIdenti" onClick={gererClicQuitter}>Quitter</button>
                 ) : (
-                  <Button libelet="Participer" className="btnIdenti" type="button" onClick={gererClicParticiper} />
+                  // <Button libelet="Participer" className="btnIdenti" type="button" onClick={gererClicParticiper} />
+                  <button type="button" class="btn btn-success btnIdenti" onClick={gererClicParticiper}>Participer</button>
                 )}
               </div>
             </div>
