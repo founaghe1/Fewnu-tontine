@@ -1,67 +1,119 @@
-import React from 'react'
-import './tontine.css'
-import Layout from '../Layout/Layout'
-import Cardtontine from './Cardtontine'
+import React, { useState, useEffect } from "react";
+import "./tontine.css";
+import Layout from "../Layout/Layout";
+import Cardtontine from "./Cardtontine";
+import axios from 'axios';
 import imgton1 from '../../../Assets/img-ton1.png'
 import imgton2 from '../../../Assets/img-ton2.png'
 import imgton3 from '../../../Assets/img-ton3.png'
-import { Link } from 'react-router-dom'
 
 const TypeTontine = () => {
-  const typedata =[
-    {
-      titre:'Tontine téléphone',
-      des:'Chaque Samedi ',
-      img:imgton1,
-      some:'5.000 fcfa'
-    },
-    {
-      titre:'Tontine greffage',
-      des:'Chaque Lundi ',
-      img:imgton2,
-      some:'2.000 fcfa'
-    },
-    {
-      titre:'Tontine ordinateur',
-      des:'19-2022 à  22h 30 ',
-      img:imgton3,
-      some:'5.000 fcfa'
-    },
-    {
-      titre:'Tontine greffage',
-      des:'Chaque Lundi ',
-      img:imgton2,
-      some:'2.000 fcfa'
-    },
-    {
-      titre:'Tontine téléphone',
-      des:'Chaque Samedi ',
-      img:imgton1,
-      some:'5.000 fcfa'
+  const [tontines, setTontines] = useState([]);
+  const [participatingTontines, setParticipatingTontines] = useState({});
+
+  useEffect(() => {
+    axios.get('https://fewnu-tontin.onrender.com/tontines/getTontines')
+      .then((response) => {
+        setTontines(response.data);
+      })
+      .catch((error) => {
+        console.error('Erreur lors de la récupération des tontines :', error);
+      });
+
+    // Fetch the participating tontines from the server
+    fetchParticipatingTontinesFromServer();
+  }, []);
+
+  const fetchParticipatingTontinesFromServer = () => {
+    const storedUser = localStorage.getItem("userData");
+    if (storedUser) {
+      const userData = JSON.parse(storedUser);
+      const userId = userData.user._id;
+  
+      // Fetch participating tontines from the server
+      axios.get(`https://fewnu-tontin.onrender.com/getParticipants/getParticipants/${userId}`)
+        .then((response) => {
+          const participatingTontinesMap = {};
+          response.data.forEach(tontine => {
+            participatingTontinesMap[tontine._id] = true;
+          });
+          setParticipatingTontines(participatingTontinesMap);
+        })
+        .catch((error) => {
+          console.error('Erreur lors de la récupération des tontines participantes :', error);
+        });
     }
-  ];
+  };
+  
+
+  const participateInTontineOnServer = async (userId, tontineId, participate) => {
+    try {
+      await axios.put(`https://fewnu-tontin.onrender.com/updateTontineParticipations/updateTontineParticipation/${userId}/${tontineId}`, { participate });
+      // After updating the server, re-fetch participating tontines
+      fetchParticipatingTontinesFromServer();
+      // Fetch the updated tontines and update state
+      axios.get('https://fewnu-tontin.onrender.com/tontines/getTontines')
+        .then((response) => {
+          setTontines(response.data);
+        })
+        .catch((error) => {
+          
+          console.error('Erreur lors de la récupération des tontines :', error);
+        });
+    } catch (error) {
+      console.error('Error updating tontine participation on the server:', error);
+    }
+  };
+
+  const handleParticipate = (tontineId) => {
+    const storedUser = localStorage.getItem("userData");
+    if (storedUser) {
+      const userData = JSON.parse(storedUser);
+      const userId = userData.user._id;
+
+      // Update the server with the participation status
+      participateInTontineOnServer(userId, tontineId, true);
+    }
+  };
+
+  const handleLeave = (tontineId) => {
+    const storedUser = localStorage.getItem("userData");
+    if (storedUser) {
+      const userData = JSON.parse(storedUser);
+      const userId = userData.user._id;
+
+      // Update the server with the participation status
+      participateInTontineOnServer(userId, tontineId, false);
+    }
+  };
 
   return (
-    <Layout >
+    <Layout>
       <div className="mx-4 mt-3 d-flex justify-content-between mb-5">
-        <div className="img"><img src={imgton1} className='img-fluid w-100 tof' alt="" /></div>
+        <div className="img"><img src={imgton1} className='img-fluid tof' alt="" /></div>
         <div className="img"><img src={imgton2} className='img-fluid tof' alt="" /></div>
         <div className="img"><img src={imgton3} className='img-fluid tof' alt="" /></div>
         <div className="img"><img src={imgton1} className='img-fluid tof' alt="" /></div>
         <div className="img"><img src={imgton2} className='img-fluid tof' alt="" /></div>
       </div>
-    <div className='mx-2 d-flex justify-content-center'>
-      <div className='cart rounded'>
-        <Link to='/tontine' className='text-decoration-none text-dark'>
-          {typedata.map((card)=> (
-              <Cardtontine titre={card.titre} des={card.des} img={card.img} some={card.some}/>
+      
+      <div className='mx-2 d-flex justify-content-center'>
+        <div className='cart rounded'>
+          {tontines.map((tontine, index) => (
+            <Cardtontine
+              key={index}
+              titre={tontine.tontine}
+              des={tontine.cotisationDay}
+              some={tontine.somme}
+              onParticipate={() => handleParticipate(tontine._id)}
+              onLeave={() => handleLeave(tontine._id)}
+              isParticipating={participatingTontines[tontine._id]} // Add this prop to indicate if the user is participating
+            />
           ))}
-        </Link> 
+        </div>
       </div>
-    </div> 
-   
     </Layout>
-  )
-}
+  );
+};
 
-export default TypeTontine
+export default TypeTontine;

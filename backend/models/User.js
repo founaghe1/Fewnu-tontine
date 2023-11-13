@@ -5,7 +5,12 @@ const bcrypt = require('bcrypt');
 // Définit un schéma MongoDB pour l'entité "User".
 const userSchema = new mongoose.Schema(
   {
-    username: {
+    firstName: {
+      type: String,
+      required: true,
+      unique: false
+    },
+    lastName: {
       type: String,
       required: true,
       unique: false
@@ -28,7 +33,13 @@ const userSchema = new mongoose.Schema(
       type: String,
       enum: ['user', 'admin'],
       default: 'user'
-    }
+    },
+    participatingTontines: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Tontine', // Assuming your tontine model is named 'Tontine'
+      },
+    ],
   },
   { timestamps: true }
 );

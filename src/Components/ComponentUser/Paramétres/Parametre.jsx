@@ -49,7 +49,7 @@ return (
                 className="text-decoration-none text-dark"
               >
                 <div className="item-sec">
-                  <p>Modifier code PIN</p>
+                  <p>Modifier mot de passe</p>
                 </div>
               </Link>
             </div>
