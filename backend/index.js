@@ -56,7 +56,7 @@ app.use("/participateTontine", participantTontine);
 // Utiliser le routeur pour gérer les routes liées au départ d'un utilisateur d'une tontine
 app.use("/leaveTontine", leaveTontine);
 // Utiliser le routeur pour gérer les routes liées à la modification des informations sur sa participation à une tontine
-app.use('/updateTontineParticipation', updateTontineParticipation);
+app.use('/updateTontineParticipations', updateTontineParticipation);
 // Utiliser le routeur pour gérer les routes liées aux participants d'une tontine
 app.use("/getParticipants", getParticipant);
 
