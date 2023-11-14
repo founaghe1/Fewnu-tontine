@@ -22,7 +22,7 @@ const cotisationSchema = new mongoose.Schema(
       ref: 'User', // Référence au modèle User
     },
     tontine: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.String,
       ref: 'Tontine', // Référence au modèle Tontines
     }
   },

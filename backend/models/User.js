@@ -33,7 +33,13 @@ const userSchema = new mongoose.Schema(
       type: String,
       enum: ['user', 'admin'],
       default: 'user'
-    }
+    },
+    participatingTontines: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Tontine', // Assuming your tontine model is named 'Tontine'
+      },
+    ],
   },
   { timestamps: true }
 
