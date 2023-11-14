@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
 import Layout from '../ComponentUser/Layout/Layout'
 import HeaderProfil from '../ComponentUser/Profil/HeaderProfil'
-// import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Cotiser = () => {
    const [selectedTontine, setSelectedTontine] = useState('');
    const [cotisation, setCotisation] = useState('');
-   const [cotisations, setCotisations] = useState([]);
+   const [cotisations, setCotisations] = useState('');
    const [cotisationType, setCotisationType] = useState('mois');
+   const navigate = useNavigate()
+
    
   const handleAddCotisation = (e) => {
     e.preventDefault();
@@ -23,8 +25,10 @@ const Cotiser = () => {
           localStorage.setItem('cotisations', JSON.stringify(newCotisations));
           setCotisations(newCotisations);
           setCotisation('');
+          navigate('/cotise');
+
         }
-        alert('Bravo, ta cotiser');
+        // alert('Bravo, ta cotiser');
       };
 
   return (
@@ -66,10 +70,10 @@ const Cotiser = () => {
         </div>
       </div>
       <div className="d-flex justify-content-center">
-        {/* <Link to='/validerAjout'>
+        <Link to='/listcotiser'>
           <button className="text-capitalize pay-button" onClick={handleAddCotisation}>passer au payement</button>
-        </Link> */}
-        <button className="text-capitalize pay-button" onClick={handleAddCotisation}>passer au payement</button>
+        </Link>
+        
       </div>
         </div>
       </form>
