@@ -23,7 +23,7 @@ const PORT = process.env.PORT || 3000;
 connectDB();
 
 // Parse JSON request body
-app.use(express.json());
+app.use(express.json()); 
 
 // Enable CORS from client-side
 app.use(cors());
