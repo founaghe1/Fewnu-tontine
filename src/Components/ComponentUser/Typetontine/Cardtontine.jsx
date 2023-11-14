@@ -10,10 +10,26 @@ const Cardtontine = (props) => {
     const storedUser = localStorage.getItem("userData");
     const parsedUserData = storedUser ? JSON.parse(storedUser) : null;
     setUserData(parsedUserData);
-  
-    // Assurez-vous que props.isParticipating est défini avant d'utiliser setIsParticipating
-    setIsParticipating(props.isParticipating);
-  }, [props.isParticipating]);
+  }, []);  // Utilisez une dépendance vide pour s'assurer que cela ne s'exécute qu'une seule fois lors du montage du composant
+
+  useEffect(() => {
+    // Fonction pour vérifier la participation côté client
+    const checkParticipation = async () => {
+      try {
+        const response = await axios.get(`https://fewnu-tontin.onrender.com/checkParticipation/checkParticipation/${userData.userId}/${props.tontineId}`);
+        const { isParticipating } = response.data;
+        setIsParticipating(isParticipating);
+      } catch (error) {
+        console.error('Erreur lors de la vérification du statut de participation côté client :', error);
+        // Gérez les erreurs ici
+      }
+    };
+
+    // Vérifiez la participation lorsque le composant est monté ou lorsque le tontineId change
+    if (userData && props.tontineId) {
+      checkParticipation();
+    }
+  }, [userData, props.tontineId]);
 
   const handleButtonClick = async () => {
     try {
