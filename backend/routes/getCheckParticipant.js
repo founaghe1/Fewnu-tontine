@@ -14,11 +14,10 @@ router.get('/checkParticipation/:userId/:tontineId', async (req, res) => {
   } catch (error) {
     console.error('Erreur lors de la vérification du statut de participation :', error);
     res.status(500).json({ error: 'Internal Server Error' });
-  }
-});
+  };
 
-// Fonction pour vérifier la participation
-async function checkUserParticipation(userId, tontineId) {
+  // Fonction pour vérifier la participation
+  async function checkUserParticipation(userId, tontineId) {
   try {
     // Récupérez la tontine avec les participants
     const tontine = await Tontine.findById(tontineId).populate('participants', '_id');
@@ -33,5 +32,9 @@ async function checkUserParticipation(userId, tontineId) {
     return false;
   }
 }
+
+});
+
+
 
 module.exports = router;
