@@ -68,7 +68,7 @@ const TypeTontine = () => {
         // L'utilisateur ne participe pas encore, vous pouvez ici gérer le cas où l'utilisateur participe
         try {
           // Ajoutez l'utilisateur à la tontine côté serveur
-          await axios.post('https://fewnu-tontin.onrender.com/tontines/addTontineToUser', {
+          await axios.post('https://fewnu-tontin.onrender.com/addTontineToUser/addTontineToUser', {
             userId: userId,
             tontineId: tontineId
           });
