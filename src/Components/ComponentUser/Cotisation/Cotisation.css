@@ -65,6 +65,9 @@
     text-decoration : none !important;
     color: black;
 }
+.paff{
+    color: #20DF7F;
+}
 
 @media screen and (max-width: 900px){
     #Cotisation{

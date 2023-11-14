@@ -28,7 +28,7 @@ const ValiderAjout = () => {
         axios.post("https://fewnu-tontin.onrender.com/addCotisation/addCotisation",cotisationData)
             .then((response) => {
                 // Réussi à envoyer les données à l'API
-                alert("Données enregistrées avec succès : " + JSON.stringify(cotisationData));
+                // alert("Données enregistrées avec succès : " + JSON.stringify(cotisationData));
 
                 // Nettoyez les données du local stockage 
                 localStorage.removeItem('cotisationData');
@@ -59,7 +59,7 @@ const ValiderAjout = () => {
 
             <div className="part2">
                 <p className='para1'>Tontine</p>
-                <p className='para2'>{cotisationData.tontine}</p>
+                <p className='para2'>{cotisationData.tontineCot}</p>
                 <p className='para3'>Montant</p>
                 <p className='para4'>{cotisationData.cotisation}</p>
             </div>

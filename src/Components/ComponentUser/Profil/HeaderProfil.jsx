@@ -27,7 +27,7 @@ const HeaderProfil = () => {
     <div id="header-profil" className="">
       <div className="d-flex justify-content-center">
         <div className="profil-img-containt d-flex justify-content-center">
-          <img src={image} alt="photo profil" />
+          <img src={image} alt="photoprofil" />
         </div>
       </div>
       <h1 className="text-capitalize text-center">{firstName} {lastName}</h1>
