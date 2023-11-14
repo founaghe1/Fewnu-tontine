@@ -7,18 +7,17 @@ import './Ajouter.css'
 import {GiTwoCoins} from 'react-icons/gi'
 // import Button from '../Button/Button'
 import { useState, useEffect } from 'react'
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import axios from 'axios'
+
 
 const ValiderAjout = () => {
     const navigate = useNavigate();
     // const [cotisationData, setCotisationData] = useState('');
-    const [cotisationData, setCotisationData] = useState({
-        tontineCot: '',
-        cotisation: '',
-      });
+    const { state } = useLocation();
+  const cotisationData = state?.cotisationData || {};
 
-    /*useEffect(() => {
+   /* useEffect(() => {
         // Récupérez les données stockées dans le stockage local
         const storedData = localStorage.getItem('cotisationData');
         if (storedData) {
@@ -27,7 +26,8 @@ const ValiderAjout = () => {
         }
       }, []);*/
 
-    /*  const handleEnregistrer = () => {
+
+      /*const handleEnregistrer = () => {
         // Envoyez les données à l'API
         axios.post("https://fewnu-tontin.onrender.com/addCotisation/addCotisation",cotisationData)
             .then((response) => {
@@ -45,24 +45,13 @@ const ValiderAjout = () => {
                 console.error("Erreur lors de l'envoi des données à l'API : " + error);
             });
       };*/
-      useEffect(() => {
-        // Récupérer les données depuis l'API au lieu du localStorage
-        axios.get('https://fewnu-tontin.onrender.com/addCotisation/addCotisation') // Remplacez par votre endpoint
-          .then((response) => {
-            setCotisationData(response.data);
-          })
-          .catch((error) => {
-            console.error('Erreur lors de la récupération des données de cotisation', error);
-          });
-      }, []);
-
       const handleEnregistrer = () => {
         // Envoyez les données à l'API
         axios.post('https://fewnu-tontin.onrender.com/addCotisation/addCotisation', cotisationData)
           .then((response) => {
             // Réussi à envoyer les données à l'API
             console.log('Données enregistrées avec succès : ', response.data);
-    
+      
             // Redirigez l'utilisateur où vous le souhaitez
             navigate('/mesCotisations');
           })
@@ -71,7 +60,7 @@ const ValiderAjout = () => {
             console.error("Erreur lors de l'envoi des données à l'API : ", error);
           });
       };
-
+    
   return (
       <Layout>
         <div className="h-100">

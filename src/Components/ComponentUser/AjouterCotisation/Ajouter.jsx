@@ -75,10 +75,11 @@ const Ajouter = () => {
           global: global,
         },
       };
+        navigate('/validerAjout', { state: { cotisationData } });
       console.log(cotisationData);
 
       // Envoyez les données à l'API
-      axios.post("https://fewnu-tontin.onrender.com/addCotisation/addCotisation", cotisationData)
+      /*axios.post("https://fewnu-tontin.onrender.com/addCotisation/addCotisation", cotisationData)
         .then((response) => {
           // Réussi à envoyer les données à l'API
           console.log("Données enregistrées avec succès : ", response.data);
@@ -91,7 +92,7 @@ const Ajouter = () => {
         .catch((error) => {
           // Gérez les erreurs ici
           console.error("Erreur lors de l'envoi des données à l'API : ", error);
-        });
+        });*/
     }
   };
  
