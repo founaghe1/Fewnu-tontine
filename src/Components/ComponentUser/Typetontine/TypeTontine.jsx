@@ -3,9 +3,9 @@ import "./tontine.css";
 import Layout from "../Layout/Layout";
 import Cardtontine from "./Cardtontine";
 import axios from 'axios';
-import imgton1 from '../../../Assets/img-ton1.png'
-import imgton2 from '../../../Assets/img-ton2.png'
-import imgton3 from '../../../Assets/img-ton3.png'
+import imgton1 from '../../../Assets/img-ton1.png';
+import imgton2 from '../../../Assets/img-ton2.png';
+import imgton3 from '../../../Assets/img-ton3.png';
 
 const TypeTontine = () => {
   const [tontines, setTontines] = useState([]);
@@ -79,7 +79,7 @@ const TypeTontine = () => {
 
   const participateInTontineOnServer = async (userId, tontineId, participate) => {
     try {
-      await axios.post(`https://fewnu-tontin.onrender.com/updateTontineParticipations/updateTontineParticipation/${userId}/${tontineId}`, { participate });
+      await axios.put(`https://fewnu-tontin.onrender.com/updateTontineParticipations/updateTontineParticipation/${userId}/${tontineId}`, { participate });
       // After updating the server, re-fetch participating tontines
       fetchParticipatingTontinesFromServer();
       // Fetch the updated tontines and update state
