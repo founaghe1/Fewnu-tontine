@@ -3,7 +3,7 @@ import "./tontine.css";
 import axios from 'axios';
 
 const Cardtontine = (props) => {
-  const [isParticipating, setIsParticipating] = useState(false);
+  const [isParticipating, setIsParticipating] = useState(props.isParticipating);
   const [userData, setUserData] = useState(null);
 
   useEffect(() => {
@@ -11,14 +11,9 @@ const Cardtontine = (props) => {
     const parsedUserData = storedUser ? JSON.parse(storedUser) : null;
     setUserData(parsedUserData);
   
-    // Assurez-vous que props.participants est défini avant d'utiliser includes
-    setIsParticipating(
-      parsedUserData &&
-      parsedUserData.user._id &&
-      Array.isArray(props.participants) &&  // Ajout de cette vérification
-      props.participants.includes(parsedUserData.user._id)
-    );
-  }, [props.participants, props.tontineId]);
+    // Assurez-vous que props.isParticipating est défini avant d'utiliser setIsParticipating
+    setIsParticipating(props.isParticipating);
+  }, [props.isParticipating]);
 
   const handleButtonClick = async () => {
     try {
