@@ -18,6 +18,8 @@ const addTontine = async (req, res, next) => {
 
 // Participate in a tontine
 const participateInTontine = async (req, res, next) => {
+
+  
   const userId = req.params.userId; // Assuming userId is passed in the URL parameters
   const tontineId = req.params.tontineId; // Assuming tontineId is passed in the URL parameters
 
@@ -40,7 +42,8 @@ const participateInTontine = async (req, res, next) => {
 
 // Leave a tontine
 const leaveTontine = async (req, res, next) => {
-  const { tontineId, userId } = req.params;
+  const userId = req.params.userId;
+  const tontineId = req.params.tontineId;
 
   try {
     const tontine = await Tontine.findById(tontineId);

@@ -6,7 +6,7 @@ const cotisationSchema = new mongoose.Schema(
 
   {
     cotisation: {
-      type: String,
+      type: Number,
       required: true,
     },
     phoneNumberCot: {
@@ -22,8 +22,7 @@ const cotisationSchema = new mongoose.Schema(
       ref: 'User', // Référence au modèle User
     },
     tontine: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Tontine', // Référence au modèle Tontines
+      type: String,
     }
   },
   { timestamps: true }
