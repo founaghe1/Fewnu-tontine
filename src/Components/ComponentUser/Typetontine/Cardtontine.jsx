@@ -10,10 +10,15 @@ const Cardtontine = (props) => {
     const storedUser = localStorage.getItem("userData");
     const parsedUserData = storedUser ? JSON.parse(storedUser) : null;
     setUserData(parsedUserData);
-
-    // Mettez à jour isParticipating en fonction de la liste des tontines auxquelles l'utilisateur participe
-    setIsParticipating(parsedUserData && parsedUserData.user.participatingTontines.includes(props.tontineId));
-  }, [props.tontineId]);
+  
+    // Assurez-vous que props.participants est défini avant d'utiliser includes
+    setIsParticipating(
+      parsedUserData &&
+      parsedUserData.user._id &&
+      Array.isArray(props.participants) &&  // Ajout de cette vérification
+      props.participants.includes(parsedUserData.user._id)
+    );
+  }, [props.participants, props.tontineId]);
 
   const handleButtonClick = async () => {
     try {

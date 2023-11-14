@@ -32,25 +32,20 @@ const TypeTontine = () => {
       const userId = userData.user._id;
   
       try {
-        // Fetch participating tontines from the server for the current user
+        // Fetch participating tontine ids from the server for the current user
         const response = await axios.get(`https://fewnu-tontin.onrender.com/getParticipants/getParticipants/${userId}`);
-        setParticipatingTontines(response.data);
+        const participatingTontineIds = response.data;
+  
+        // Mise à jour de la liste des tontines participantes dans le stockage local
+        localStorage.setItem("participatingTontines", JSON.stringify(participatingTontineIds));
+  
+        return participatingTontineIds;
       } catch (error) {
         console.error('Erreur lors de la récupération des tontines participantes :', error);
       }
     }
   };
   
-
-  const fetchParticipationStatus = async (userId, tontineId) => {
-    try {
-      const response = await axios.get(`https://fewnu-tontin.onrender.com/checkParticipation/checkParticipation/${userId}/${tontineId}`);
-      return response.data.isParticipating;
-    } catch (error) {
-      console.error('Erreur lors de la récupération du statut de participation:', error);
-      return false;
-    }
-  };
 
   const handleParticipate = async (tontineId) => {
     const storedUser = localStorage.getItem("userData");
@@ -73,20 +68,17 @@ const TypeTontine = () => {
             tontineId: tontineId
           });
   
-          // Mise à jour de la liste des tontines participantes dans le stockage local
-          const updatedParticipatingTontines = [...participatingTontines, tontineId];
-          setParticipatingTontines(updatedParticipatingTontines);
-  
-          // Ensuite, mettez à jour l'état local ou effectuez d'autres actions si nécessaire
+          // Ensuite, mettez à jour l'état local 
           participateInTontineOnServer(userId, tontineId, true);
           console.log('L\'utilisateur a rejoint la tontine avec succès.');
         } catch (error) {
           console.error('Erreur lors de la participation à la Tontine côté serveur :', error);
-          // Vous pouvez ajouter ici des actions en cas d'erreur
+          
         }
       }
     }
   };
+  
   
 
   const handleLeave = async (tontineId) => {
@@ -94,6 +86,8 @@ const TypeTontine = () => {
     if (storedUser) {
       const userData = JSON.parse(storedUser);
       const userId = userData.user._id;
+
+      let updatedParticipatingTontines = await fetchParticipatingTontinesFromServer();
 
       const isParticipating = await fetchParticipationStatus(userId, tontineId);
 
@@ -106,8 +100,9 @@ const TypeTontine = () => {
           });
 
           // Mise à jour de la liste des tontines participantes dans le stockage local
-          const updatedParticipatingTontines = participatingTontines.filter(id => id !== tontineId);
+          updatedParticipatingTontines = updatedParticipatingTontines.filter(id => id !== tontineId);
           setParticipatingTontines(updatedParticipatingTontines);
+
 
           // Ensuite, mettez à jour l'état local ou effectuez d'autres actions si nécessaire
           participateInTontineOnServer(userId, tontineId, false);
@@ -116,6 +111,7 @@ const TypeTontine = () => {
         }
       } else {
         // L'utilisateur ne participe pas encore
+        // Vous pouvez gérer ce cas ici si nécessaire
         console.log('L\'utilisateur ne participe pas encore à cette tontine.');
       }
     }
@@ -136,6 +132,16 @@ const TypeTontine = () => {
         });
     } catch (error) {
       console.error('Error updating tontine participation on the server:', error);
+    }
+  };
+
+  const fetchParticipationStatus = async (userId, tontineId) => {
+    try {
+      const response = await axios.get(`https://fewnu-tontin.onrender.com/checkParticipation/checkParticipation/${userId}/${tontineId}`);
+      return response.data.isParticipating;
+    } catch (error) {
+      console.error('Erreur lors de la récupération du statut de participation:', error);
+      return false;
     }
   };
 
