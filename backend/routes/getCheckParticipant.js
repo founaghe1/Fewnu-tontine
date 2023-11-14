@@ -25,6 +25,7 @@ async function checkUserParticipation(userId, tontineId) {
 
     // Vérifiez si l'utilisateur participe en recherchant son identifiant dans le tableau d'identifiants d'utilisateurs
     const isParticipating = tontine.participants.some(participant => participant._id.equals(userId));
+    console.log("participantId : ",userId);
 
     return isParticipating;
   } catch (error) {
