@@ -41,7 +41,7 @@ const Ajouter = () => {
 
     }, []);
 
-
+/*
   const handleAddCotisation = () => {
     // Validez les données du formulaire ici
     if (cotisation.trim() !== '' && selectedTontine !== '') {
@@ -61,8 +61,39 @@ const Ajouter = () => {
       // Redirigez vers la page "validerAjout"
       navigate('/validerAjout');
     }
+  };*/
+  const handleAddCotisation = (e) => {
+    e.preventDefault();
+    // Validez les données du formulaire ici
+    if (cotisation.trim() !== '' && selectedTontine !== '') {
+      const cotisationData = {
+        tontineCot: selectedTontine,
+        cotisation: cotisation,
+        phoneNumberCot: phoneNumberCot,
+        modePaiement: {
+          mensuel: mensuel,
+          global: global,
+        },
+      };
+      console.log(cotisationData);
+
+      // Envoyez les données à l'API
+      axios.post("https://fewnu-tontin.onrender.com/addCotisation/addCotisation", cotisationData)
+        .then((response) => {
+          // Réussi à envoyer les données à l'API
+          console.log("Données enregistrées avec succès : ", response.data);
+
+          // Redirigez l'utilisateur où vous le souhaitez
+          // navigate('/validerAjout');
+          navigate('/mesCotisations');
+
+        })
+        .catch((error) => {
+          // Gérez les erreurs ici
+          console.error("Erreur lors de l'envoi des données à l'API : ", error);
+        });
+    }
   };
-  
  
   return (
     <Layout>

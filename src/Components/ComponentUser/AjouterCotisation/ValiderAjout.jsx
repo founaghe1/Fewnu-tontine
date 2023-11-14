@@ -12,18 +12,22 @@ import axios from 'axios'
 
 const ValiderAjout = () => {
     const navigate = useNavigate();
-    const [cotisationData, setCotisationData] = useState('');
+    // const [cotisationData, setCotisationData] = useState('');
+    const [cotisationData, setCotisationData] = useState({
+        tontineCot: '',
+        cotisation: '',
+      });
 
-    useEffect(() => {
+    /*useEffect(() => {
         // Récupérez les données stockées dans le stockage local
         const storedData = localStorage.getItem('cotisationData');
         if (storedData) {
           setCotisationData(JSON.parse(storedData));
           console.log(storedData);
         }
-      }, []);
+      }, []);*/
 
-      const handleEnregistrer = () => {
+    /*  const handleEnregistrer = () => {
         // Envoyez les données à l'API
         axios.post("https://fewnu-tontin.onrender.com/addCotisation/addCotisation",cotisationData)
             .then((response) => {
@@ -40,8 +44,34 @@ const ValiderAjout = () => {
                 // Gérez les erreurs ici
                 console.error("Erreur lors de l'envoi des données à l'API : " + error);
             });
-      };
+      };*/
+      useEffect(() => {
+        // Récupérer les données depuis l'API au lieu du localStorage
+        axios.get('https://fewnu-tontin.onrender.com/addCotisation/addCotisation') // Remplacez par votre endpoint
+          .then((response) => {
+            setCotisationData(response.data);
+          })
+          .catch((error) => {
+            console.error('Erreur lors de la récupération des données de cotisation', error);
+          });
+      }, []);
+
+      const handleEnregistrer = () => {
+        // Envoyez les données à l'API
+        axios.post('https://fewnu-tontin.onrender.com/addCotisation/addCotisation', cotisationData)
+          .then((response) => {
+            // Réussi à envoyer les données à l'API
+            console.log('Données enregistrées avec succès : ', response.data);
     
+            // Redirigez l'utilisateur où vous le souhaitez
+            navigate('/mesCotisations');
+          })
+          .catch((error) => {
+            // Gérez les erreurs ici
+            console.error("Erreur lors de l'envoi des données à l'API : ", error);
+          });
+      };
+
   return (
       <Layout>
         <div className="h-100">
@@ -49,7 +79,7 @@ const ValiderAjout = () => {
                 <div className="part-img">
                     <img src={img} className='img-fluid mb-2' alt="" />
                 </div>
-                <div c
+                <div 
                  lassName="div-text">
                     <p className='titre'>Faly Seck</p>
                     <p className='des mb-3 text-center'>Designer</p>
