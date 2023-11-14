@@ -42,38 +42,49 @@ const TypeTontine = () => {
     }
   };
 
+  const fetchParticipationStatus = async (userId, tontineId) => {
+    try {
+      const response = await axios.get(`https://fewnu-tontin.onrender.com/checkParticipation/checkParticipation/${userId}/${tontineId}`);
+      return response.data.isParticipating;
+    } catch (error) {
+      console.error('Erreur lors de la récupération du statut de participation:', error);
+      return false;
+    }
+  };
+
   const handleParticipate = async (tontineId) => {
     const storedUser = localStorage.getItem("userData");
     if (storedUser) {
       const userData = JSON.parse(storedUser);
       const userId = userData.user._id;
 
-      try {
-        const response = await axios.get(`https://fewnu-tontin.onrender.com/checkParticipationStatus/checkParticipationStatus/${userId}/${tontineId}`);
-        const isParticipating = response.data.isParticipating;
+      const isParticipating = await fetchParticipationStatus(userId, tontineId);
 
-        if (isParticipating) {
-          // L'utilisateur participe déjà, vous pourriez ici gérer le cas où l'utilisateur clique sur Participer alors qu'il participe déjà
-        } else {
-          // L'utilisateur ne participe pas encore, vous pouvez ici gérer le cas où l'utilisateur participe
-          participateInTontineOnServer(userId, tontineId, true);
-        }
-
-        // ... effectuez d'autres actions si nécessaire
-      } catch (error) {
-        console.error('Error checking participation status:', error);
+      if (isParticipating) {
+        // L'utilisateur participe déjà
+        // Vous pouvez gérer ce cas ici si nécessaire
+      } else {
+        // L'utilisateur ne participe pas encore, vous pouvez ici gérer le cas où l'utilisateur participe
+        participateInTontineOnServer(userId, tontineId, true);
       }
     }
   };
 
-  const handleLeave = (tontineId) => {
+  const handleLeave = async (tontineId) => {
     const storedUser = localStorage.getItem("userData");
     if (storedUser) {
       const userData = JSON.parse(storedUser);
       const userId = userData.user._id;
 
-      // Update the server with the participation status
-      participateInTontineOnServer(userId, tontineId, false);
+      const isParticipating = await fetchParticipationStatus(userId, tontineId);
+
+      if (isParticipating) {
+        // L'utilisateur participe, vous pouvez ici gérer le cas où l'utilisateur quitte
+        participateInTontineOnServer(userId, tontineId, false);
+      } else {
+        // L'utilisateur ne participe pas encore
+        // Vous pouvez gérer ce cas ici si nécessaire
+      }
     }
   };
 
