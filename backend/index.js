@@ -61,7 +61,7 @@ app.use('/updateTontineParticipations', updateTontineParticipation);
 // Utiliser le routeur pour gérer les routes liées aux participants d'une tontine
 app.use("/getParticipants", getParticipant);
 
-app.use("/checkParticipationStatus", checkParticipationStatus)
+app.use("/checkParticipation", checkParticipationStatus)
 
 
 
