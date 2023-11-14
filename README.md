@@ -1,7 +1,7 @@
 
 # Fewnu Tontine
 
-Fewnu tontine est une application qui permet de gérer des tontines, en permettant aux utilusatuers de participer à une ou plusieurs tontines et d'effectuer des cotisations. Elle est faite à base de React js, PWA, Node JS et Mongo DB.
+Fewnu tontine est une application qui permet de gérer des tontines, en permettant aux utilusateurs de participer à une ou plusieurs tontines et d'effectuer des cotisations. Elle est faite à base de React js, PWA, Node JS et Mongo DB.
 
 
 ## Installation
