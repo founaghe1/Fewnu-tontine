@@ -116,7 +116,6 @@ const TypeTontine = () => {
         }
       } else {
         // L'utilisateur ne participe pas encore
-        // Vous pouvez gérer ce cas ici si nécessaire
         console.log('L\'utilisateur ne participe pas encore à cette tontine.');
       }
     }
@@ -160,7 +159,7 @@ const TypeTontine = () => {
               some={tontine.somme}
               onParticipate={() => handleParticipate(tontine._id)}
               onLeave={() => handleLeave(tontine._id)}
-              isParticipating={participatingTontines.includes(tontine._id)} // Update to use the array directly
+              isParticipating={participatingTontines.includes(tontine._id)}
             />
           ))}
         </div>
