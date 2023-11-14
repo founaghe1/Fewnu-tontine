@@ -57,15 +57,29 @@ const TypeTontine = () => {
     if (storedUser) {
       const userData = JSON.parse(storedUser);
       const userId = userData.user._id;
-
+  
       const isParticipating = await fetchParticipationStatus(userId, tontineId);
-
+  
       if (isParticipating) {
         // L'utilisateur participe déjà
-        // Vous pouvez gérer ce cas ici si nécessaire
+        console.log('L\'utilisateur participe déjà à cette tontine.');
+        // Vous pouvez ajouter ici d'autres actions ou notifications
       } else {
         // L'utilisateur ne participe pas encore, vous pouvez ici gérer le cas où l'utilisateur participe
-        participateInTontineOnServer(userId, tontineId, true);
+        try {
+          // Ajoutez l'utilisateur à la tontine côté serveur
+          await axios.post('https://fewnu-tontin.onrender.com/tontines/addTontineToUser', {
+            userId: userId,
+            tontineId: tontineId
+          });
+  
+          // Ensuite, mettez à jour l'état local ou effectuez d'autres actions si nécessaire
+          participateInTontineOnServer(userId, tontineId, true);
+          console.log('L\'utilisateur a rejoint la tontine avec succès.');
+        } catch (error) {
+          console.error('Erreur lors de la participation à la Tontine côté serveur :', error);
+          // Vous pouvez ajouter ici des actions en cas d'erreur
+        }
       }
     }
   };
@@ -75,15 +89,26 @@ const TypeTontine = () => {
     if (storedUser) {
       const userData = JSON.parse(storedUser);
       const userId = userData.user._id;
-
+  
       const isParticipating = await fetchParticipationStatus(userId, tontineId);
-
+  
       if (isParticipating) {
         // L'utilisateur participe, vous pouvez ici gérer le cas où l'utilisateur quitte
-        participateInTontineOnServer(userId, tontineId, false);
+        try {
+          // Retirez l'utilisateur de la tontine côté serveur
+          await axios.put(`https://fewnu-tontin.onrender.com/updateTontineParticipations/updateTontineParticipation/${userId}/${tontineId}`, {
+            participate: false
+          });
+  
+          // Ensuite, mettez à jour l'état local ou effectuez d'autres actions si nécessaire
+          participateInTontineOnServer(userId, tontineId, false);
+        } catch (error) {
+          console.error('Erreur lors du départ de la Tontine côté serveur :', error);
+        }
       } else {
         // L'utilisateur ne participe pas encore
         // Vous pouvez gérer ce cas ici si nécessaire
+        console.log('L\'utilisateur ne participe pas encore à cette tontine.');
       }
     }
   };
