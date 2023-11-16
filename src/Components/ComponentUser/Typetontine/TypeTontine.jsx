@@ -128,7 +128,7 @@ const TypeTontine = () => {
         // Vous pouvez gérer ce cas ici si nécessaire
         console.log('L\'utilisateur ne participe pas encore à cette tontine.');
       }
-    }
+    }  
   };
   
     
