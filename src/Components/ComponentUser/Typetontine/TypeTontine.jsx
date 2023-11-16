@@ -131,7 +131,7 @@ const TypeTontine = () => {
     }
   };
   
-
+    
   const participateInTontineOnServer = async (userId, tontineId, participate) => {
     try {
       await axios.put(`https://fewnu-tontin.onrender.com/updateTontineParticipations/updateTontineParticipation/${userId}/${tontineId}`, { participate });
