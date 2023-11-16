@@ -16,7 +16,7 @@ const Cotisation = () => {
         const sortedCotisations = response.data.sort((a, b) => {
           return new Date(b.createdAt) - new Date(a.createdAt);
         });
-        
+
         setCotisations(sortedCotisations);
       })
       .catch((error) => {
@@ -24,7 +24,7 @@ const Cotisation = () => {
       });
   }, []);
 
-  const formatDate = (dateString) => {
+  const formatDate = (dateString) => {  
     const options = { day: 'numeric', month: 'numeric', year: 'numeric' };
     return new Date(dateString).toLocaleDateString('fr-FR', options);
   };
