@@ -130,7 +130,7 @@ const TypeTontine = () => {
       }
     }  
   };
-  
+     
     
   const participateInTontineOnServer = async (userId, tontineId, participate) => {
     try {
