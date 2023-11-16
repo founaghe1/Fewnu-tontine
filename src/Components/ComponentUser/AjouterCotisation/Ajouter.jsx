@@ -17,11 +17,22 @@ const Ajouter = () => {
   const navigate = useNavigate(); // Pour la redirection
 
   useEffect(() => {
-    // Récupérer les tontines depuis l'API
+    // Récupérer le telephone de l'utilisateur connecte depuis l'API
       axios.get("https://fewnu-tontin.onrender.com/user/profile")
         .then((response) => {
-          const userId = response.data[0].phoneNumber;
-          setPhoneNumberCot(userId);
+          console.log(response.data);
+          // const userId = response.data[0].phoneNumber;
+          const phoneNumberConnectedUser = response.data[0].phoneNumber;
+          // setPhoneNumberCot(userId);
+           // Trouver l'utilisateur connecté
+      const currentUser = response.data.find(user => user.phoneNumber === phoneNumberConnectedUser);
+
+      if (currentUser) {
+        const userId = currentUser.phoneNumber;
+        setPhoneNumberCot(userId);
+      } else {
+        console.error('Utilisateur connecté non trouvé dans la réponse de l\'API');
+      }
         })
         .catch((error) => {
           console.error('Erreur lors de la récupération des tontines', error);
@@ -33,7 +44,7 @@ const Ajouter = () => {
     axios.get("https://fewnu-tontin.onrender.com/tontines/getTontines")
       .then((response) => {
         setTontineCot(response.data);
-        console.log(response.data);
+        // console.log(response.data);
       })
       .catch((error) => {
         console.error('Erreur lors de la récupération des tontines', error);
@@ -41,27 +52,6 @@ const Ajouter = () => {
 
     }, []);
 
-/*
-  const handleAddCotisation = () => {
-    // Validez les données du formulaire ici
-    if (cotisation.trim() !== '' && selectedTontine !== '') {
-      const cotisationData = {
-        tontineCot: selectedTontine,
-        cotisation: cotisation,
-        phoneNumberCot: phoneNumberCot,
-        modePaiement: {
-          mensuel: mensuel,
-          global: global,
-        },
-      };
-      console.log(cotisationData);
-      // Ici, nous allons stocker temporairement les données dans le stockage local.
-      localStorage.setItem('cotisationData', JSON.stringify(cotisationData));
-
-      // Redirigez vers la page "validerAjout"
-      navigate('/validerAjout');
-    }
-  };*/
   const handleAddCotisation = (e) => {
     e.preventDefault();
     // Validez les données du formulaire ici
@@ -71,28 +61,12 @@ const Ajouter = () => {
         cotisation: cotisation,
         phoneNumberCot: phoneNumberCot,
         modePaiement: {
-          mensuel: mensuel,
+         mensuel: mensuel,
           global: global,
         },
       };
         navigate('/validerAjout', { state: { cotisationData } });
       console.log(cotisationData);
-
-      // Envoyez les données à l'API
-      /*axios.post("https://fewnu-tontin.onrender.com/addCotisation/addCotisation", cotisationData)
-        .then((response) => {
-          // Réussi à envoyer les données à l'API
-          console.log("Données enregistrées avec succès : ", response.data);
-
-          // Redirigez l'utilisateur où vous le souhaitez
-          // navigate('/validerAjout');
-          navigate('/mesCotisations');
-
-        })
-        .catch((error) => {
-          // Gérez les erreurs ici
-          console.error("Erreur lors de l'envoi des données à l'API : ", error);
-        });*/
     }
   };
  

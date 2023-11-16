@@ -13,11 +13,10 @@ const Cotisation = () => {
     // Effectuer une requête GET pour récupérer les cotisations depuis l'API
     axios.get("https://fewnu-tontin.onrender.com/cotisations/getCotisations")
       .then((response) => {
-        // setCotisations(response.data);
-        // console.log(response.data)
         const sortedCotisations = response.data.sort((a, b) => {
           return new Date(b.createdAt) - new Date(a.createdAt);
         });
+        
         setCotisations(sortedCotisations);
       })
       .catch((error) => {
@@ -71,7 +70,3 @@ const Cotisation = () => {
 }
 
 export default Cotisation
-
-{/* {cardsData.map((card) => (
-              <Carte mois={card.tontine} montant={card.montant} date={card.date} heure={card.heure} statut={card.statut}/>
-            ))} */}
