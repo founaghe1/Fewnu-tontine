@@ -11,6 +11,9 @@ const logOut = () => {
   try {
     // Effacez les données de l'utilisateur du localStorage (ou tout autre moyen de stockage)
     localStorage.removeItem("userData");
+
+    // Supprimez également l'ID de la tontine du localStorage
+    localStorage.removeItem("participatingTontines");
     // Redirigez l'utilisateur vers la page de connexion
     navigate("/idParCall", {replace: true});
   } catch (error) {

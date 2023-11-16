@@ -4,7 +4,7 @@ const User = require('../models/User'); //
 
 // Endpoint pour ajouter une Tontine à la liste des Tontines d'un utilisateur
 router.post('/addTontineToUser', async (req, res) => {
-  const { userId, tontineId } = req.body;
+  const { userId, tontineId } = req.body;  
 
   try {
     // Recherche de l'utilisateur par ID

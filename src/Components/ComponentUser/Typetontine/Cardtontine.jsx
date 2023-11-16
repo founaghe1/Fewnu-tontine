@@ -3,49 +3,39 @@ import "./tontine.css";
 import axios from 'axios';
 
 const Cardtontine = (props) => {
-  const [isParticipating, setIsParticipating] = useState(false);
-  const [userData, setUserData] = useState(null);
+  const [isParticipating, setIsParticipating] = useState(props.isParticipating);
 
   useEffect(() => {
-    const storedUser = localStorage.getItem("userData");
-    const parsedUserData = storedUser ? JSON.parse(storedUser) : null;
-    setUserData(parsedUserData);
+    setIsParticipating(props.isParticipating);
+  }, [props.isParticipating]);
 
-    // Mettez à jour isParticipating en fonction de la liste des tontines auxquelles l'utilisateur participe
-    setIsParticipating(parsedUserData && parsedUserData.user.participatingTontines.includes(props.tontineId));
-  }, [props.tontineId]);
-
-  const handleButtonClick = async () => {
+  const handleButtonClick = async (e) => {
+    e.preventDefault();
     try {
       if (isParticipating) {
-        // User is participating, trigger the leave function
         await props.onLeave();
       } else {
-        // User is not participating, trigger the participate function
         await props.onParticipate();
       }
-
-      // Mettez à jour isParticipating immédiatement pour refléter le changement localement
       setIsParticipating(!isParticipating);
     } catch (error) {
       console.error('Erreur lors du traitement du bouton :', error);
-      // Vous pouvez gérer ici les erreurs, par exemple afficher une notification à l'utilisateur
     }
   };
 
   return (
     <div className="d-flex justify-content-center">
-      <div className="carte rounded-4 mb-3  d-flex">
-        <div className="left-side rounded-start-4 "></div>
+      <div className="carte rounded-4 mb-3 d-flex">
+        <div className="left-side rounded-start-4"></div>
         <div className="right-side py-2 px-3">
           <div className="top d-flex justify-content-between align-items-center mt-2 mb-1">
             <p className="titreC">{props.titre}</p>
             <button
               onClick={handleButtonClick}
-              className={`btn ${isParticipating ? "btn-danger" : "btn-success"}`}
-              aria-label={isParticipating ? "Quitter" : "Participer"}
+              className={`btn ${isParticipating ? 'btn-danger' : 'btn-success'}`}
+              aria-label={isParticipating ? 'Quitter' : 'Participer'}
             >
-              {isParticipating ? "Quitter" : "Participer"}
+              {isParticipating ? 'Quitter' : 'Participer'}
             </button>
           </div>
           <div className="bottom d-flex justify-content-between">
