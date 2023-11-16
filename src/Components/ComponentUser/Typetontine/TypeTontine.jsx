@@ -30,19 +30,30 @@ const TypeTontine = () => {
     if (storedUser) {
       const userData = JSON.parse(storedUser);
       const userId = userData.user._id;
-  
+
       try {
         // Fetch participating tontine ids from the server for the current user
         const response = await axios.get(`https://fewnu-tontin.onrender.com/getParticipants/getParticipants/${userId}`);
         const participatingTontineIds = response.data;
-  
+
         // Mise à jour de la liste des tontines participantes dans le stockage local
         localStorage.setItem("participatingTontines", JSON.stringify(participatingTontineIds));
-  
-        return participatingTontineIds;
+
+        // Mettez à jour l'état local avec la nouvelle liste
+        setParticipatingTontines(participatingTontineIds);
       } catch (error) {
         console.error('Erreur lors de la récupération des tontines participantes :', error);
       }
+    }
+  };
+
+  const fetchParticipationStatus = async (userId, tontineId) => {
+    try {
+      const response = await axios.get(`https://fewnu-tontin.onrender.com/checkParticipation/checkParticipation/${userId}/${tontineId}`);
+      return response.data.isParticipating;
+    } catch (error) {
+      console.error('Erreur lors de la récupération du statut de participation:', error);
+      return false;
     }
   };
   
@@ -86,11 +97,12 @@ const TypeTontine = () => {
     if (storedUser) {
       const userData = JSON.parse(storedUser);
       const userId = userData.user._id;
-
+  
+      // Assurez-vous que updatedParticipatingTontines est défini
       let updatedParticipatingTontines = await fetchParticipatingTontinesFromServer();
-
+  
       const isParticipating = await fetchParticipationStatus(userId, tontineId);
-
+  
       if (isParticipating) {
         // L'utilisateur participe, vous pouvez ici gérer le cas où l'utilisateur quitte
         try {
@@ -98,12 +110,14 @@ const TypeTontine = () => {
           await axios.put(`https://fewnu-tontin.onrender.com/updateTontineParticipations/updateTontineParticipation/${userId}/${tontineId}`, {
             participate: false
           });
-
-          // Mise à jour de la liste des tontines participantes dans le stockage local
-          updatedParticipatingTontines = updatedParticipatingTontines.filter(id => id !== tontineId);
-          setParticipatingTontines(updatedParticipatingTontines);
-
-
+  
+          // Assurez-vous que updatedParticipatingTontines est défini avant d'appeler filter
+          if (updatedParticipatingTontines) {
+            // Mise à jour de la liste des tontines participantes dans le stockage local
+            updatedParticipatingTontines = updatedParticipatingTontines.filter(id => id !== tontineId);
+            setParticipatingTontines(updatedParticipatingTontines);
+          }
+  
           // Ensuite, mettez à jour l'état local ou effectuez d'autres actions si nécessaire
           participateInTontineOnServer(userId, tontineId, false);
         } catch (error) {
@@ -116,6 +130,7 @@ const TypeTontine = () => {
       }
     }
   };
+  
 
   const participateInTontineOnServer = async (userId, tontineId, participate) => {
     try {
@@ -135,15 +150,7 @@ const TypeTontine = () => {
     }
   };
 
-  const fetchParticipationStatus = async (userId, tontineId) => {
-    try {
-      const response = await axios.get(`https://fewnu-tontin.onrender.com/checkParticipation/checkParticipation/${userId}/${tontineId}`);
-      return response.data.isParticipating;
-    } catch (error) {
-      console.error('Erreur lors de la récupération du statut de participation:', error);
-      return false;
-    }
-  };
+  
 
   return (
     <Layout>
