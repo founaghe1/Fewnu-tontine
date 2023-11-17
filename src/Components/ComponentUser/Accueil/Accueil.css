@@ -40,6 +40,10 @@
     padding: 10px, 20px, 10px, 20px;
     border: none !important;
 }
+.myBTN{
+    background-color: #093545;
+    border: none;
+}
 
 @media screen and (min-width: 901px) and (max-width: 1728px) {
     #Accueil{
