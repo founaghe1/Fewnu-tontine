@@ -6,6 +6,9 @@ import axios from 'axios';
 import imgton1 from '../../../Assets/img-ton1.png';
 import imgton2 from '../../../Assets/img-ton2.png';
 import imgton3 from '../../../Assets/img-ton3.png';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const TypeTontine = () => {
   const [tontines, setTontines] = useState([]);
@@ -82,8 +85,10 @@ const TypeTontine = () => {
           // Ensuite, mettez à jour l'état local 
           participateInTontineOnServer(userId, tontineId, true);
           console.log('L\'utilisateur a rejoint la tontine avec succès.');
+          toast.success('Vous avez rejoint la tontine avec succès');
         } catch (error) {
           console.error('Erreur lors de la participation à la Tontine côté serveur :', error);
+          toast.error('Une erreur est survenue pendant votre inscription');
           
         }
       }
@@ -120,13 +125,16 @@ const TypeTontine = () => {
   
           // Ensuite, mettez à jour l'état local ou effectuez d'autres actions si nécessaire
           participateInTontineOnServer(userId, tontineId, false);
+          console.log('L\'utilisateur a quitté la tontine avec succès.');
+          toast.success('Vous avez quitté la tontine avec succès');
         } catch (error) {
           console.error('Erreur lors du départ de la Tontine côté serveur :', error);
+          toast.error('Erreur lors du départ de la tontine');
         }
       } else {
         // L'utilisateur ne participe pas encore
-        // Vous pouvez gérer ce cas ici si nécessaire
         console.log('L\'utilisateur ne participe pas encore à cette tontine.');
+        
       }
     }  
   };
@@ -177,6 +185,7 @@ const TypeTontine = () => {
           ))}
         </div>
       </div>
+      <ToastContainer position="top-center" autoClose={3000} hideProgressBar />
     </Layout>
   );
 };
