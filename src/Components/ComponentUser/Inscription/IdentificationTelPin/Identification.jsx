@@ -12,6 +12,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 
 const Identification = () => {
+
   const navigate = useNavigate();
   const [userStatus, setUserStatus] = useState("");
   const [formData, setFormData] = useState({
@@ -48,16 +49,16 @@ const Identification = () => {
     // Stockage des informations utilisateur dans le local storage
     localStorage.setItem("userData", JSON.stringify(userData));
     const role = userData.user.role;
-    console.log(userData.user.role);
+    // console.log(userData.user.role);
     setUserStatus(role);
-    const password = userData.user.password;
-    console.log(password);
+    // const password = userData.user.password;
+    // console.log(password);
     
    
 
       if (role === "user") {
         navigate("/mesCotisations");
-        console.log(role);
+        // console.log(role);
       }
    
 

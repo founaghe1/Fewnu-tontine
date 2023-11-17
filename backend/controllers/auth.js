@@ -28,20 +28,16 @@ const login = async (req, res, next) => {
 
   try {
     //Verification de l'existence du user dans la base de données en utlisant le phoneNumber
-    const user = await User.findOne({ phoneNumber });
+    const user = await User.findOne({ phoneNumber }).select('firstName lastName phoneNumber email password');
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
 
 
-    console.log(user);
-
 
     //Comparaisons du password saisi parraport a celui existant dans la base de données
     const passwordMatch = await user.comparePassword(password);
 
-    console.log(passwordMatch);
-    console.log(password);
     
     if (!passwordMatch) {
       return res.status(401).json({ message: 'Incorrect password', password, passwordMatch });
