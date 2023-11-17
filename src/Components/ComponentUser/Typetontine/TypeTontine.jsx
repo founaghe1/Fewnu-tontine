@@ -60,7 +60,6 @@ const TypeTontine = () => {
     }
   };
   
-
   const handleParticipate = async (tontineId) => {
     const storedUser = localStorage.getItem("userData");
     if (storedUser) {
