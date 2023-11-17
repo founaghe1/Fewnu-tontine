@@ -127,9 +127,10 @@ const Identification = () => {
           </div>
           {loading && (
             <div className="d-flex justify-content-center align-items-center pt-4">
-              <div class="spinner">
-              <div class="spinner1 text-center"></div>
-            </div>
+              <div class="loader">
+                <span class="loader-text">loading</span>
+                <span class="load"></span>
+              </div>
             </div>
           )}
         </form>
