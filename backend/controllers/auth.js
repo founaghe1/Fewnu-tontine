@@ -28,7 +28,7 @@ const login = async (req, res, next) => {
 
   try {
     //Verification de l'existence du user dans la base de données en utlisant le phoneNumber
-    const user = await User.findOne({ phoneNumber }).select('firstName lastName phoneNumber email password');
+    const user = await User.findOne({ phoneNumber });
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
