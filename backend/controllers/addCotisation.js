@@ -22,7 +22,7 @@ const addCotisation = async (req, res, next) => {
     }
 
      // Vérifiez si l'utilisateur participe à la tontine
-     const userParticipatesInTontine = user.tontines.includes(tontine._id);
+     const userParticipatesInTontine = user.tontine.includes(tontine._id);
 
      if (!userParticipatesInTontine) {
        return res.status(403).json({ message: "L'utilisateur ne participe pas à cette tontine" });

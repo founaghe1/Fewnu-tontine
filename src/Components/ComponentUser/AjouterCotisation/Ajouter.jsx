@@ -31,6 +31,10 @@ const Ajouter = () => {
       if (currentUser) {
         const userId = currentUser.phoneNumber;
         setPhoneNumberCot(userId);
+
+        currentUser.tontines = currentUser.tontines || [];
+        setUser(currentUser);
+
       } else {
         console.error('Utilisateur connecté non trouvé dans la réponse de l\'API');
       }
@@ -64,7 +68,7 @@ const Ajouter = () => {
     }
 
     // Check if the user participates in the selected tontine
-    const userParticipatesInSelectedTontine = user.tontines.includes(selectedTontine);
+    const userParticipatesInSelectedTontine = user.tontine.includes(selectedTontine);
 
     if (!userParticipatesInSelectedTontine) {
       // Display an error message or handle the validation error appropriately
