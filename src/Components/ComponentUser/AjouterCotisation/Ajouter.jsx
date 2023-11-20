@@ -54,7 +54,7 @@ const Ajouter = () => {
       if (cotisation.trim() !== '' && selectedTontine !== '') {
         // Assurez-vous que vous avez les informations sur la participation de l'utilisateur à la tontine
         // Vous pouvez stocker ces informations lorsque vous récupérez les tontines ou les récupérer avec une autre requête à l'API.
-        axios.get("https://fewnu-tontin.onrender.com/tontines/getTontines")
+        axios.get("https://fewnu-tontin.onrender.com/user/profile")
         .then((response) => {
           const userParticipatingTontines = response.data[0].participatingTontine;
         console.log(userParticipatingTontines);
