@@ -1,5 +1,5 @@
 import React from "react";
-import Wave from "../../../Assets/wave.png";
+// import Wave from "../../../Assets/wave.png";
 
 const CarteTontine = (props) => {
   return (

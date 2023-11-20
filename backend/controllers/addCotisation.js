@@ -28,7 +28,7 @@ const addCotisation = async (req, res, next) => {
 
   } catch (error) {
     next(error);
-  }
+  } 
 };
 
 module.exports = { addCotisation };
