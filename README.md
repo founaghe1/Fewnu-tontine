@@ -1,13 +1,12 @@
 
 # Fewnu Tontine
 
-Fewnu tontine est une application qui permet de gérer des tontines, en permettant aux utilusateurs de participer à une ou plusieurs tontines et d'effectuer des cotisations. Elle est faite à base de React js, PWA, Node JS et Mongo DB.
+Fewnu tontine est une application qui permet de gérer des tontines, en permettant aux utilusatuers de participer à une ou plusieurs tontines et d'effectuer des cotisations. Elle est faite à base de React js, PWA, Node JS et Mongo DB.
 
 
 ## Installation
 
 Pour installer Fewnu Tontine, c'est simple. Il suffit d'y accéder grâce à une URL via un navigateur. Sur la page d'accueil, cliquez sur l'icône de téléchargement, et l'application apparaîtra sur l'écran d'accueil de votre appareil.
-
 ## Guide utilusateur
 
 1- Connexion avec numéro téléphone et mot de passe
@@ -19,6 +18,12 @@ Pour installer Fewnu Tontine, c'est simple. Il suffit d'y accéder grâce à une
 4- Sur l'icône « plus », vous pouvez ajouter une cotisation en choisissant la tontine, le montant, le mode de paiement et le moyen de paiement.
 
 5- Sur l'icône "paramètres", vous pouvez consulter vos informations générales, modifier votre profil ou mot de passe, prendre contact, devenir administrateur, et enfin, vous déconnecter.
+## Technologies
+
+**Client:** React, Axios, Bootstrap
+
+**Server:** Node, Express, Mongoose
+
 
 ## API
 
@@ -26,7 +31,6 @@ Les API utilisées sur notre application sont :
 
 - Node JS 
 - Mongo DB
-
 ## Fonctionnalités
 
 - Téléchargement de l'application
@@ -40,5 +44,5 @@ Les API utilisées sur notre application sont :
 
 Ci-dessous vous avez lien de déploiement
 
-https://fewnu-tontine.vercel.app/typeTontine
+https://fewnu-tontine.vercel.app/
 
