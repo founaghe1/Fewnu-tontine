@@ -87,7 +87,7 @@ const TypeTontine = () => {
           toast.success('Vous avez rejoint la tontine avec succès');
         } catch (error) {
           console.error('Erreur lors de la participation à la Tontine côté serveur :', error);
-          toast.error('Une erreur est survenue pendant votre inscription');
+          toast.error('Une erreur est survenue pendant votre participation');
           
         }
       }
