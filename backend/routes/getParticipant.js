@@ -14,7 +14,7 @@ router.get('/getParticipants/:userId', async (req, res) => {
 
     const participatingTontineName = participatingTontines.map(tontine => tontine.tontine);
 
-    res.json(participatingTontineIds, participatingTontineName);
+    res.json(participatingTontineIds);
   } catch (error) {
     console.error('Erreur lors de la récupération des participants de l\'utilisateur :', error);
     res.status(500).json({ error: 'Internal Server Error' });
