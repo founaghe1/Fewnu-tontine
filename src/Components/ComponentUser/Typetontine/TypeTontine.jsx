@@ -38,7 +38,7 @@ const TypeTontine = () => {
         // Fetch participating tontine ids from the server for the current user
         const response = await axios.get(`https://fewnu-tontin.onrender.com/getParticipants/getParticipants/${userId}`);
         const participatingTontineIds = response.data;
-        const participatingTontineName = response.data;
+        
 
         // Mise à jour de la liste des tontines participantes dans le stockage local
         localStorage.setItem("participatingTontines", JSON.stringify(participatingTontineIds));

@@ -65,31 +65,32 @@ const Ajouter = () => {
     if (storedUser) {
       const userData = JSON.parse(storedUser);
       const userId = userData.user._id;
-
+  
       try {
-        // Fetch participating tontine ids from the server for the current user
-        const response = await axios.get(
-          `https://fewnu-tontin.onrender.com/getParticipants/getParticipants/${userId}`
-        );
+        const response = await axios.get(`https://fewnu-tontin.onrender.com/getParticipants/getParticipants/${userId}`);
         const participatingTontineIds = response.data;
-
-        // Mise à jour de la liste des tontines participantes dans le stockage local
-        localStorage.setItem(
-          "participatingTontines",
-          JSON.stringify(participatingTontineIds)
-        );
-
-        console.log("participatingTontines", participatingTontineIds);
-        // Mettez à jour l'état local avec la nouvelle liste
-        setParticipatingTontines(participatingTontineIds);
+  
+        // Fetch the details of each tontine using the IDs
+        const tontineDetailsPromises = participatingTontineIds.map(async (tontineId) => {
+          const tontineResponse = await axios.get(`https://fewnu-tontin.onrender.com/tontines/getTontineById/${tontineId}`);
+          return tontineResponse.data;
+        });
+  
+        // Wait for all the tontine details to be fetched
+        const tontineDetails = await Promise.all(tontineDetailsPromises);
+  
+        // Extract tontine names from the fetched data
+        const tontineNames = tontineDetails.map(tontine => tontine.tontine);
+  
+        console.log("ParticipatingTontines: ", tontineNames);
+        setParticipatingTontines(tontineNames);
       } catch (error) {
-        console.error(
-          "Erreur lors de la récupération des tontines participantes :",
-          error
-        );
+        console.error("Erreur lors de la récupération des tontines participantes :", error);
       }
     }
   };
+  
+  
 
   const handleAddCotisation = (e) => {
     e.preventDefault();
@@ -131,8 +132,8 @@ const Ajouter = () => {
                   Sélectionner la tontine
                 </option>
                 {participatingTontines.map((tontine) => (
-                  <option key={participatingTontines._id} value={tontine.tontine}>
-                    {tontine.tontine} 
+                  <option key={tontine._id} value={tontine.participatingTontines}>
+                    {tontine.participatingTontines} 
                   </option>
                 ))}
               </select>
