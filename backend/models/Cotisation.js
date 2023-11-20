@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 
 const cotisationSchema = new mongoose.Schema(
 
-  {
+  { 
     cotisation: {
       type: Number,
       required: true,

@@ -15,6 +15,7 @@ const Ajouter = () => {
   const [mensuel, setMensuel] = useState();
   const [global, setGlobal] = useState();
   const navigate = useNavigate(); // Pour la redirection
+  const [user, setUser] = useState({});
 
   useEffect(() => {
     // Récupérer le telephone de l'utilisateur connecte depuis l'API
@@ -54,6 +55,24 @@ const Ajouter = () => {
 
   const handleAddCotisation = (e) => {
     e.preventDefault();
+
+    // Validate that either mensuel or global is selected
+    if (!(mensuel || global)) {
+      // Display an error message or handle the validation error appropriately
+      console.error('Veuillez sélectionner le mode de paiement (mensuel ou global)');
+      return;
+    }
+
+    // Check if the user participates in the selected tontine
+    const userParticipatesInSelectedTontine = user.tontines.includes(selectedTontine);
+
+    if (!userParticipatesInSelectedTontine) {
+      // Display an error message or handle the validation error appropriately
+      console.error("L'utilisateur ne participe pas à cette tontine");
+      return;
+    }
+
+
     // Validez les données du formulaire ici
     if (cotisation.trim() !== '' && selectedTontine !== '') {
       const cotisationData = {
