@@ -45,7 +45,17 @@ const Ajouter = () => {
       });
   }, []);
 
-  useEffect(() => {    
+  useEffect(() => {
+    // Récupérer les tontines depuis l'API
+    axios
+      .get("https://fewnu-tontin.onrender.com/tontines/getTontines")
+      .then((response) => {
+        setTontineCot(response.data);
+        // console.log(response.data);
+      })
+      .catch((error) => {
+        console.error("Erreur lors de la récupération des tontines", error);
+      });
     // Fetch participating tontines from the server
     fetchParticipatingTontinesFromServer();
   }, []);
@@ -123,9 +133,9 @@ const Ajouter = () => {
                 {participatingTontines.map((tontine) => (
                   <option
                     key={tontine.participatingTontineIds}
-                    value={tontine.tontineCot}
+                    value={tontine.participatingTontines}
                   >
-                    {tontine.tontineCot}
+                    {tontine.tontine}
                   </option>
                 ))}
               </select>

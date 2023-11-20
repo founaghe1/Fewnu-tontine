@@ -10,7 +10,7 @@ router.get('/getParticipants/:userId', async (req, res) => {
     const participatingTontines = await Tontine.find({ participants: userId }, '_id');
 
     // Renvoyer un tableau d'identifiants d'utilisateurs
-    const participatingTontineIds = participatingTontines.map(tontine => tontine.tontine);
+    const participatingTontineIds = participatingTontines.map(tontine => tontine._id);
 
     res.json(participatingTontineIds);
   } catch (error) {
