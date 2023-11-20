@@ -51,7 +51,7 @@ const Ajouter = () => {
       .get("https://fewnu-tontin.onrender.com/tontines/getTontines")
       .then((response) => {
         setTontineCot(response.data);
-        // console.log(response.data);
+        console.log("nomTontine: ", response.data);
       })
       .catch((error) => {
         console.error("Erreur lors de la récupération des tontines", error);
@@ -131,11 +131,8 @@ const Ajouter = () => {
                   Sélectionner la tontine
                 </option>
                 {participatingTontines.map((tontine) => (
-                  <option
-                    key={tontine.participatingTontineIds}
-                    value={tontine.participatingTontines}
-                  >
-                    {tontine.tontine}
+                  <option key={participatingTontines._id} value={tontine.tontine}>
+                    {tontine.tontine} 
                   </option>
                 ))}
               </select>

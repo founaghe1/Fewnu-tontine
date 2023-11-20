@@ -12,7 +12,9 @@ router.get('/getParticipants/:userId', async (req, res) => {
     // Renvoyer un tableau d'identifiants d'utilisateurs
     const participatingTontineIds = participatingTontines.map(tontine => tontine._id);
 
-    res.json(participatingTontineIds);
+    const participatingTontineName = participatingTontines.map(tontine => tontine.tontine);
+
+    res.json(participatingTontineIds, participatingTontineName);
   } catch (error) {
     console.error('Erreur lors de la récupération des participants de l\'utilisateur :', error);
     res.status(500).json({ error: 'Internal Server Error' });
