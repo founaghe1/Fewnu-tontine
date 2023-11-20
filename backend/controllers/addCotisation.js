@@ -6,7 +6,7 @@ const User = require('../models/User');
 const addCotisation = async (req, res, next) => {
   const { cotisation, phoneNumberCot, tontineCot } = req.body; 
 
-  try {
+  try { 
     // Recherchez l'utilisateur en fonction du numéro de téléphone
     const user = await User.findOne({ phoneNumber: phoneNumberCot });
 
@@ -20,6 +20,13 @@ const addCotisation = async (req, res, next) => {
     if (!tontine) {
       return res.status(404).json({ message: 'Aucune tontine  trouvée sous ce nom' });
     }
+
+     // Vérifiez si l'utilisateur participe à la tontine
+     const userParticipatesInTontine = user.tontine.includes(tontine._id);
+
+     if (!userParticipatesInTontine) {
+       return res.status(403).json({ message: "L'utilisateur ne participe pas à cette tontine" });
+     }
 
     // Créez la cotisation en associant l'ID de l'utilisateur et l'ID de la tontine
     const CotisationMtn = new Cotisation({ cotisation, user: user._id, tontine: tontine.tontine });

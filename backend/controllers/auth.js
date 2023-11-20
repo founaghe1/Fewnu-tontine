@@ -34,14 +34,10 @@ const login = async (req, res, next) => {
     }
 
 
-    console.log(user);
-
 
     //Comparaisons du password saisi parraport a celui existant dans la base de données
     const passwordMatch = await user.comparePassword(password);
 
-    console.log(passwordMatch);
-    console.log(password);
     
     if (!passwordMatch) {
       return res.status(401).json({ message: 'Incorrect password', password, passwordMatch });

@@ -4,12 +4,11 @@ import { GiWallet } from "react-icons/gi";
 import Input from "../../Input/Input";
 import Button from "../../Button/Button";
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
-import FooterImg from '../../FooterImg/FooterImg';
+import { useNavigate } from "react-router-dom";
+import FooterImg from "../../FooterImg/FooterImg";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-
 
 const Identification = () => {
   const navigate = useNavigate();
@@ -17,7 +16,7 @@ const Identification = () => {
   const [formData, setFormData] = useState({
     phoneNumber: "",
     password: "",
-  }); 
+  });
 
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -31,50 +30,45 @@ const Identification = () => {
   };
 
   const handleLogin = (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     //Commencer le chargement
     setLoading(true);
 
-    axios.post('https://fewnu-tontin.onrender.com/auth/login', formData).then((response) => {
-    // Arrêtez le chargement en cas de réussite
-    setLoading(false);
+    axios
+      .post("https://fewnu-tontin.onrender.com/auth/login", formData)
+      .then((response) => {
+        // Arrêtez le chargement en cas de réussite
+        setLoading(false);
 
-    // Extraction des informations utilisateur de la réponse
-    // Supposons que les informations sont dans response.data
-    const userData = response.data; 
-    
-  
-    // Stockage des informations utilisateur dans le local storage
-    localStorage.setItem("userData", JSON.stringify(userData));
-    const role = userData.user.role;
-    console.log(userData.user.role);
-    setUserStatus(role);
-    const password = userData.user.password;
-    console.log(password);
-    
-   
+        // Extraction des informations utilisateur de la réponse
+        // Supposons que les informations sont dans response.data
+        const userData = response.data;
 
-      if (role === "user") {
-        navigate("/mesCotisations");
-        console.log(role);
-      }
-   
+        // Stockage des informations utilisateur dans le local storage
+        localStorage.setItem("userData", JSON.stringify(userData));
+        const role = userData.user.role;
+        // console.log(userData.user.role);
+        setUserStatus(role);
+        // const password = userData.user.password;
+        // console.log(password);
 
-  }).catch((err) => {
-    // Arrêtez le chargement en cas d'erreur
-    setLoading(false);
+        if (role === "user") {
+          navigate("/mesCotisations");
+          // console.log(role);
+        }
+      })
+      .catch((err) => {
+        // Arrêtez le chargement en cas d'erreur
+        setLoading(false);
 
-    // Utilisez toast.error pour afficher le message d'erreur
-    toast.error(
-      err.response?.data?.message ||
-        "Numéro téléphone ou mot de passe incorrect."
-    );
-  });
+        // Utilisez toast.error pour afficher le message d'erreur
+        toast.error(
+          err.response?.data?.message ||
+            "Numéro téléphone ou mot de passe incorrect."
+        );
+      });
   };
-
-
-  
 
   return (
     <div className="identif shadow">
@@ -101,7 +95,7 @@ const Identification = () => {
             />
           </div>
           <div className="text-center d-flex justify-content-center align-items-center">
-          <div className="password-input-container d-flex justify-content-center align-items-center">
+            <div className="password-input-container d-flex justify-content-center align-items-center">
               <Input
                 type={showPassword ? "text" : "password"} // Afficher le mot de passe comme texte si showPassword est vrai
                 className="px-3"
@@ -116,7 +110,11 @@ const Identification = () => {
                 onClick={toggleShowPassword}
                 id="password-toggle-button"
               >
-                {showPassword ? <FaEyeSlash className="fs-5"/> : <FaEye className="fs-5"/>}
+                {showPassword ? (
+                  <FaEyeSlash className="fs-5" />
+                ) : (
+                  <FaEye className="fs-5" />
+                )}
               </button>
             </div>
           </div>
@@ -125,13 +123,22 @@ const Identification = () => {
               libelet="S’identifier"
               className="btnIdenti"
               type="submit"
-              
             />
           </div>
-          {loading && <p className="mt-5 text-secondary">Chargement en cours...</p>}
-          
+          {loading && (
+            <div className="d-flex justify-content-center align-items-center pt-4">
+              <div class="loader">
+                <span class="loader-text">loading</span>
+                <span class="load"></span>
+              </div>
+            </div>
+          )}
         </form>
-        <ToastContainer position="top-center" autoClose={3000} hideProgressBar />
+        <ToastContainer
+          position="top-center"
+          autoClose={3000}
+          hideProgressBar
+        />
 
         <FooterImg />
       </div>

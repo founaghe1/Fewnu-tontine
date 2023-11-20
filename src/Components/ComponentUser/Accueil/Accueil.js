@@ -39,7 +39,7 @@ const Accueil = () => {
           <Link to="/idParCall">
             <button className='loginButton px-2 py-1'>Connectez-vous</button>
           </Link>
-          <button id='installApp' onClick={handleInstallAppClick}>
+          <button className='myBTN' id='installApp' onClick={handleInstallAppClick}>
             <BiSolidDownload className='downloadButton' />
           </button>
         </div>
