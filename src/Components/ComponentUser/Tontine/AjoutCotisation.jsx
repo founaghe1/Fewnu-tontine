@@ -36,7 +36,7 @@ const AjoutCotisation = ({  totalSum }) => {
               <span>{tontineName}</span>
               <br />
               <br />
-              <span className="">{totalSum}F</span>
+              <span >{totalSum}Fr Cfa</span>
               <br />
             </p>
           </div>
