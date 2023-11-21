@@ -15,7 +15,7 @@ const ValiderAjout = () => {
     const { state } = useLocation();
     const cotisationData = state?.cotisationData || {};
 
-  
+   
       const handleEnregistrer = () => {
         // Envoyez les données à l'API
         axios.post('https://fewnu-tontin.onrender.com/addCotisation/addCotisation', cotisationData)

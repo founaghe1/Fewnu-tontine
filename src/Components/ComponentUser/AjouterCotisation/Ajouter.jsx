@@ -65,32 +65,39 @@ const Ajouter = () => {
     if (storedUser) {
       const userData = JSON.parse(storedUser);
       const userId = userData.user._id;
-  
+
       try {
-        const response = await axios.get(`https://fewnu-tontin.onrender.com/getParticipants/getParticipants/${userId}`);
+        const response = await axios.get(
+          `https://fewnu-tontin.onrender.com/getParticipants/getParticipants/${userId}`
+        );
         const participatingTontineIds = response.data;
-  
+
         // Fetch the details of each tontine using the IDs
-        const tontineDetailsPromises = participatingTontineIds.map(async (tontineId) => {
-          const tontineResponse = await axios.get(`https://fewnu-tontin.onrender.com/getTontineById/getTontineById/${tontineId}`);
-          return tontineResponse.data;
-        });
-  
+        const tontineDetailsPromises = participatingTontineIds.map(
+          async (tontineId) => {
+            const tontineResponse = await axios.get(
+              `https://fewnu-tontin.onrender.com/getTontineById/getTontineById/${tontineId}`
+            );
+            return tontineResponse.data;
+          }
+        );
+
         // Wait for all the tontine details to be fetched
         const tontineDetails = await Promise.all(tontineDetailsPromises);
-  
+
         // Extract tontine names from the fetched data
-        const tontineNames = tontineDetails.map(tontine => tontine.tontine);
-  
-        console.log("ParticipatingTontines: ", tontineNames);
+        const tontineNames = tontineDetails.map((tontine) => tontine.tontine);
+
+        console.log("ParticipateInTontines: ", tontineNames);
         setParticipatingTontines(tontineNames);
       } catch (error) {
-        console.error("Erreur lors de la récupération des tontines participantes :", error);
+        console.error(
+          "Erreur lors de la récupération des tontines participantes :",
+          error
+        );
       }
     }
   };
-  
-  
 
   const handleAddCotisation = (e) => {
     e.preventDefault();
@@ -126,17 +133,18 @@ const Ajouter = () => {
                 value={selectedTontine}
                 onChange={(e) => setSelectedTontine(e.target.value)}
                 aria-label="Default select example"
-                placeholder="selectionner le tontine"
+                placeholder="Sélectionner la tontine"
               >
                 <option className="select-option" value="">
                   Sélectionner la tontine
                 </option>
                 {participatingTontines.map((tontine) => (
-                  <option key={tontine._id} value={tontine.participatingTontines}>
-                    {tontine.participatingTontines} 
+                  <option key={tontine} value={tontine}>
+                    {tontine}
                   </option>
                 ))}
               </select>
+
               <div className="input-group flex-nowrap">
                 <input
                   type="number"

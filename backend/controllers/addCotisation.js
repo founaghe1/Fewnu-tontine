@@ -21,12 +21,12 @@ const addCotisation = async (req, res, next) => {
       return res.status(404).json({ message: 'Aucune tontine  trouvée sous ce nom' });
     }
 
-     // Vérifiez si l'utilisateur participe à la tontine
-     const userParticipatesInTontine = user.tontine.includes(tontine._id);
+    //  // Vérifiez si l'utilisateur participe à la tontine
+    //  const userParticipatesInTontine = user.tontine.includes(tontine._id);
 
-     if (!userParticipatesInTontine) {
-       return res.status(403).json({ message: "L'utilisateur ne participe pas à cette tontine" });
-     }
+    //  if (!userParticipatesInTontine) {
+    //    return res.status(403).json({ message: "L'utilisateur ne participe pas à cette tontine" });
+    //  }
 
     // Créez la cotisation en associant l'ID de l'utilisateur et l'ID de la tontine
     const CotisationMtn = new Cotisation({ cotisation, user: user._id, tontine: tontine.tontine });
