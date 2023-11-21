@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import './Tontine.css';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import Layout from '../Layout/Layout';
-import CarteTontine from './CarteTontine';
-import Progression from '../Cotisation/Progression';
 import AjoutCotisation from './AjoutCotisation';
 
 const Tontine = () => {
   const { tontineId } = useParams();
   const [cotisations, setCotisations] = useState([]);
   const navigate = useNavigate();
-  const [tontineName, setTontineName] = useState('');
   const [totalSum, setTotalSum] = useState(0);
 
   useEffect(() => {
@@ -42,18 +39,6 @@ const Tontine = () => {
     navigate(`/tontine/${encodeURIComponent(tontineId)}`);
   };
 
-  // useEffect(() => {
-  //   // Fetch the tontine name from your API using tontineId
-  //   // Update setTontineName with the fetched name
-  //   axios
-  //     .get(`https://fewnu-tontin.onrender.com/getCotisationsByTontine/getCotisationsByTontine/${tontineId}`)
-  //     .then((response) => {
-  //       setTontineName(response.data.tontine);
-  //     })
-  //     .catch((error) => {
-  //       console.error('Erreur lors de la récupération du nom de la tontine', error);
-  //     });
-  // }, [tontineId]);
 
   const formatDate = (dateString) => {
     const options = { day: 'numeric', month: 'numeric', year: 'numeric' };
@@ -72,7 +57,7 @@ const Tontine = () => {
           <div className="d-flex justify-content-center ">
             <div className="container-fluid pt-3 page-totine d-flex justify-content-center ">
               <div className="d-flex flex-column justify-content-center cart">
-                <AjoutCotisation tontineName={tontineName}  totalSum={totalSum} />
+                <AjoutCotisation   totalSum={totalSum} />
               </div>
             </div>
           </div>

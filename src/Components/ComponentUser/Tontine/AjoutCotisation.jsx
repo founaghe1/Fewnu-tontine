@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React from 'react';
 import { FaSackDollar } from 'react-icons/fa6';
 import { GrAddCircle } from 'react-icons/gr';
@@ -6,21 +5,9 @@ import { Link, useParams } from 'react-router-dom';
 
 const AjoutCotisation = ({  totalSum }) => {
 
-  const { tontineId } = useParams(); // Use useParams to get route parameters
-  const [tontineName, setTontineName] = React.useState('');
+  const { tontineId } = useParams();
 
-  // Fetch the tontine name from your API using tontineId
-  React.useEffect(() => {
-    axios
-      .get(`https://fewnu-tontin.onrender.com/getTontineById/getTontineById/${tontineId}`)
-      .then((response) => {
-        setTontineName(response.data.tontine);
-        console.log(setTontineName);
-      })
-      .catch((error) => {
-        console.error('Erreur lors de la récupération du nom de la tontine', error);
-      });
-  }, [tontineId]);
+  
 
 
   return (
@@ -33,7 +20,7 @@ const AjoutCotisation = ({  totalSum }) => {
           <div className="info-containt">
             <p className="text-capitalize fw-bold fs-4 text-start">cotisations</p>
             <p className="text-capitalize text-start">
-              <span>{tontineName}</span>
+              <span>{tontineId}</span>
               <br />
               <br />
               <span >{totalSum}Fr Cfa</span>
