@@ -16,6 +16,7 @@ const checkParticipationStatus = require('./routes/getCheckParticipant');
 const addTontineToUser = require('./routes/addTontinetoUser');
 const getUserTontines = require('./routes/getUserTontine');
 const getTontineById = require('./routes/getTontineById');
+const getCotisationsByTontine = require('./routes/getCotisationsByTontine')
 
 const cors = require("cors")
 
@@ -70,7 +71,8 @@ app.use("/addTontineToUser", addTontineToUser);
 
 app.use("/getUserTontines", getUserTontines);
 
-app.use("/getTontineById", getTontineById)
+app.use("/getTontineById", getTontineById);
+app.use("/getCotisationsByTontine", getCotisationsByTontine)
 
 
 
