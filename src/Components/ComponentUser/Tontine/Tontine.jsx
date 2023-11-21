@@ -42,18 +42,18 @@ const Tontine = () => {
     navigate(`/tontine/${encodeURIComponent(tontineId)}`);
   };
 
-  useEffect(() => {
-    // Fetch the tontine name from your API using tontineId
-    // Update setTontineName with the fetched name
-    axios
-      .get(`https://fewnu-tontin.onrender.com/getTontineById/getTontineById/${tontineId}`)
-      .then((response) => {
-        setTontineName(response.data.tontine);
-      })
-      .catch((error) => {
-        console.error('Erreur lors de la récupération du nom de la tontine', error);
-      });
-  }, [tontineId]);
+  // useEffect(() => {
+  //   // Fetch the tontine name from your API using tontineId
+  //   // Update setTontineName with the fetched name
+  //   axios
+  //     .get(`https://fewnu-tontin.onrender.com/getCotisationsByTontine/getCotisationsByTontine/${tontineId}`)
+  //     .then((response) => {
+  //       setTontineName(response.data.tontine);
+  //     })
+  //     .catch((error) => {
+  //       console.error('Erreur lors de la récupération du nom de la tontine', error);
+  //     });
+  // }, [tontineId]);
 
   const formatDate = (dateString) => {
     const options = { day: 'numeric', month: 'numeric', year: 'numeric' };
@@ -72,7 +72,7 @@ const Tontine = () => {
           <div className="d-flex justify-content-center ">
             <div className="container-fluid pt-3 page-totine d-flex justify-content-center ">
               <div className="d-flex flex-column justify-content-center cart">
-                <AjoutCotisation tontineName={tontineName} totalSum={totalSum} />
+                <AjoutCotisation tontineName={tontineName}  totalSum={totalSum} />
               </div>
             </div>
           </div>
