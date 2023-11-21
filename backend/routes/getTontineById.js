@@ -1,11 +1,18 @@
 const express = require('express');
 const router = express.Router();
+const mongoose = require('mongoose');
 const Tontine = require('../models/Tontine');
 
 // Endpoint to get tontine details by ID
 router.get('/getTontineById/:tontineId', async (req, res) => {
   try {
     const tontineId = req.params.tontineId;
+
+    // Validate if tontineId is a valid ObjectId
+    if (!mongoose.Types.ObjectId.isValid(tontineId)) {
+      return res.status(400).json({ error: 'Invalid tontineId format' });
+    }
+
     const tontine = await Tontine.findOne({ _id: tontineId }).exec();
 
     if (tontine) {

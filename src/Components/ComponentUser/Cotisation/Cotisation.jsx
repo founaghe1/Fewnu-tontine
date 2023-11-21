@@ -11,7 +11,7 @@ const Cotisation = () => {
   const navigate = useNavigate();
 
   const handleCardClick = (tontineId) => {
-    navigate(`/tontine/${tontineId}`);
+    navigate(`/tontine/${encodeURIComponent(tontineId)}`);
   };
 
   useEffect(() => {
