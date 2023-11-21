@@ -72,7 +72,7 @@ const Ajouter = () => {
   
         // Fetch the details of each tontine using the IDs
         const tontineDetailsPromises = participatingTontineIds.map(async (tontineId) => {
-          const tontineResponse = await axios.get(`https://fewnu-tontin.onrender.com/tontines/getTontineById/${tontineId}`);
+          const tontineResponse = await axios.get(`https://fewnu-tontin.onrender.com/getTontineById/getTontineById/${tontineId}`);
           return tontineResponse.data;
         });
   
