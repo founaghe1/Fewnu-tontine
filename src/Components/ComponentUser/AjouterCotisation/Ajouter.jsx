@@ -49,62 +49,23 @@ const Ajouter = () => {
 
     }, []);
 
-    const handleAddCotisation = () => {
-      // Validez les données du formulaire ici
-      if (cotisation.trim() !== '' && selectedTontine !== '') {
-        // Assurez-vous que vous avez les informations sur la participation de l'utilisateur à la tontine
-        // Vous pouvez stocker ces informations lorsque vous récupérez les tontines ou les récupérer avec une autre requête à l'API.
-        axios.get("https://fewnu-tontin.onrender.com/user/profile")
-        .then((response) => {
-          const userParticipatingTontines = response.data[0].participatingTontine;
-        console.log(userParticipatingTontines);
-        const userParticipatesInSelectedTontine = userParticipatingTontines.some(tontine => tontine.tontine === selectedTontine);
-
-        if (userParticipatesInSelectedTontine) {
-          const cotisationData = {
-            tontineCot: selectedTontine,
-            cotisation: cotisation,
-            phoneNumberCot: phoneNumberCot,
-            modePaiement: {
-              mensuel: mensuel,
-              global: global,
-            },
-          };
-    
-          console.log(cotisationData);
-          //Ici, vous pouvez stocker temporairement les données dans le stockage local.
-          localStorage.setItem('cotisationData', JSON.stringify(cotisationData));
-    
-          // Redirigez vers la page "validerAjout"
-          navigate('/validerAjout', { state: { cotisationData } });
-        } else {
-          // L'utilisateur ne participe pas à la tontine sélectionnée, affichez un message d'erreur ou prenez d'autres mesures.
-          console.error("L'utilisateur ne participe pas à la tontine sélectionnée.");
-        }
-        })
-        .catch((error) => {
-          console.error('Erreur lors de la récupération des tontines', error);
-        }); 
-      }
-    };
-
-  // const handleAddCotisation = (e) => {
-  //   e.preventDefault();
-  //   // Validez les données du formulaire ici
-  //   if (cotisation.trim() !== '' && selectedTontine !== '') {
-  //     const cotisationData = {
-  //       tontineCot: selectedTontine,
-  //       cotisation: cotisation,
-  //       phoneNumberCot: phoneNumberCot,
-  //       modePaiement: {
-  //        mensuel: mensuel,
-  //         global: global,
-  //       },
-  //     };
-  //       navigate('/validerAjout', { state: { cotisationData } });
-  //     // console.log(cotisationData);
-  //   }
-  // };
+  const handleAddCotisation = (e) => {
+    e.preventDefault();
+    // Validez les données du formulaire ici
+    if (cotisation.trim() !== '' && selectedTontine !== '') {
+      const cotisationData = {
+        tontineCot: selectedTontine,
+        cotisation: cotisation,
+        phoneNumberCot: phoneNumberCot,
+        modePaiement: {
+         mensuel: mensuel,
+          global: global,
+        },
+      };
+        navigate('/validerAjout', { state: { cotisationData } });
+      // console.log(cotisationData);
+    }
+  };
  
   return (
     <Layout>
@@ -122,9 +83,6 @@ const Ajouter = () => {
           {tontineCot.map((tontine) => (
             <option key={tontine.id} value={tontine.tontine}>{tontine.tontine}</option>
           ))}
-          {/* {tontineCot.map((tontine) => (
-            <option key={tontine.id} value={tontine.tontine}>{tontine.tontine}</option>
-          ))} */}
         </select>
         <div className="input-group flex-nowrap">
           <input
