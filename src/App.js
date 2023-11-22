@@ -47,7 +47,7 @@ function App() {
             {/* <Route path="/confirmNumber"  element={<Confime />} /> */}
             {/* <Route path="/infoPersonnelle"  element={<InfoPersonnelle />} /> */}
             {/* <Route path="/creatCode"  element={<Creercode />} /> */}
-            <Route path="/tontine"  element={<Tontine />} />
+            <Route path="/tontine/:tontineId"  element={<Tontine />} />
             <Route path="/ajouterCotisation"  element={<Ajouter />} />
             <Route path="/parametres"  element={<Parametre />} />
             <Route path="/typeTontine"  element={<TypeTontine />} />

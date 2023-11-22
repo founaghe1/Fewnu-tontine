@@ -38,12 +38,15 @@ const TypeTontine = () => {
         // Fetch participating tontine ids from the server for the current user
         const response = await axios.get(`https://fewnu-tontin.onrender.com/getParticipants/getParticipants/${userId}`);
         const participatingTontineIds = response.data;
+        
 
         // Mise à jour de la liste des tontines participantes dans le stockage local
         localStorage.setItem("participatingTontines", JSON.stringify(participatingTontineIds));
+        // localStorage.setItem("participatingTontineNames", JSON.stringify(participatingTontineName));
 
         // Mettez à jour l'état local avec la nouvelle liste
         setParticipatingTontines(participatingTontineIds);
+
       } catch (error) {
         console.error('Erreur lors de la récupération des tontines participantes :', error);
       }
@@ -87,7 +90,7 @@ const TypeTontine = () => {
           toast.success('Vous avez rejoint la tontine avec succès');
         } catch (error) {
           console.error('Erreur lors de la participation à la Tontine côté serveur :', error);
-          toast.error('Une erreur est survenue pendant votre inscription');
+          toast.error('Une erreur est survenue pendant votre participation');
           
         }
       }

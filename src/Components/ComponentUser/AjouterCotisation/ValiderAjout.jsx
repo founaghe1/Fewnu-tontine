@@ -7,7 +7,9 @@ import './Ajouter.css'
 // import {GiTwoCoins} from 'react-icons/gi'
 // import { useState, useEffect } from 'react'
 import { useNavigate, useLocation } from "react-router-dom";
-import axios from 'axios'
+import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const ValiderAjout = () => {
@@ -15,7 +17,7 @@ const ValiderAjout = () => {
     const { state } = useLocation();
     const cotisationData = state?.cotisationData || {};
 
-  
+    
       const handleEnregistrer = () => {
         // Envoyez les données à l'API
         axios.post('https://fewnu-tontin.onrender.com/addCotisation/addCotisation', cotisationData)
@@ -24,11 +26,13 @@ const ValiderAjout = () => {
             console.log('Données enregistrées avec succès : ', response.data);
       
             // Redirigez l'utilisateur où vous le souhaitez
+            toast.success('Vous avez cotisez avec success');
             navigate('/mesCotisations');
           })
           .catch((error) => {
             // Gérez les erreurs ici
             console.error("Erreur lors de l'envoi des données à l'API : ", error);
+            toast.error('Une erreur est survenue pendant votre cotisation');
           });
       };
     
@@ -78,6 +82,7 @@ const ValiderAjout = () => {
                 <button className='btn-form shadow' onClick={handleEnregistrer}>Enregistrer</button>
             </div>
         </div>
+        <ToastContainer position="top-center" autoClose={3000} hideProgressBar />
     </Layout>
   )
 }
