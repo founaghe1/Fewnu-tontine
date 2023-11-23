@@ -1,34 +1,39 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./Ajouter.css";
 import HeaderProfil from "../Profil/HeaderProfil";
 import Layout from "../Layout/Layout";
 import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+
 import axios from "axios";
 
 const Ajouter = () => {
   const [tontineCot, setTontineCot] = useState([]);
   const [selectedTontine, setSelectedTontine] = useState("");
   const [cotisation, setCotisation] = useState("");
-  const [userId, setUserId] = useState("");
-  const [mensuel, setMensuel] = useState(false);
-  const [global, setGlobal] = useState(false);
-  const navigate = useNavigate();
+  const [phoneNumberCot, setPhoneNumberCot] = useState("");
+  const [mensuel, setMensuel] = useState();
+  const [global, setGlobal] = useState();
+  const navigate = useNavigate(); // Pour la redirection
+  const [participatingTontines, setParticipatingTontines] = useState([]);
 
   useEffect(() => {
-    // Récupérer le téléphone de l'utilisateur connecté depuis l'API
+    // Récupérer le telephone de l'utilisateur connecte depuis l'API
     axios
       .get("https://fewnu-tontin.onrender.com/user/profile")
       .then((response) => {
+        console.log(response.data);
+        // const userId = response.data[0].phoneNumber;
         const phoneNumberConnectedUser = response.data[0].phoneNumber;
-        setUserId(response.data[0]._id);
-
+        // setPhoneNumberCot(userId);
+        // Trouver l'utilisateur connecté
         const currentUser = response.data.find(
           (user) => user.phoneNumber === phoneNumberConnectedUser
         );
 
         if (currentUser) {
-          const userId = currentUser._id;
-          setUserId(userId);
+          const userId = currentUser.phoneNumber;
+          setPhoneNumberCot(userId);
         } else {
           console.error(
             "Utilisateur connecté non trouvé dans la réponse de l'API"
@@ -46,26 +51,69 @@ const Ajouter = () => {
       .get("https://fewnu-tontin.onrender.com/tontines/getTontines")
       .then((response) => {
         setTontineCot(response.data);
+        console.log("nomTontine: ", response.data);
       })
       .catch((error) => {
         console.error("Erreur lors de la récupération des tontines", error);
       });
+    // Fetch participating tontines from the server
+    fetchParticipatingTontinesFromServer();
   }, []);
+
+  const fetchParticipatingTontinesFromServer = async () => {
+    const storedUser = localStorage.getItem("userData");
+    if (storedUser) {
+      const userData = JSON.parse(storedUser);
+      const userId = userData.user._id;
+
+      try {
+        const response = await axios.get(
+          `https://fewnu-tontin.onrender.com/getParticipants/getParticipants/${userId}`
+        );
+        const participatingTontineIds = response.data;
+
+        // Fetch the details of each tontine using the IDs
+        const tontineDetailsPromises = participatingTontineIds.map(
+          async (tontineId) => {
+            const tontineResponse = await axios.get(
+              `https://fewnu-tontin.onrender.com/getTontineById/getTontineById/${tontineId}`
+            );
+            return tontineResponse.data;
+          }
+        );
+
+        // Wait for all the tontine details to be fetched
+        const tontineDetails = await Promise.all(tontineDetailsPromises);
+
+        // Extract tontine names from the fetched data
+        const tontineNames = tontineDetails.map((tontine) => tontine.tontine);
+
+        console.log("ParticipateInTontines: ", tontineNames);
+        setParticipatingTontines(tontineNames);
+      } catch (error) {
+        console.error(
+          "Erreur lors de la récupération des tontines participantes :",
+          error
+        );
+      }
+    }
+  };
 
   const handleAddCotisation = (e) => {
     e.preventDefault();
-    // Valider les données du formulaire ici
+    // Validez les données du formulaire ici
     if (cotisation.trim() !== "" && selectedTontine !== "") {
       const cotisationData = {
         tontineCot: selectedTontine,
         cotisation: cotisation,
-        userId: userId,
+        phoneNumberCot: phoneNumberCot,
         modePaiement: {
           mensuel: mensuel,
           global: global,
         },
       };
       navigate("/validerAjout", { state: { cotisationData } });
+      console.log(cotisationData);
     }
   };
 
@@ -90,7 +138,7 @@ const Ajouter = () => {
                 <option className="select-option" value="">
                   Sélectionner la tontine
                 </option>
-                {tontineCot.map((tontine) => (
+                {participatingTontines.map((tontine) => (
                   <option key={tontine} value={tontine}>
                     {tontine}
                   </option>
@@ -104,7 +152,8 @@ const Ajouter = () => {
                   onChange={(e) => setCotisation(e.target.value)}
                   placeholder="Montant de la cotisation"
                   className="form-control"
-                  aria-label="Montant de la cotisation"
+                  aria-label="Username"
+                  aria-describedby="addon-wrapping"
                 />
               </div>
             </div>
@@ -115,9 +164,10 @@ const Ajouter = () => {
                   type="radio"
                   checked={mensuel}
                   onChange={() => setMensuel(!mensuel)}
-                  id="cotisationMensuelle"
+                  name="flexRadioDefault"
+                  id="flexRadioDefault1"
                 />
-                <label className="form-check-label" htmlFor="cotisationMensuelle">
+                <label className="form-check-label" htmlFor="flexRadioDefault1">
                   Cotisation mensuelle
                 </label>
               </div>
@@ -127,9 +177,10 @@ const Ajouter = () => {
                   type="radio"
                   checked={global}
                   onChange={() => setGlobal(!global)}
-                  id="cotisationGlobale"
+                  name="flexRadioDefault"
+                  id="flexRadioDefault2"
                 />
-                <label className="form-check-label" htmlFor="cotisationGlobale">
+                <label className="form-check-label" htmlFor="flexRadioDefault2">
                   Cotisation globale
                 </label>
               </div>
