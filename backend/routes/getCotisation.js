@@ -4,8 +4,9 @@ const Cotisation = require('../models/Cotisation'); // importer du modèle de co
 
 router.get('/getCotisations', async (req, res, next) => {
   try {
+    const userId = req.user.id;
     // Récupérez toutes les cotisations depuis la base de données
-    const cotisations = await Cotisation.find(); 
+    const cotisations = await Cotisation.find({ user: userId }); 
 
     // Renvoyez les cotisations en tant que réponse JSON
     res.json(cotisations); 

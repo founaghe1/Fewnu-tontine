@@ -15,7 +15,7 @@ const Cotisation = () => {
   };
 
   useEffect(() => {
-    // Effectuer une requête GET pour récupérer les cotisations depuis l'API
+    // Effectuer une requête GET pour récupérer les cotisations de l'utilisateur depuis l'API
     axios
       .get("https://fewnu-tontin.onrender.com/cotisations/getCotisations")
       .then((response) => {
