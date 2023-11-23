@@ -4,19 +4,11 @@ const User = require('../models/User');
 
 router.get('/profile', async (req, res, next) => {
   try {
-    // Retrieve the authenticated user's ID from the request
-    const userId = req.user._id;
+    // Récupérer tous les utilisateur depuis la base de données
+    const user = await User.find(); 
 
-    // Find the user based on the ID
-    const user = await User.findById(userId);
-
-    // Check if the user exists
-    if (!user) {
-      return res.status(404).json({ message: 'Utilisateur non trouvé' });
-    }
-
-    // Return the user profile data as a JSON response
-    res.json(user);
+    // Renvoyer la liste des utilisateurs en tant que réponse JSON
+    res.json(user); 
   } catch (error) {
     next(error);
   }
