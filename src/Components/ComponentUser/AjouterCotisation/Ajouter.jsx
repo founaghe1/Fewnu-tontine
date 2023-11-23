@@ -18,32 +18,37 @@ const Ajouter = () => {
   const [participatingTontines, setParticipatingTontines] = useState([]);
 
   useEffect(() => {
-    // Récupérer le telephone de l'utilisateur connecte depuis l'API
+    // Récupérer le téléphone de l'utilisateur connecté depuis l'API
     axios
       .get("https://fewnu-tontin.onrender.com/user/profile")
       .then((response) => {
         console.log(response.data);
-        // const userId = response.data[0].phoneNumber;
         const phoneNumberConnectedUser = response.data[0].phoneNumber;
-        // setPhoneNumberCot(userId);
+        console.log(phoneNumberConnectedUser);
+  
         // Trouver l'utilisateur connecté
-        const currentUser = response.data.find(
-          (user) => user.phoneNumber === phoneNumberConnectedUser
-        );
-
+        let currentUser = null;
+        for (const user of response.data) {
+          if (user.phoneNumber === phoneNumberConnectedUser) {
+            currentUser = user;
+            break; // Break out of the loop once user is found
+          }
+        }
+  
+        console.log(currentUser);
+  
         if (currentUser) {
-          const userId = currentUser.phoneNumber;
+          const userId = currentUser._id; // Use _id instead of phoneNumber
           setPhoneNumberCot(userId);
         } else {
-          console.error(
-            "Utilisateur connecté non trouvé dans la réponse de l'API"
-          );
+          console.error("Utilisateur connecté non trouvé dans la réponse de l'API");
         }
       })
       .catch((error) => {
         console.error("Erreur lors de la récupération des tontines", error);
       });
   }, []);
+  
 
   useEffect(() => {
     // Récupérer les tontines depuis l'API
