@@ -1,21 +1,20 @@
 import React, { useEffect, useState } from "react";
 import "./Cotisation.css";
 import Progression from "./Progression";
-// import Carte from './Carte';
 import Layout from "../Layout/Layout";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Cotisation = () => {
   const [cotisations, setCotisations] = useState([]);
   const navigate = useNavigate();
+  const storedUser = JSON.parse(localStorage.getItem('userData')); // Assuming you store the user in localStorage
 
   const handleCardClick = (tontineId) => {
     navigate(`/tontine/${encodeURIComponent(tontineId)}`);
   };
 
   useEffect(() => {
-    // Effectuer une requête GET pour récupérer les cotisations de l'utilisateur depuis l'API
     axios
       .get("https://fewnu-tontin.onrender.com/cotisations/getCotisations")
       .then((response) => {
@@ -23,12 +22,17 @@ const Cotisation = () => {
           return new Date(b.createdAt) - new Date(a.createdAt);
         });
 
-        setCotisations(sortedCotisations);
+        // Filter cotisations based on the stored user's ID
+        const userCotisations = sortedCotisations.filter(
+          (cotisation) => cotisation.user === storedUser._id
+        );
+
+        setCotisations(userCotisations);
       })
       .catch((error) => {
         console.error("Erreur lors de la récupération des cotisations", error);
       });
-  }, []);
+  }, [storedUser._id]);
 
   const formatDate = (dateString) => {
     const options = { day: "numeric", month: "numeric", year: "numeric" };
