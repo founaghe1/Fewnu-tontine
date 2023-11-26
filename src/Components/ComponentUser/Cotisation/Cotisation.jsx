@@ -8,7 +8,7 @@ import axios from "axios";
 const Cotisation = () => {
   const [cotisations, setCotisations] = useState([]);
   const navigate = useNavigate();
-  const storedUser = JSON.parse(localStorage.getItem('userData')); // Assuming you store the user in localStorage
+  const storedUser = JSON.parse(localStorage.getItem('userData')); 
 
   const handleCardClick = (tontineId) => {
     navigate(`/tontine/${encodeURIComponent(tontineId)}`);
@@ -24,8 +24,10 @@ const Cotisation = () => {
 
         // Filter cotisations based on the stored user's ID
         const userCotisations = sortedCotisations.filter(
-          (cotisation) => cotisation.user === storedUser._id
+          (cotisation) => cotisation.user === storedUser.user._id
         );
+        console.log(userCotisations);
+        console.log(storedUser);
 
         setCotisations(userCotisations);
       })
