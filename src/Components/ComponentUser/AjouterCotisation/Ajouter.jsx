@@ -23,10 +23,10 @@ const Ajouter = () => {
   
     if (storedUser) {
       const userData = JSON.parse(storedUser);
-      const userId = userData.user._id;
+      const user = userData.user.phoneNumber;
   
       // Mettre à jour le state avec l'ID de l'utilisateur
-      setPhoneNumberCot(userId);
+      setPhoneNumberCot(user);
     } else {
       console.error("Données d'utilisateur non trouvées dans le stockage local");
     }
