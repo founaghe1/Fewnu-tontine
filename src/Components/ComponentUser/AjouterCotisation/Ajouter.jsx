@@ -19,13 +19,14 @@ const Ajouter = () => {
 
   useEffect(() => {
     axios
-      .get("https://fewnu-tontin.onrender.com/user/profile")
+      .get("https://fewnu-tontin.onrender.com/userAssociCotisation/userAssociCotisation")
       .then((response) => {
         // Log the entire response for debugging
         console.log("API Response:", response.data);
   
         // Assuming the user ID is directly available in the response
         const userId = response.data._id;
+        console.log(userId);
         
         if (userId) {
           setPhoneNumberCot(userId);
@@ -64,6 +65,7 @@ const Ajouter = () => {
         const response = await axios.get(
           `https://fewnu-tontin.onrender.com/getParticipants/getParticipants/${userId}`
         );
+        console.log("userId : ", userId);
         const participatingTontineIds = response.data;
 
         // Fetch the details of each tontine using the IDs
