@@ -18,25 +18,18 @@ const Ajouter = () => {
   const [participatingTontines, setParticipatingTontines] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("https://fewnu-tontin.onrender.com/userAssociCotisation/userAssociCotisation")
-      .then((response) => {
-        // Log the entire response for debugging
-        console.log("API Response:", response.data);
+    // Récupérer les données de l'utilisateur depuis le stockage local
+    const storedUser = localStorage.getItem("userData");
   
-        // Assuming the user ID is directly available in the response
-        const userId = response.data._id;
-        console.log(userId);
-        
-        if (userId) {
-          setPhoneNumberCot(userId);
-        } else {
-          console.error("Utilisateur connecté non trouvé dans la réponse de l'API");
-        }
-      })
-      .catch((error) => {
-        console.error("Erreur lors de la récupération des tontines", error);
-      });
+    if (storedUser) {
+      const userData = JSON.parse(storedUser);
+      const userId = userData.user._id;
+  
+      // Mettre à jour le state avec l'ID de l'utilisateur
+      setPhoneNumberCot(userId);
+    } else {
+      console.error("Données d'utilisateur non trouvées dans le stockage local");
+    }
   }, []);
   
 
