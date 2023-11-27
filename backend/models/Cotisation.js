@@ -21,6 +21,10 @@ const cotisationSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User', // Référence au modèle User
     },
+    phoneNumber :{
+      type:Number,
+      ref: 'User'
+    },
     tontine: {
       type: String,
     }
