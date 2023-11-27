@@ -6,7 +6,7 @@ router.get('/getCotisations', async (req, res, next) => {
   try {
     
     // Récupérez toutes les cotisations depuis la base de données
-    const cotisations = await Cotisation.find().populate('User').exec(); 
+    const cotisations = await Cotisation.find(); 
 
     // Renvoyez les cotisations en tant que réponse JSON
     res.json(cotisations); 
