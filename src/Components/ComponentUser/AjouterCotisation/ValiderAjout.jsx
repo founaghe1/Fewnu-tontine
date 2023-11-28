@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "../Layout/Layout";
 import img from "../../../Assets/profill.png";
 // import wave from '../../../Assets/wave.png'
@@ -15,6 +15,26 @@ const ValiderAjout = () => {
   const navigate = useNavigate();
   const { state } = useLocation();
   const cotisationData = state?.cotisationData || {};
+
+
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+    
+
+    
+
+  useEffect(() => {
+    // Récupérez le nom de l'utilisateur depuis le localStorage
+    const storedUser = localStorage.getItem("userData");
+
+    // Assurez-vous que les données existent et sont valides
+    if (storedUser) {
+      const userData = JSON.parse(storedUser);
+      setFirstName(userData.user.firstName);
+      setLastName(userData.user.lastName);
+      
+    }
+  }, []);
 
   const handleEnregistrer = () => {
     // Envoyez les données à l'API
@@ -46,9 +66,9 @@ const ValiderAjout = () => {
             <img src={img} className="img-fluid mb-2" alt="" />
           </div>
           <div lassName="div-text">
-            <p className="titre">Faly Seck</p>
-            <p className="des mb-3 text-center">Designer</p>
-            <p className="phrag mb-5">Ajouter une cotisation</p>
+            <p className="titre">{firstName} {lastName}</p>
+            <p className="des mb-3 text-center"></p>
+            <p className="phrag mb-5">Validez votre cotisation</p>
           </div>
         </div>
 
@@ -83,7 +103,7 @@ const ValiderAjout = () => {
             </div> */}
         <div className="text-center mt-3">
           <button className="btn-form shadow" onClick={handleEnregistrer}>
-            Enregistrer
+            Valider
           </button>
         </div>
       </div>

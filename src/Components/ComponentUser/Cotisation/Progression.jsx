@@ -5,10 +5,11 @@ import axios from "axios";
 const Progression = () => {
   const [cotisations, setCotisations] = useState([]);
   const storedUser = JSON.parse(localStorage.getItem("userData"));
+  const userId = storedUser.user._id;
 
   useEffect(() => {
     axios
-      .get("https://fewnu-tontin.onrender.com/cotisations/getCotisations")
+      .get(`https://fewnu-tontin.onrender.com/cotisations/getCotisations?userId=${userId}`)
       .then((response) => {
         setCotisations(response.data);
       })
@@ -18,9 +19,9 @@ const Progression = () => {
   }, []);
 
   // Filter cotisations for the specific user
-  const userCotisations = cotisations.filter(
-    (cotisation) => cotisation.user === storedUser?.user._id
-  );
+  const userCotisations = cotisations
+    ? cotisations.filter((cotisation) => cotisation.user.id === userId)
+    : [];
 
   // Calculate the total cotisations for the specific user
   const totalCotisations = userCotisations.reduce(

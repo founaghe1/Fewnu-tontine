@@ -1,3 +1,4 @@
+// Cotisation.js
 import React, { useEffect, useState } from "react";
 import "./Cotisation.css";
 import Progression from "./Progression";
@@ -8,7 +9,8 @@ import axios from "axios";
 const Cotisation = () => {
   const [cotisations, setCotisations] = useState([]);
   const navigate = useNavigate();
-  const storedUser = JSON.parse(localStorage.getItem('userData')); 
+  const storedUser = JSON.parse(localStorage.getItem('userData'));
+  const userId = storedUser.user._id;
 
   const handleCardClick = (tontineId) => {
     navigate(`/tontine/${encodeURIComponent(tontineId)}`);
@@ -16,7 +18,7 @@ const Cotisation = () => {
 
   useEffect(() => {
     axios
-      .get("https://fewnu-tontin.onrender.com/cotisations/getCotisations")
+      .get(`https://fewnu-tontin.onrender.com/cotisations/getCotisations?userId=${userId}`)
       .then((response) => {
         const sortedCotisations = response.data.sort((a, b) => {
           return new Date(b.createdAt) - new Date(a.createdAt);
@@ -24,8 +26,9 @@ const Cotisation = () => {
 
         // Filter cotisations based on the stored user's ID
         const userCotisations = sortedCotisations.filter(
-          (cotisation) => cotisation.user === storedUser.user._id
+          (cotisation) => cotisation.user.id === userId
         );
+
         console.log("userCotisations: ", userCotisations);
         console.log(storedUser);
 
@@ -34,7 +37,7 @@ const Cotisation = () => {
       .catch((error) => {
         console.error("Erreur lors de la récupération des cotisations", error);
       });
-  }, [storedUser._id]);
+  }, [userId]);
 
   const formatDate = (dateString) => {
     const options = { day: "numeric", month: "numeric", year: "numeric" };
