@@ -34,14 +34,6 @@ const addCotisation = async (req, res, next) => {
       tontine: tontine.tontine,
     });
 
-    // Récupérez toutes les informations de l'utilisateur associé à la cotisation
-    const cotisationWithUser = await cotisationInstance
-      .populate({
-        path: 'user',
-        select: 'firstName lastName phoneNumber', // Sélectionnez les champs que vous voulez inclure
-      })
-      .exec();
-
     // Sauvegardez la cotisation après avoir exécuté la population
     await cotisationInstance.save();
 
