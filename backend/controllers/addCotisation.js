@@ -25,7 +25,6 @@ const addCotisation = async (req, res, next) => {
       cotisation,
       phoneNumberCot,
       tontineCot,
-      user: user._id,
       tontine: tontine.tontine,
     });
 
