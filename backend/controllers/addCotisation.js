@@ -25,25 +25,18 @@ const addCotisation = async (req, res, next) => {
       cotisation,
       phoneNumberCot,
       tontineCot,
-      userId: user._id,
-      user: {
-        firstName: user.firstName,
-        lastName: user.lastName,
-        phoneNumber: user.phoneNumber,
-      },
+      user: user._id,
       tontine: tontine.tontine,
     });
 
-    // Sauvegardez la cotisation après avoir exécuté la population
+    // Sauvegardez la cotisation
     await cotisationInstance.save();
 
-    res.json({ message: 'Enregistrement de la cotisation réussi', cotisation: cotisationWithUser });
+    res.json({ message: 'Enregistrement de la cotisation réussi', cotisation: cotisationInstance });
 
   } catch (error) {
     next(error);
   }
 };
-
-
 
 module.exports = { addCotisation };
