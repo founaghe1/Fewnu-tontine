@@ -91,6 +91,7 @@ self.addEventListener('fetch', (event) => {
           })
           .catch(() => {
             // En cas d'échec de récupération depuis le réseau, vous pouvez servir une page de secours ou une ressource générique.
+            return caches.match('/index.html');
           });
       })
   );
