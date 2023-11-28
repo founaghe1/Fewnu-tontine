@@ -25,8 +25,8 @@ const addCotisation = async (req, res, next) => {
       cotisation,
       phoneNumberCot,
       tontineCot,
+      userId: user._id,
       user: {
-        _id: user._id,
         firstName: user.firstName,
         lastName: user.lastName,
         phoneNumber: user.phoneNumber,
@@ -38,9 +38,9 @@ const addCotisation = async (req, res, next) => {
     const cotisationWithUser = await cotisationInstance
       .populate({
         path: 'user',
-        select: '_id firstName lastName phoneNumber', // Sélectionnez les champs que vous voulez inclure
+        select: 'firstName lastName phoneNumber', // Sélectionnez les champs que vous voulez inclure
       })
-      .execPopulate();
+      .exec();
 
     // Sauvegardez la cotisation après avoir exécuté la population
     await cotisationInstance.save();

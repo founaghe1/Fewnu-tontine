@@ -23,11 +23,11 @@ router.get('/getCotisations', async (req, res, next) => {
         _id: cotisation._id,
         cotisation: cotisation.cotisation,
         tontine: cotisation.tontine,
+        user: cotisation._id,
         createdAt: cotisation.createdAt,
         updatedAt: cotisation.updatedAt,
         __v: cotisation.__v,
         user: {
-          id: user._id,
           firstName,
           lastName,
           phoneNumber,

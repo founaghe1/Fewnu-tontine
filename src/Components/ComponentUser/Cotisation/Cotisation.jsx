@@ -26,7 +26,7 @@ const Cotisation = () => {
         const userCotisations = sortedCotisations.filter(
           (cotisation) => cotisation.user === storedUser.user._id
         );
-        console.log(userCotisations);
+        console.log("userCotisations: ", userCotisations);
         console.log(storedUser);
 
         setCotisations(userCotisations);
