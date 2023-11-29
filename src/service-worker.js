@@ -122,7 +122,7 @@ self.addEventListener("fetch", (event) => {
       // Fetch and cache non-extension resources
       return fetch(event.request)
         .then((response) => {
-          if (event.request.url.startsWith("chrome-extension") === -1) {
+          if (event.request.url.startsWith('https')) {
             return caches.open(CACHE_NAME).then((cache) => {
               cache.put(event.request, response.clone());
               return response;
