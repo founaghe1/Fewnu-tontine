@@ -104,10 +104,19 @@ self.addEventListener('activate', (event) => {
 });
  
 self.addEventListener('fetch', (event) => {
+  if (event.request.url.startsWith('https')) {
+    // Do not attempt to cache Chrome extension resources
+    return;
+  };
+  if (event.request.url.startsWith('http')) {
+    // Do not attempt to cache Chrome extension resources
+    return;
+  };
   if (event.request.url.startsWith('chrome-extension://')) {
     // Do not attempt to cache Chrome extension resources
     return;
-  }
+  };
+
   
 
   event.respondWith(
