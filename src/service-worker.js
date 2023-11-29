@@ -104,16 +104,21 @@ self.addEventListener('activate', (event) => {
 });
  
 self.addEventListener('fetch', (event) => {
+  if (event.request.url.startsWith('chrome-extension://')) {
+    // Do not attempt to cache Chrome extension resources
+    return;
+  }
+  
+
   event.respondWith(
     caches.match(event.request)
       .then((cachedResponse) => {
         if (cachedResponse) {
           return cachedResponse;
         }
-        // Si la ressource n'est pas dans le cache, la récupérer depuis le réseau
+        // Fetch and cache non-extension resources
         return fetch(event.request)
           .then((response) => {
-            // Mettre la nouvelle réponse en cache
             return caches.open(CACHE_NAME)
               .then((cache) => {
                 cache.put(event.request, response.clone());
@@ -121,11 +126,12 @@ self.addEventListener('fetch', (event) => {
               });
           })
           .catch(() => {
-            // En cas d'échec de récupération depuis le réseau, vous pouvez servir une page de secours ou une ressource générique.
+            // Handle fetch failure
           });
       })
   );
 });
+
 
 self.addEventListener('message', (event) => {
   if (event.data && event.data.type === 'SKIP_WAITING') {
