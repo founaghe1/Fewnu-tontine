@@ -43,7 +43,7 @@ registerRoute(
 
     return true;
   },
-  createHandlerBoundToURL(process.env.PUBLIC_URL + "/index.html")
+  createHandlerBoundToURL(process.env.PUBLIC_URL + "./index.html")
 );
 
 // An example runtime caching route for requests that aren't handled by the
@@ -73,90 +73,91 @@ self.addEventListener('message', (event) => {
 // Any other custom service worker logic can go here.
 
 //Gestion de mise a jour
-const CACHE_NAME = "my-pwa-cache-v1";
+// const CACHE_NAME = "my-pwa-cache-v1";
 
-self.addEventListener('install', (event) => {
-  console.log("[Service Worker] Install Event processing...");
-  event.waitUntil(
-    caches.open("my-pwa-cache-v1")
-      .then((cache) => {
-        return cache.addAll([
-          '/',
-          '/index.html',
-          '/app.js',
-          '/styles.css',
-          '/favicon.ico',
-          '/logo192..png',
-          '/logo192.png',
-          '/logo512..png',
-          '/logo512.png',
-        ]);
-      })
-  );
-});
+// self.addEventListener('install', (event) => {
+//   console.log("[Service Worker] Install Event processing...");
+//   event.waitUntil(
+//     caches.open("my-pwa-cache-v1")
+//       .then((cache) => {
+//         return cache.addAll([
+//           '/',
+//           './index.html',
+//           '/app.js',
+//           '/styles.css',
+//           '/favicon.ico',
+//           '/logo192..png',
+//           '/logo192.png',
+//           '/logo512..png',
+//           '/logo512.png',
+//         ]);
+//       })
+//   );
+// });
 
-self.addEventListener("activate", (event) => {
-  console.log("[ServiceWorker] Activate event processed!");
-  event.waitUntil(
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
-        cacheNames.map((cache) => {
-          if (cache !== CACHE_NAME) {
-            return caches.delete(cache);
-          }
-        })
-      );
-    })
-  );
-});
+// self.addEventListener("activate", (event) => {
+//   console.log("[ServiceWorker] Activate event processed!");
+//   event.waitUntil(
+//     caches.keys().then((cacheNames) => {
+//       return Promise.all(
+//         cacheNames.map((cache) => {
+//           if (cache !== CACHE_NAME) {
+//             return caches.delete(cache);
+//           }
+//         })
+//       );
+//     })
+//   );
+// });
 
-self.addEventListener("fetch", (event) => {
-  // if (event.request.url.startsWith("https")) {
-  //   // Do not attempt to cache Chrome extension resources
-  //   return;
-  // }
-  // if (event.request.url.startsWith("http")) {
-  //   // Do not attempt to cache Chrome extension resources
-  //   return;
-  // }
+// self.addEventListener("fetch", (event) => {
+//   if (event.request.url.startsWith("https")) {
+//     // Do not attempt to cache Chrome extension resources
+//     return;
+//   }
+//   if (event.request.url.startsWith("http")) {
+//     // Do not attempt to cache Chrome extension resources
+//     return;
+//   }
 
-  event.respondWith(
-    caches.match(event.request).then((cachedResponse) => {
-      if (cachedResponse) {
-        return cachedResponse;
-      }
-      // Fetch and cache non-extension resources
-      return fetch(event.request)
-        .then((response) => {
+//   event.respondWith(
+//     caches.match(event.request).then((cachedResponse) => {
+//       if (cachedResponse) {
+//         return cachedResponse;
+//       }
+//       // Fetch and cache non-extension resources
+//       return fetch(event.request)
+//         .then((response) => {
          
-            return caches.open(CACHE_NAME).then((cache) => {
-              cache.put(event.request, response.clone());
-              return response;
-            });
+//             return caches.open(CACHE_NAME).then((cache) => {
+//               cache.put(event.request, response.clone());
+//               return response;
+//             });
           
-        })
-        .catch(() => {
-          // Handle fetch failure
-        });
-    })
-  );
-});
+//         })
+//         .catch(() => {
+//           // Handle fetch failure
+//         });
+//     })
+//   );
+// });
 
-self.addEventListener("message", (event) => {
-  if (event.data && event.data.type === "SKIP_WAITING") {
-    // Forcer le service worker à s'activer immédiatement pour prendre en charge la nouvelle version.
-    self.skipWaiting();
-  }
-});
+// self.addEventListener("message", (event) => {
+//   if (event.data && event.data.type === "SKIP_WAITING") {
+//     // Forcer le service worker à s'activer immédiatement pour prendre en charge la nouvelle version.
+//     self.skipWaiting();
+//   }
+// });
 
-self.addEventListener("fetch", (event) => {
-  event.respondWith(
-    (async function () {
-      try {
-        return await fetch(event.request);
-      } catch (err) {
-        return caches.match(event.request);
-      }
-    })()
-  );
-});
+// self.addEventListener("fetch", (event) => {
+//   event.respondWith(
+//     (async function () {
+//       try {
+//         return await fetch(event.request);
+//       } catch (err) {
+//         return caches.match(event.request);
+//       }
+//     })()
+//   );
+// }); 
+
