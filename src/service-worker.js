@@ -76,6 +76,7 @@ registerRoute(
 const CACHE_NAME = "my-pwa-cache-v1";
 
 self.addEventListener('install', (event) => {
+  console.log("[Service Worker] Install Event processing...");
   event.waitUntil(
     caches.open("my-pwa-cache-v1")
       .then((cache) => {
@@ -95,6 +96,7 @@ self.addEventListener('install', (event) => {
 });
 
 self.addEventListener("activate", (event) => {
+  console.log("[ServiceWorker] Activate event processed!");
   event.waitUntil(
     caches.keys().then((cacheNames) => {
       return Promise.all(
