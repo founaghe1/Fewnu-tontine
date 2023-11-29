@@ -74,20 +74,20 @@ registerRoute(
 //Gestion de mise a jour
 const CACHE_NAME = 'my-pwa-cache-v1';
 
-self.addEventListener('install', (event) => {
-  event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then((cache) => {
-        return cache.addAll([
-          '/',
-          '/index.html',
-          '/app.js',
-          '/styles.css',
-          // Ajoutez ici d'autres ressources à mettre en cache
-        ]);
-      })
-  );
-});
+// self.addEventListener('install', (event) => {
+//   event.waitUntil(
+//     caches.open(CACHE_NAME)
+//       .then((cache) => {
+//         return cache.addAll([
+//           '/',
+//           '/index.html',
+//           '/app.js',
+//           '/styles.css',
+//           // Ajoutez ici d'autres ressources à mettre en cache
+//         ]);
+//       })
+//   );
+// });
 
 self.addEventListener('activate', (event) => {
   event.waitUntil(
@@ -137,7 +137,7 @@ self.addEventListener('message', (event) => {
 self.addEventListener('fetch', (event) => {
   event.respondWith(async function () {
     try {
-      return await fetch(event.request);
+      return await fetch(event.request); 
     } catch (err) {
       return caches.match(event.request);
     }
