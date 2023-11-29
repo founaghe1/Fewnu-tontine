@@ -84,6 +84,7 @@ self.addEventListener('install', (event) => {
           '/index.html',
           '/app.js',
           '/styles.css',
+          '/favicon.ico',
           '/logo192..png',
           '/logo192.png',
           '/logo512..png',
@@ -108,14 +109,14 @@ self.addEventListener("activate", (event) => {
 });
 
 self.addEventListener("fetch", (event) => {
-  if (event.request.url.startsWith("https")) {
-    // Do not attempt to cache Chrome extension resources
-    return;
-  }
-  if (event.request.url.startsWith("http")) {
-    // Do not attempt to cache Chrome extension resources
-    return;
-  }
+  // if (event.request.url.startsWith("https")) {
+  //   // Do not attempt to cache Chrome extension resources
+  //   return;
+  // }
+  // if (event.request.url.startsWith("http")) {
+  //   // Do not attempt to cache Chrome extension resources
+  //   return;
+  // }
 
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {
