@@ -22,7 +22,7 @@ const Ajouter = () => {
     axios
       .get("https://fewnu-tontin.onrender.com/user/profile")
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         // const userId = response.data[0].phoneNumber;
         const phoneNumberConnectedUser = response.data[0].phoneNumber;
         // setPhoneNumberCot(userId);

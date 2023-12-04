@@ -99,3 +99,4 @@ const updateTontineParticipation = async (req, res, next) => {
 };
 
 module.exports = { addTontine, participateInTontine, leaveTontine, updateTontineParticipation };
+ 
