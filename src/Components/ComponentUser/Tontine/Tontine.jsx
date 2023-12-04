@@ -10,6 +10,7 @@ const Tontine = () => {
   const [cotisations, setCotisations] = useState([]);
   const navigate = useNavigate();
   const [totalSum, setTotalSum] = useState(0);
+  const storedUser = JSON.parse(localStorage.getItem("userData"));
 
   useEffect(() => {
     axios
@@ -21,10 +22,15 @@ const Tontine = () => {
           return new Date(b.createdAt) - new Date(a.createdAt);
         });
 
-        setCotisations(sortedCotisations);
+        // Filter cotisations for the specific user
+        const userCotisations = sortedCotisations.filter(
+          (cotisation) => cotisation.user === storedUser?.user._id
+        );
+
+        setCotisations(userCotisations);
 
         // Calculate the total sum of cotisations
-        const sum = sortedCotisations.reduce(
+        const sum = userCotisations.reduce(
           (accumulator, cotisation) => accumulator + cotisation.cotisation,
           0
         );
@@ -33,7 +39,7 @@ const Tontine = () => {
       .catch((error) => {
         console.error('Erreur lors de la récupération des cotisations de la tontine', error);
       });
-  }, [tontineId]);
+  }, [tontineId, storedUser?.user._id]);
 
   const handleCardClick = (tontineId) => {
     navigate(`/tontine/${encodeURIComponent(tontineId)}`);

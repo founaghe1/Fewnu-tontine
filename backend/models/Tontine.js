@@ -9,7 +9,6 @@ const tontineSchema = new mongoose.Schema(
     },
     somme: {
       type: Number,
-      default: 0,
       required: true,
     },
     cotisationDay: {

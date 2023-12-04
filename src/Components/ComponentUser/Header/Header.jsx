@@ -22,9 +22,13 @@ const Header = () => {
 
   return (
     <div className="headers"> 
-      <div className="d-flex justify-content-center header py-2 " >
-        <img src={user} alt="user" className="img"/> 
-        <p className="pt-3 ps-2">
+      <div className="d-flex justify-content-between header py-2 " >
+        <div className="ps-4">
+          <img src={user} alt="user" className="img"/>
+          <span className="text-light ps-2">{firstName} {lastName}</span>
+        </div>
+         
+        <p className="pt-3 pe-4">
           <li class="nav-item dropdown li text-light">
             <a
               class="nav-link dropdown-toggle"
@@ -33,7 +37,7 @@ const Header = () => {
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              {firstName} {lastName}
+              
             </a>
             <ul class="dropdown-menu">
               <li>

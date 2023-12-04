@@ -1,34 +1,43 @@
+// Cotisation.js
 import React, { useEffect, useState } from "react";
 import "./Cotisation.css";
 import Progression from "./Progression";
-// import Carte from './Carte';
 import Layout from "../Layout/Layout";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Cotisation = () => {
   const [cotisations, setCotisations] = useState([]);
   const navigate = useNavigate();
+  const storedUser = JSON.parse(localStorage.getItem('userData'));
+  const userId = storedUser.user._id;
 
   const handleCardClick = (tontineId) => {
     navigate(`/tontine/${encodeURIComponent(tontineId)}`);
   };
 
   useEffect(() => {
-    // Effectuer une requête GET pour récupérer les cotisations depuis l'API
     axios
-      .get("https://fewnu-tontin.onrender.com/cotisations/getCotisations")
+      .get(`https://fewnu-tontin.onrender.com/cotisations/getCotisations?userId=${userId}`)
       .then((response) => {
         const sortedCotisations = response.data.sort((a, b) => {
           return new Date(b.createdAt) - new Date(a.createdAt);
         });
 
-        setCotisations(sortedCotisations);
+        // Filter cotisations based on the stored user's ID
+        const userCotisations = sortedCotisations.filter(
+          (cotisation) => cotisation.user.id === userId
+        );
+
+        console.log("userCotisations: ", userCotisations);
+        console.log(storedUser);
+
+        setCotisations(userCotisations);
       })
       .catch((error) => {
         console.error("Erreur lors de la récupération des cotisations", error);
       });
-  }, []);
+  }, [userId]);
 
   const formatDate = (dateString) => {
     const options = { day: "numeric", month: "numeric", year: "numeric" };
