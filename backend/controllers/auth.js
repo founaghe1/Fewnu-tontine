@@ -10,7 +10,7 @@ const { createTransport } = require("nodemailer");
 // sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 // console.log('SENDGRID_API_KEY:', process.env.SENDGRID_API_KEY);
 
-// const transporter = nodemailer.createTransport(config.email);
+// const transporter = nodemailer.createTransport(config.email);  
 
 
 
