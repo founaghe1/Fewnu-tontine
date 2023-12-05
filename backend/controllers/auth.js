@@ -25,7 +25,7 @@ const register = async (req, res, next) => {
       lastName,
       phoneNumber,
       email,
-      password,
+      password,   
       addedByUser,
       role: role || 'admin', // If role is not specified, default to 'admin'
     });
