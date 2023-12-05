@@ -32,7 +32,11 @@ const userSchema = new mongoose.Schema(
     role: {
       type: String,
       enum: ['user', 'admin'],
-      default: 'user'
+      default: 'admin'
+    },
+    addedByAdmin: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User', // Référence au modèle User lui-même
     },
     participatingTontines: [
       {

@@ -11,5 +11,6 @@ const router = express.Router();
 // Lorsqu'une requête POST est reçue à cette URL, elle sera gérée par la fonction 'register ou login' du contrôleur.
 router.post('/register', register);
 router.post('/login', login);
+// router.post('/email', sendMail)
 
 module.exports = router;
