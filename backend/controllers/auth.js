@@ -2,8 +2,8 @@
 // const mongoose = require('mongoose');
 const bcrypt = require("bcrypt");
 const User = require("../models/User");
-const nodemailer = require("nodemailer");
-const config = require("../config");
+// const nodemailer = require("nodemailer");
+// const config = require("../config");
 
 const { createTransport } = require("nodemailer");
 

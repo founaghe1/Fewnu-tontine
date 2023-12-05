@@ -7,7 +7,7 @@ const tontineSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    somme: {
+    somme: { 
       type: Number,
       required: true,
     },

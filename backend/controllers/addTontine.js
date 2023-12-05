@@ -4,7 +4,7 @@ const Tontine = require('../models/Tontine');
 const addTontine = async (req, res, next) => {
   const { tontine, somme, cotisationDay } = req.body;
 
-  try {
+  try { 
     // Create an instance of the model and save it to the database
     const tontineName = new Tontine({ tontine, somme, cotisationDay });
     
