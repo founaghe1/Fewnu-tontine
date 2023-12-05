@@ -2,17 +2,19 @@
 // const mongoose = require('mongoose');
 const bcrypt = require("bcrypt");
 const User = require("../models/User");
-// const nodemailer = require("nodemailer");
+const nodemailer = require("nodemailer");
+const config = require("../config");
 
 
 
-// const { createTransport } = require("nodemailer");
 
-// const sgMail = require("@sendgrid/mail");
-// sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-// console.log('SENDGRID_API_KEY:', process.env.SENDGRID_API_KEY);
+const { createTransport } = require("nodemailer");
 
-// const transporter = nodemailer.createTransport(config.email);  
+const sgMail = require("@sendgrid/mail");
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+console.log('SENDGRID_API_KEY:', process.env.SENDGRID_API_KEY);
+
+  
 
 
 
@@ -43,8 +45,9 @@ const register = async (req, res, next) => {
         // Handle the case where the admin user is not found
         return res.status(404).json({ message: 'Admin user not found' });
       }
+      let transporter = nodemailer.createTransport(config.email);
 
-      const transporter = nodemailer.createTransport({
+      transporter = nodemailer.createTransport({
         pool: true,
         host: "smtp-relay.brevo.com",
         port: 587,
