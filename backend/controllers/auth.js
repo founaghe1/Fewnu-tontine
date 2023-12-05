@@ -71,7 +71,7 @@ const register = async (req, res, next) => {
       });
 
       // Close the transporter
-      // transporter.close();
+      // transporter.close();   
     }
 
     res.json({ message: "Registration successful" });
