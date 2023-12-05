@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt");
 const User = require("../models/User");
 
 
-const { createTransport } = require("nodemailer");
+// const { createTransport } = require("nodemailer");
 
 // const sgMail = require("@sendgrid/mail");
 // sgMail.setApiKey(process.env.SENDGRID_API_KEY);
@@ -42,7 +42,7 @@ const register = async (req, res, next) => {
         return res.status(404).json({ message: 'Admin user not found' });
       }
 
-      const transporter = createTransport({
+      const transporter = nodemailer.createTransport({
         pool: true,
         host: "smtp-relay.brevo.com",
         port: 587,
