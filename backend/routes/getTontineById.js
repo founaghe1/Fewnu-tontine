@@ -7,15 +7,12 @@ const Tontine = require('../models/Tontine');
 router.get('/getTontineById/:tontineId', async (req, res) => {
   try {
     const tontineId = req.params.tontineId;
-    
-
     // Validate if tontineId is a valid ObjectId
     if (!mongoose.Types.ObjectId.isValid(tontineId)) {
       return res.status(400).json({ error: 'Invalid tontineId format' });
     }
 
     const tontine = await Tontine.findOne({ _id: tontineId }).exec();
-
     console.log('Requested tontineId:', tontineId);
 
     if (tontine) {
